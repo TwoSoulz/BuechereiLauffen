@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Projekt_Buecherei_Lauffen
 {
-    public partial class frmReservieren : Form
+    public partial class frmHauptfenster_Erweitert : Form
     {
-        public frmReservieren()
+        public frmHauptfenster_Erweitert()
         {
             InitializeComponent();
-        }
-
-        private void Reservieren_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

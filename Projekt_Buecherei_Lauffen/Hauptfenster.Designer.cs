@@ -40,7 +40,7 @@
             this.lblJahr = new System.Windows.Forms.Label();
             this.txbBenutzer = new System.Windows.Forms.TextBox();
             this.txbPasswort = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txb_Suche = new System.Windows.Forms.TextBox();
             this.btnAnmelden = new System.Windows.Forms.Button();
             this.btnSuchen = new System.Windows.Forms.Button();
             this.lbErgebnis = new System.Windows.Forms.ListBox();
@@ -161,12 +161,12 @@
             this.txbPasswort.TabIndex = 11;
             this.txbPasswort.UseSystemPasswordChar = true;
             // 
-            // textBox1
+            // txb_Suche
             // 
-            this.textBox1.Location = new System.Drawing.Point(107, 50);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(333, 20);
-            this.textBox1.TabIndex = 12;
+            this.txb_Suche.Location = new System.Drawing.Point(107, 50);
+            this.txb_Suche.Name = "txb_Suche";
+            this.txb_Suche.Size = new System.Drawing.Size(333, 20);
+            this.txb_Suche.TabIndex = 12;
             // 
             // btnAnmelden
             // 
@@ -302,7 +302,7 @@
             this.Controls.Add(this.lbErgebnis);
             this.Controls.Add(this.btnSuchen);
             this.Controls.Add(this.btnAnmelden);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txb_Suche);
             this.Controls.Add(this.txbPasswort);
             this.Controls.Add(this.txbBenutzer);
             this.Controls.Add(this.lblJahr);
@@ -337,7 +337,7 @@
         private System.Windows.Forms.Label lblJahr;
         private System.Windows.Forms.TextBox txbBenutzer;
         private System.Windows.Forms.TextBox txbPasswort;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txb_Suche;
         private System.Windows.Forms.Button btnAnmelden;
         private System.Windows.Forms.Button btnSuchen;
         private System.Windows.Forms.ListBox lbErgebnis;

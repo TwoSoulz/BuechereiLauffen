@@ -1,6 +1,6 @@
 ﻿namespace Projekt_Buecherei_Lauffen
 {
-    partial class Reservieren
+    partial class frmReservieren
     {
         /// <summary>
         /// Required designer variable.
@@ -123,7 +123,7 @@
             this.btnReservieren_res.Text = "Reservieren";
             this.btnReservieren_res.UseVisualStyleBackColor = true;
             // 
-            // Reservieren
+            // frmReservieren
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -138,7 +138,7 @@
             this.Controls.Add(this.lblReservieren_nachname);
             this.Controls.Add(this.lblReservieren_vorname);
             this.Controls.Add(this.lbl_reservieren_überschrift);
-            this.Name = "Reservieren";
+            this.Name = "frmReservieren";
             this.Text = "Reservieren";
             this.Load += new System.EventHandler(this.Reservieren_Load);
             this.ResumeLayout(false);
