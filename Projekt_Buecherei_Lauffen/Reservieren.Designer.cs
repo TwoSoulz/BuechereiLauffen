@@ -28,116 +28,156 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbl_reservieren_überschrift = new System.Windows.Forms.Label();
-            this.lblReservieren_vorname = new System.Windows.Forms.Label();
-            this.lblReservieren_nachname = new System.Windows.Forms.Label();
-            this.lblReservieren_straße = new System.Windows.Forms.Label();
-            this.lblReservieren_hausnummer = new System.Windows.Forms.Label();
-            this.txbReservieren_vorname = new System.Windows.Forms.TextBox();
-            this.txbReservieren_nachname = new System.Windows.Forms.TextBox();
-            this.txbReservieren_straße = new System.Windows.Forms.TextBox();
-            this.txbReservieren_hausnummer = new System.Windows.Forms.TextBox();
+            this.lblReservieren_res = new System.Windows.Forms.Label();
+            this.lblVorname_res = new System.Windows.Forms.Label();
+            this.lblNachname_res = new System.Windows.Forms.Label();
+            this.lblStrasse_res = new System.Windows.Forms.Label();
+            this.lblHausnummer_res = new System.Windows.Forms.Label();
+            this.txbVorname_res = new System.Windows.Forms.TextBox();
+            this.txbNachname_res = new System.Windows.Forms.TextBox();
+            this.txbStrasse_res = new System.Windows.Forms.TextBox();
+            this.txbHausnummer_res = new System.Windows.Forms.TextBox();
             this.btnReservieren_res = new System.Windows.Forms.Button();
+            this.lblOrt_res = new System.Windows.Forms.Label();
+            this.lblPLZ_res = new System.Windows.Forms.Label();
+            this.txbOrt_res = new System.Windows.Forms.TextBox();
+            this.tblPLZ_res = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // lbl_reservieren_überschrift
+            // lblReservieren_res
             // 
-            this.lbl_reservieren_überschrift.AutoSize = true;
-            this.lbl_reservieren_überschrift.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_reservieren_überschrift.Location = new System.Drawing.Point(65, 29);
-            this.lbl_reservieren_überschrift.Name = "lbl_reservieren_überschrift";
-            this.lbl_reservieren_überschrift.Size = new System.Drawing.Size(205, 39);
-            this.lbl_reservieren_überschrift.TabIndex = 0;
-            this.lbl_reservieren_überschrift.Text = "Reservieren";
+            this.lblReservieren_res.AutoSize = true;
+            this.lblReservieren_res.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReservieren_res.Location = new System.Drawing.Point(65, 29);
+            this.lblReservieren_res.Name = "lblReservieren_res";
+            this.lblReservieren_res.Size = new System.Drawing.Size(205, 39);
+            this.lblReservieren_res.TabIndex = 0;
+            this.lblReservieren_res.Text = "Reservieren";
             // 
-            // lblReservieren_vorname
+            // lblVorname_res
             // 
-            this.lblReservieren_vorname.AutoSize = true;
-            this.lblReservieren_vorname.Location = new System.Drawing.Point(69, 99);
-            this.lblReservieren_vorname.Name = "lblReservieren_vorname";
-            this.lblReservieren_vorname.Size = new System.Drawing.Size(52, 13);
-            this.lblReservieren_vorname.TabIndex = 1;
-            this.lblReservieren_vorname.Text = "Vorname:";
+            this.lblVorname_res.AutoSize = true;
+            this.lblVorname_res.Location = new System.Drawing.Point(22, 99);
+            this.lblVorname_res.Name = "lblVorname_res";
+            this.lblVorname_res.Size = new System.Drawing.Size(52, 13);
+            this.lblVorname_res.TabIndex = 1;
+            this.lblVorname_res.Text = "Vorname:";
             // 
-            // lblReservieren_nachname
+            // lblNachname_res
             // 
-            this.lblReservieren_nachname.AutoSize = true;
-            this.lblReservieren_nachname.Location = new System.Drawing.Point(69, 140);
-            this.lblReservieren_nachname.Name = "lblReservieren_nachname";
-            this.lblReservieren_nachname.Size = new System.Drawing.Size(62, 13);
-            this.lblReservieren_nachname.TabIndex = 2;
-            this.lblReservieren_nachname.Text = "Nachname:";
+            this.lblNachname_res.AutoSize = true;
+            this.lblNachname_res.Location = new System.Drawing.Point(22, 133);
+            this.lblNachname_res.Name = "lblNachname_res";
+            this.lblNachname_res.Size = new System.Drawing.Size(62, 13);
+            this.lblNachname_res.TabIndex = 2;
+            this.lblNachname_res.Text = "Nachname:";
             // 
-            // lblReservieren_straße
+            // lblStrasse_res
             // 
-            this.lblReservieren_straße.AutoSize = true;
-            this.lblReservieren_straße.Location = new System.Drawing.Point(69, 179);
-            this.lblReservieren_straße.Name = "lblReservieren_straße";
-            this.lblReservieren_straße.Size = new System.Drawing.Size(41, 13);
-            this.lblReservieren_straße.TabIndex = 3;
-            this.lblReservieren_straße.Text = "Straße:";
+            this.lblStrasse_res.AutoSize = true;
+            this.lblStrasse_res.Location = new System.Drawing.Point(22, 165);
+            this.lblStrasse_res.Name = "lblStrasse_res";
+            this.lblStrasse_res.Size = new System.Drawing.Size(41, 13);
+            this.lblStrasse_res.TabIndex = 3;
+            this.lblStrasse_res.Text = "Straße:";
             // 
-            // lblReservieren_hausnummer
+            // lblHausnummer_res
             // 
-            this.lblReservieren_hausnummer.AutoSize = true;
-            this.lblReservieren_hausnummer.Location = new System.Drawing.Point(72, 215);
-            this.lblReservieren_hausnummer.Name = "lblReservieren_hausnummer";
-            this.lblReservieren_hausnummer.Size = new System.Drawing.Size(72, 13);
-            this.lblReservieren_hausnummer.TabIndex = 4;
-            this.lblReservieren_hausnummer.Text = "Hausnummer:";
+            this.lblHausnummer_res.AutoSize = true;
+            this.lblHausnummer_res.Location = new System.Drawing.Point(22, 195);
+            this.lblHausnummer_res.Name = "lblHausnummer_res";
+            this.lblHausnummer_res.Size = new System.Drawing.Size(72, 13);
+            this.lblHausnummer_res.TabIndex = 4;
+            this.lblHausnummer_res.Text = "Hausnummer:";
             // 
-            // txbReservieren_vorname
+            // txbVorname_res
             // 
-            this.txbReservieren_vorname.Location = new System.Drawing.Point(152, 96);
-            this.txbReservieren_vorname.Name = "txbReservieren_vorname";
-            this.txbReservieren_vorname.Size = new System.Drawing.Size(100, 20);
-            this.txbReservieren_vorname.TabIndex = 5;
+            this.txbVorname_res.Location = new System.Drawing.Point(112, 96);
+            this.txbVorname_res.Name = "txbVorname_res";
+            this.txbVorname_res.Size = new System.Drawing.Size(171, 20);
+            this.txbVorname_res.TabIndex = 5;
             // 
-            // txbReservieren_nachname
+            // txbNachname_res
             // 
-            this.txbReservieren_nachname.Location = new System.Drawing.Point(152, 140);
-            this.txbReservieren_nachname.Name = "txbReservieren_nachname";
-            this.txbReservieren_nachname.Size = new System.Drawing.Size(100, 20);
-            this.txbReservieren_nachname.TabIndex = 6;
+            this.txbNachname_res.Location = new System.Drawing.Point(112, 130);
+            this.txbNachname_res.Name = "txbNachname_res";
+            this.txbNachname_res.Size = new System.Drawing.Size(171, 20);
+            this.txbNachname_res.TabIndex = 6;
             // 
-            // txbReservieren_straße
+            // txbStrasse_res
             // 
-            this.txbReservieren_straße.Location = new System.Drawing.Point(152, 171);
-            this.txbReservieren_straße.Name = "txbReservieren_straße";
-            this.txbReservieren_straße.Size = new System.Drawing.Size(100, 20);
-            this.txbReservieren_straße.TabIndex = 7;
+            this.txbStrasse_res.Location = new System.Drawing.Point(112, 162);
+            this.txbStrasse_res.Name = "txbStrasse_res";
+            this.txbStrasse_res.Size = new System.Drawing.Size(171, 20);
+            this.txbStrasse_res.TabIndex = 7;
             // 
-            // txbReservieren_hausnummer
+            // txbHausnummer_res
             // 
-            this.txbReservieren_hausnummer.Location = new System.Drawing.Point(151, 215);
-            this.txbReservieren_hausnummer.Name = "txbReservieren_hausnummer";
-            this.txbReservieren_hausnummer.Size = new System.Drawing.Size(100, 20);
-            this.txbReservieren_hausnummer.TabIndex = 8;
+            this.txbHausnummer_res.Location = new System.Drawing.Point(112, 192);
+            this.txbHausnummer_res.Name = "txbHausnummer_res";
+            this.txbHausnummer_res.Size = new System.Drawing.Size(171, 20);
+            this.txbHausnummer_res.TabIndex = 8;
             // 
             // btnReservieren_res
             // 
-            this.btnReservieren_res.Location = new System.Drawing.Point(75, 260);
+            this.btnReservieren_res.Location = new System.Drawing.Point(125, 288);
             this.btnReservieren_res.Name = "btnReservieren_res";
-            this.btnReservieren_res.Size = new System.Drawing.Size(177, 54);
+            this.btnReservieren_res.Size = new System.Drawing.Size(135, 44);
             this.btnReservieren_res.TabIndex = 9;
             this.btnReservieren_res.Text = "Reservieren";
             this.btnReservieren_res.UseVisualStyleBackColor = true;
+            // 
+            // lblOrt_res
+            // 
+            this.lblOrt_res.AutoSize = true;
+            this.lblOrt_res.Location = new System.Drawing.Point(22, 219);
+            this.lblOrt_res.Name = "lblOrt_res";
+            this.lblOrt_res.Size = new System.Drawing.Size(24, 13);
+            this.lblOrt_res.TabIndex = 10;
+            this.lblOrt_res.Text = "Ort:";
+            // 
+            // lblPLZ_res
+            // 
+            this.lblPLZ_res.AutoSize = true;
+            this.lblPLZ_res.Location = new System.Drawing.Point(22, 246);
+            this.lblPLZ_res.Name = "lblPLZ_res";
+            this.lblPLZ_res.Size = new System.Drawing.Size(30, 13);
+            this.lblPLZ_res.TabIndex = 11;
+            this.lblPLZ_res.Text = "PLZ:";
+            // 
+            // txbOrt_res
+            // 
+            this.txbOrt_res.Location = new System.Drawing.Point(112, 216);
+            this.txbOrt_res.Name = "txbOrt_res";
+            this.txbOrt_res.Size = new System.Drawing.Size(171, 20);
+            this.txbOrt_res.TabIndex = 12;
+            // 
+            // tblPLZ_res
+            // 
+            this.tblPLZ_res.Location = new System.Drawing.Point(112, 242);
+            this.tblPLZ_res.Name = "tblPLZ_res";
+            this.tblPLZ_res.Size = new System.Drawing.Size(171, 20);
+            this.tblPLZ_res.TabIndex = 13;
             // 
             // frmReservieren
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 349);
+            this.ClientSize = new System.Drawing.Size(330, 367);
+            this.Controls.Add(this.tblPLZ_res);
+            this.Controls.Add(this.txbOrt_res);
+            this.Controls.Add(this.lblPLZ_res);
+            this.Controls.Add(this.lblOrt_res);
             this.Controls.Add(this.btnReservieren_res);
-            this.Controls.Add(this.txbReservieren_hausnummer);
-            this.Controls.Add(this.txbReservieren_straße);
-            this.Controls.Add(this.txbReservieren_nachname);
-            this.Controls.Add(this.txbReservieren_vorname);
-            this.Controls.Add(this.lblReservieren_hausnummer);
-            this.Controls.Add(this.lblReservieren_straße);
-            this.Controls.Add(this.lblReservieren_nachname);
-            this.Controls.Add(this.lblReservieren_vorname);
-            this.Controls.Add(this.lbl_reservieren_überschrift);
+            this.Controls.Add(this.txbHausnummer_res);
+            this.Controls.Add(this.txbStrasse_res);
+            this.Controls.Add(this.txbNachname_res);
+            this.Controls.Add(this.txbVorname_res);
+            this.Controls.Add(this.lblHausnummer_res);
+            this.Controls.Add(this.lblStrasse_res);
+            this.Controls.Add(this.lblNachname_res);
+            this.Controls.Add(this.lblVorname_res);
+            this.Controls.Add(this.lblReservieren_res);
             this.Name = "frmReservieren";
             this.Text = "Reservieren";
             this.Load += new System.EventHandler(this.Reservieren_Load);
@@ -148,15 +188,19 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lbl_reservieren_überschrift;
-        private System.Windows.Forms.Label lblReservieren_vorname;
-        private System.Windows.Forms.Label lblReservieren_nachname;
-        private System.Windows.Forms.Label lblReservieren_straße;
-        private System.Windows.Forms.Label lblReservieren_hausnummer;
-        private System.Windows.Forms.TextBox txbReservieren_vorname;
-        private System.Windows.Forms.TextBox txbReservieren_nachname;
-        private System.Windows.Forms.TextBox txbReservieren_straße;
-        private System.Windows.Forms.TextBox txbReservieren_hausnummer;
+        private System.Windows.Forms.Label lblReservieren_res;
+        private System.Windows.Forms.Label lblVorname_res;
+        private System.Windows.Forms.Label lblNachname_res;
+        private System.Windows.Forms.Label lblStrasse_res;
+        private System.Windows.Forms.Label lblHausnummer_res;
+        private System.Windows.Forms.TextBox txbVorname_res;
+        private System.Windows.Forms.TextBox txbNachname_res;
+        private System.Windows.Forms.TextBox txbStrasse_res;
+        private System.Windows.Forms.TextBox txbHausnummer_res;
         private System.Windows.Forms.Button btnReservieren_res;
+        private System.Windows.Forms.Label lblOrt_res;
+        private System.Windows.Forms.Label lblPLZ_res;
+        private System.Windows.Forms.TextBox txbOrt_res;
+        private System.Windows.Forms.TextBox tblPLZ_res;
     }
 }
