@@ -16,7 +16,7 @@ namespace Projekt_Buecherei_Lauffen
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new frmInventar());
         }
     }
 }
