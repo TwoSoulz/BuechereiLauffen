@@ -1,6 +1,6 @@
 ﻿namespace Projekt_Buecherei_Lauffen
 {
-    partial class frmInventar
+    partial class FrmHauptfenster
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -176,6 +176,7 @@
             this.btnAnmelden.TabIndex = 13;
             this.btnAnmelden.Text = "Anmelden";
             this.btnAnmelden.UseVisualStyleBackColor = true;
+            this.btnAnmelden.Click += new System.EventHandler(this.btnAnmelden_Click);
             // 
             // btnSuchen
             // 
@@ -185,6 +186,7 @@
             this.btnSuchen.TabIndex = 14;
             this.btnSuchen.Text = "Suchen";
             this.btnSuchen.UseVisualStyleBackColor = true;
+            this.btnSuchen.Click += new System.EventHandler(this.btnSuchen_Click);
             // 
             // lbErgebnis
             // 
@@ -283,8 +285,9 @@
             this.btnReservieren.TabIndex = 25;
             this.btnReservieren.Text = "Reservieren";
             this.btnReservieren.UseVisualStyleBackColor = true;
+            this.btnReservieren.Click += new System.EventHandler(this.btnReservieren_Click);
             // 
-            // frmInventar
+            // FrmHauptfenster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -315,7 +318,8 @@
             this.Controls.Add(this.lblSuche);
             this.Controls.Add(this.lblPasswort);
             this.Controls.Add(this.lblBenutzer);
-            this.Name = "frmInventar";
+            this.Name = "FrmHauptfenster";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bücherei Lauffen Inventarsuche";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);

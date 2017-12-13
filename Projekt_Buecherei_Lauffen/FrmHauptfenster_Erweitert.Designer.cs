@@ -1,6 +1,6 @@
 ﻿namespace Projekt_Buecherei_Lauffen
 {
-    partial class frmHauptfenster_Erweitert
+    partial class FrmHauptfenster_Erweitert
     {
         /// <summary>
         /// Required designer variable.
@@ -43,12 +43,12 @@
             this.lblAutor_erw = new System.Windows.Forms.Label();
             this.lblSuche = new System.Windows.Forms.Label();
             this.lblBenutzer_erw = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txbAutor_erw = new System.Windows.Forms.TextBox();
+            this.txbTitel_erw = new System.Windows.Forms.TextBox();
+            this.txbVerlag_erw = new System.Windows.Forms.TextBox();
+            this.txbJahr_erw = new System.Windows.Forms.TextBox();
+            this.txbGenre_erw = new System.Windows.Forms.TextBox();
+            this.txbISBN_erw = new System.Windows.Forms.TextBox();
             this.btnReservierung_loeschen_erw = new System.Windows.Forms.Button();
             this.lblBenutzer_eingeloggt_erw = new System.Windows.Forms.Label();
             this.lblAusgeliehen_Ausgabe_erw = new System.Windows.Forms.Label();
@@ -131,6 +131,7 @@
             this.btnAusloggen_erw.TabIndex = 39;
             this.btnAusloggen_erw.Text = "Ausloggen";
             this.btnAusloggen_erw.UseVisualStyleBackColor = true;
+            this.btnAusloggen_erw.Click += new System.EventHandler(this.btnAusloggen_erw_Click);
             // 
             // txbSuche_erw
             // 
@@ -193,47 +194,47 @@
             this.lblBenutzer_erw.TabIndex = 26;
             this.lblBenutzer_erw.Text = "Benutzername:";
             // 
-            // textBox2
+            // txbAutor_erw
             // 
-            this.textBox2.Location = new System.Drawing.Point(70, 469);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(139, 20);
-            this.textBox2.TabIndex = 52;
+            this.txbAutor_erw.Location = new System.Drawing.Point(70, 469);
+            this.txbAutor_erw.Name = "txbAutor_erw";
+            this.txbAutor_erw.Size = new System.Drawing.Size(139, 20);
+            this.txbAutor_erw.TabIndex = 52;
             // 
-            // textBox3
+            // txbTitel_erw
             // 
-            this.textBox3.Location = new System.Drawing.Point(274, 469);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(139, 20);
-            this.textBox3.TabIndex = 53;
+            this.txbTitel_erw.Location = new System.Drawing.Point(274, 469);
+            this.txbTitel_erw.Name = "txbTitel_erw";
+            this.txbTitel_erw.Size = new System.Drawing.Size(139, 20);
+            this.txbTitel_erw.TabIndex = 53;
             // 
-            // textBox4
+            // txbVerlag_erw
             // 
-            this.textBox4.Location = new System.Drawing.Point(475, 469);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(139, 20);
-            this.textBox4.TabIndex = 54;
+            this.txbVerlag_erw.Location = new System.Drawing.Point(475, 469);
+            this.txbVerlag_erw.Name = "txbVerlag_erw";
+            this.txbVerlag_erw.Size = new System.Drawing.Size(139, 20);
+            this.txbVerlag_erw.TabIndex = 54;
             // 
-            // textBox5
+            // txbJahr_erw
             // 
-            this.textBox5.Location = new System.Drawing.Point(70, 519);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(139, 20);
-            this.textBox5.TabIndex = 55;
+            this.txbJahr_erw.Location = new System.Drawing.Point(70, 519);
+            this.txbJahr_erw.Name = "txbJahr_erw";
+            this.txbJahr_erw.Size = new System.Drawing.Size(139, 20);
+            this.txbJahr_erw.TabIndex = 55;
             // 
-            // textBox6
+            // txbGenre_erw
             // 
-            this.textBox6.Location = new System.Drawing.Point(274, 519);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(139, 20);
-            this.textBox6.TabIndex = 56;
+            this.txbGenre_erw.Location = new System.Drawing.Point(274, 519);
+            this.txbGenre_erw.Name = "txbGenre_erw";
+            this.txbGenre_erw.Size = new System.Drawing.Size(139, 20);
+            this.txbGenre_erw.TabIndex = 56;
             // 
-            // textBox7
+            // txbISBN_erw
             // 
-            this.textBox7.Location = new System.Drawing.Point(475, 519);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(139, 20);
-            this.textBox7.TabIndex = 57;
+            this.txbISBN_erw.Location = new System.Drawing.Point(475, 519);
+            this.txbISBN_erw.Name = "txbISBN_erw";
+            this.txbISBN_erw.Size = new System.Drawing.Size(139, 20);
+            this.txbISBN_erw.TabIndex = 57;
             // 
             // btnReservierung_loeschen_erw
             // 
@@ -279,6 +280,7 @@
             this.btnAendern_erw.TabIndex = 62;
             this.btnAendern_erw.Text = "Ändern";
             this.btnAendern_erw.UseVisualStyleBackColor = true;
+            this.btnAendern_erw.Click += new System.EventHandler(this.btnAendern_erw_Click);
             // 
             // btnLoeschen_erw
             // 
@@ -325,7 +327,7 @@
             this.btnSpeichern_erw.Text = "Speichern";
             this.btnSpeichern_erw.UseVisualStyleBackColor = true;
             // 
-            // frmHauptfenster_Erweitert
+            // FrmHauptfenster_Erweitert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -340,12 +342,12 @@
             this.Controls.Add(this.lblAusgeliehen_Ausgabe_erw);
             this.Controls.Add(this.lblBenutzer_eingeloggt_erw);
             this.Controls.Add(this.btnReservierung_loeschen_erw);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txbISBN_erw);
+            this.Controls.Add(this.txbGenre_erw);
+            this.Controls.Add(this.txbJahr_erw);
+            this.Controls.Add(this.txbVerlag_erw);
+            this.Controls.Add(this.txbTitel_erw);
+            this.Controls.Add(this.txbAutor_erw);
             this.Controls.Add(this.btnReservieren_erw);
             this.Controls.Add(this.lblReserviert_erw);
             this.Controls.Add(this.lblAusgeliehen_erw);
@@ -361,7 +363,8 @@
             this.Controls.Add(this.lblAutor_erw);
             this.Controls.Add(this.lblSuche);
             this.Controls.Add(this.lblBenutzer_erw);
-            this.Name = "frmHauptfenster_Erweitert";
+            this.Name = "FrmHauptfenster_Erweitert";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hauptfenster_Erweitert";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -385,12 +388,12 @@
         private System.Windows.Forms.Label lblAutor_erw;
         private System.Windows.Forms.Label lblSuche;
         private System.Windows.Forms.Label lblBenutzer_erw;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txbAutor_erw;
+        private System.Windows.Forms.TextBox txbTitel_erw;
+        private System.Windows.Forms.TextBox txbVerlag_erw;
+        private System.Windows.Forms.TextBox txbJahr_erw;
+        private System.Windows.Forms.TextBox txbGenre_erw;
+        private System.Windows.Forms.TextBox txbISBN_erw;
         private System.Windows.Forms.Button btnReservierung_loeschen_erw;
         private System.Windows.Forms.Label lblBenutzer_eingeloggt_erw;
         private System.Windows.Forms.Label lblAusgeliehen_Ausgabe_erw;
