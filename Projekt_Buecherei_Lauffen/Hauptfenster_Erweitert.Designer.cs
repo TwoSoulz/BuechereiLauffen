@@ -58,6 +58,7 @@
             this.btnNeu_erw = new System.Windows.Forms.Button();
             this.btnAusleihen_erw = new System.Windows.Forms.Button();
             this.btnZurueck_erw = new System.Windows.Forms.Button();
+            this.btnSpeichern_erw = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnReservieren_erw
@@ -272,7 +273,7 @@
             // 
             // btnAendern_erw
             // 
-            this.btnAendern_erw.Location = new System.Drawing.Point(32, 569);
+            this.btnAendern_erw.Location = new System.Drawing.Point(26, 569);
             this.btnAendern_erw.Name = "btnAendern_erw";
             this.btnAendern_erw.Size = new System.Drawing.Size(75, 23);
             this.btnAendern_erw.TabIndex = 62;
@@ -281,7 +282,7 @@
             // 
             // btnLoeschen_erw
             // 
-            this.btnLoeschen_erw.Location = new System.Drawing.Point(113, 569);
+            this.btnLoeschen_erw.Location = new System.Drawing.Point(188, 569);
             this.btnLoeschen_erw.Name = "btnLoeschen_erw";
             this.btnLoeschen_erw.Size = new System.Drawing.Size(75, 23);
             this.btnLoeschen_erw.TabIndex = 63;
@@ -290,7 +291,7 @@
             // 
             // btnNeu_erw
             // 
-            this.btnNeu_erw.Location = new System.Drawing.Point(194, 569);
+            this.btnNeu_erw.Location = new System.Drawing.Point(269, 569);
             this.btnNeu_erw.Name = "btnNeu_erw";
             this.btnNeu_erw.Size = new System.Drawing.Size(75, 23);
             this.btnNeu_erw.TabIndex = 64;
@@ -315,11 +316,21 @@
             this.btnZurueck_erw.Text = "Zurückgeben";
             this.btnZurueck_erw.UseVisualStyleBackColor = true;
             // 
+            // btnSpeichern_erw
+            // 
+            this.btnSpeichern_erw.Location = new System.Drawing.Point(107, 569);
+            this.btnSpeichern_erw.Name = "btnSpeichern_erw";
+            this.btnSpeichern_erw.Size = new System.Drawing.Size(75, 23);
+            this.btnSpeichern_erw.TabIndex = 67;
+            this.btnSpeichern_erw.Text = "Speichern";
+            this.btnSpeichern_erw.UseVisualStyleBackColor = true;
+            // 
             // frmHauptfenster_Erweitert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 620);
+            this.Controls.Add(this.btnSpeichern_erw);
             this.Controls.Add(this.btnZurueck_erw);
             this.Controls.Add(this.btnAusleihen_erw);
             this.Controls.Add(this.btnNeu_erw);
@@ -389,5 +400,6 @@
         private System.Windows.Forms.Button btnNeu_erw;
         private System.Windows.Forms.Button btnAusleihen_erw;
         private System.Windows.Forms.Button btnZurueck_erw;
+        private System.Windows.Forms.Button btnSpeichern_erw;
     }
 }

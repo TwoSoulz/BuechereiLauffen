@@ -42,6 +42,7 @@
             this.lblPLZ_res = new System.Windows.Forms.Label();
             this.txbOrt_res = new System.Windows.Forms.TextBox();
             this.tblPLZ_res = new System.Windows.Forms.TextBox();
+            this.btnAbbrechen_res = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblReservieren_res
@@ -120,9 +121,9 @@
             // 
             // btnReservieren_res
             // 
-            this.btnReservieren_res.Location = new System.Drawing.Point(125, 288);
+            this.btnReservieren_res.Location = new System.Drawing.Point(25, 298);
             this.btnReservieren_res.Name = "btnReservieren_res";
-            this.btnReservieren_res.Size = new System.Drawing.Size(135, 44);
+            this.btnReservieren_res.Size = new System.Drawing.Size(96, 31);
             this.btnReservieren_res.TabIndex = 9;
             this.btnReservieren_res.Text = "Reservieren";
             this.btnReservieren_res.UseVisualStyleBackColor = true;
@@ -159,11 +160,21 @@
             this.tblPLZ_res.Size = new System.Drawing.Size(171, 20);
             this.tblPLZ_res.TabIndex = 13;
             // 
+            // btnAbbrechen_res
+            // 
+            this.btnAbbrechen_res.Location = new System.Drawing.Point(222, 298);
+            this.btnAbbrechen_res.Name = "btnAbbrechen_res";
+            this.btnAbbrechen_res.Size = new System.Drawing.Size(96, 31);
+            this.btnAbbrechen_res.TabIndex = 14;
+            this.btnAbbrechen_res.Text = "Abbrechen";
+            this.btnAbbrechen_res.UseVisualStyleBackColor = true;
+            // 
             // frmReservieren
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(330, 367);
+            this.Controls.Add(this.btnAbbrechen_res);
             this.Controls.Add(this.tblPLZ_res);
             this.Controls.Add(this.txbOrt_res);
             this.Controls.Add(this.lblPLZ_res);
@@ -202,5 +213,6 @@
         private System.Windows.Forms.Label lblPLZ_res;
         private System.Windows.Forms.TextBox txbOrt_res;
         private System.Windows.Forms.TextBox tblPLZ_res;
+        private System.Windows.Forms.Button btnAbbrechen_res;
     }
 }
