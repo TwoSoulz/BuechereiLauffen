@@ -69,6 +69,7 @@
             this.btnReservieren_erw.TabIndex = 51;
             this.btnReservieren_erw.Text = "Reservieren";
             this.btnReservieren_erw.UseVisualStyleBackColor = true;
+            this.btnReservieren_erw.Click += new System.EventHandler(this.btnReservieren_erw_Click);
             // 
             // lblReserviert_erw
             // 
@@ -366,6 +367,7 @@
             this.Name = "FrmHauptfenster_Erweitert";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hauptfenster_Erweitert";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmHauptfenster_Erweitert_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

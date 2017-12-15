@@ -41,8 +41,20 @@ namespace Projekt_Buecherei_Lauffen
 
         private void btnAusloggen_erw_Click(object sender, EventArgs e)
         {
+            this.Close();
+            hauptfenster.Show();
+           
+        }
+
+        private void FrmHauptfenster_Erweitert_FormClosing(object sender, FormClosingEventArgs e)
+        {
             hauptfenster.Show();
         }
 
+        private void btnReservieren_erw_Click(object sender, EventArgs e)
+        {
+            FrmReservieren window = new FrmReservieren(hauptfenster);
+            window.ShowDialog();
+        }
     }
 }

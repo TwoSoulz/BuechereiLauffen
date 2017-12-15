@@ -126,7 +126,7 @@
             this.btnReservieren_res.Location = new System.Drawing.Point(12, 237);
             this.btnReservieren_res.Name = "btnReservieren_res";
             this.btnReservieren_res.Size = new System.Drawing.Size(96, 31);
-            this.btnReservieren_res.TabIndex = 9;
+            this.btnReservieren_res.TabIndex = 11;
             this.btnReservieren_res.Text = "Reservieren";
             this.btnReservieren_res.UseVisualStyleBackColor = true;
             this.btnReservieren_res.Click += new System.EventHandler(this.btnReservieren_res_Click);
@@ -154,21 +154,21 @@
             this.txbOrt_res.Location = new System.Drawing.Point(103, 175);
             this.txbOrt_res.Name = "txbOrt_res";
             this.txbOrt_res.Size = new System.Drawing.Size(171, 20);
-            this.txbOrt_res.TabIndex = 12;
+            this.txbOrt_res.TabIndex = 9;
             // 
             // txbPLZ_res
             // 
             this.txbPLZ_res.Location = new System.Drawing.Point(103, 202);
             this.txbPLZ_res.Name = "txbPLZ_res";
             this.txbPLZ_res.Size = new System.Drawing.Size(171, 20);
-            this.txbPLZ_res.TabIndex = 13;
+            this.txbPLZ_res.TabIndex = 10;
             // 
             // btnAbbrechen_res
             // 
             this.btnAbbrechen_res.Location = new System.Drawing.Point(198, 237);
             this.btnAbbrechen_res.Name = "btnAbbrechen_res";
             this.btnAbbrechen_res.Size = new System.Drawing.Size(96, 31);
-            this.btnAbbrechen_res.TabIndex = 14;
+            this.btnAbbrechen_res.TabIndex = 12;
             this.btnAbbrechen_res.Text = "Abbrechen";
             this.btnAbbrechen_res.UseVisualStyleBackColor = true;
             this.btnAbbrechen_res.Click += new System.EventHandler(this.btnAbbrechen_res_Click);
