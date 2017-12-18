@@ -364,6 +364,7 @@
             this.Controls.Add(this.lblAutor_erw);
             this.Controls.Add(this.lblSuche);
             this.Controls.Add(this.lblBenutzer_erw);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmHauptfenster_Erweitert";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hauptfenster_Erweitert";

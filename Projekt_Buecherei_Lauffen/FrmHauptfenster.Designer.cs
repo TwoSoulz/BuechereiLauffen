@@ -318,6 +318,7 @@
             this.Controls.Add(this.lblSuche);
             this.Controls.Add(this.lblPasswort);
             this.Controls.Add(this.lblBenutzer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmHauptfenster";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bücherei Lauffen Inventarsuche";

@@ -13,6 +13,8 @@ namespace Projekt_Buecherei_Lauffen
     public partial class FrmHauptfenster_Erweitert : Form
     {
         private FrmHauptfenster hauptfenster = null;
+        private bool _isLogout;
+
         public FrmHauptfenster_Erweitert(FrmHauptfenster hauptfenster)
         {
             InitializeComponent();
@@ -25,7 +27,6 @@ namespace Projekt_Buecherei_Lauffen
         {
             Textbox_toggle(true);
         }
-
 
 
         private void Textbox_toggle(bool b)
@@ -41,6 +42,7 @@ namespace Projekt_Buecherei_Lauffen
 
         private void btnAusloggen_erw_Click(object sender, EventArgs e)
         {
+            _isLogout = true;
             this.Close();
             hauptfenster.Show();
            
@@ -48,13 +50,16 @@ namespace Projekt_Buecherei_Lauffen
 
         private void FrmHauptfenster_Erweitert_FormClosing(object sender, FormClosingEventArgs e)
         {
-            hauptfenster.Show();
+            if(!_isLogout)
+            {
+                Environment.Exit(0);
+            }
         }
 
         private void btnReservieren_erw_Click(object sender, EventArgs e)
         {
             FrmReservieren window = new FrmReservieren(hauptfenster);
             window.ShowDialog();
-        }
+        }        
     }
 }
