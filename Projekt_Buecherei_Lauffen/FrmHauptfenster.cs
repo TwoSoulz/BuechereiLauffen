@@ -20,7 +20,7 @@ namespace Projekt_Buecherei_Lauffen
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+   
         }
 
         private void btnReservieren_Click(object sender, EventArgs e)
@@ -31,14 +31,14 @@ namespace Projekt_Buecherei_Lauffen
 
         private void btnAnmelden_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            FrmHauptfenster_Erweitert window = new FrmHauptfenster_Erweitert(this);
-            window.Show();
+            //this.Hide();
+            //FrmHauptfenster_Erweitert window = new FrmHauptfenster_Erweitert(this);
+            //window.Show();
         }
 
         private void btnSuchen_Click(object sender, EventArgs e)
         {
-            
         }
+
     }
 }
