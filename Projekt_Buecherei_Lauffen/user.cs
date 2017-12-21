@@ -35,10 +35,6 @@ namespace Projekt_Buecherei_Lauffen
             password = pass;
         }
 
-        public override string ToString()
-        {
-            return username + password;
-        }
 
         public static List<User> getalleUser()
         {            
@@ -59,5 +55,6 @@ namespace Projekt_Buecherei_Lauffen
             reader.Close();
             return daten;
         }
+
     }
 }

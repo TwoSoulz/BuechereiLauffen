@@ -43,15 +43,17 @@ namespace Projekt_Buecherei_Lauffen
         /// </summary>
         [STAThread]
         static void Main()
-        {            
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmHauptfenster());
-
+        {
             MySQLDatabaseManager.CreateInstance();
             MySQLDatabaseManager dbManager = MySQLDatabaseManager.GetInstance();
 
             dbManager.SetConnectionString(DBHost, DBUser, dBPassword, dBName);
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new FrmHauptfenster());
+
+            
         }
     }
 }
