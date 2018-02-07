@@ -38,6 +38,5 @@ INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Sabine Kray');
 INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Salman Rushdie');
 INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Seressia Glass');
 INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Stephen King');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Stephen King');
 INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Trudi Canvan');
 INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Ulf Schiewe');

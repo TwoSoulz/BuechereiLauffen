@@ -1,3 +1,4 @@
+DROP Database IF EXISTS buecherei;
 CREATE DATABASE  IF NOT EXISTS `buecherei` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `buecherei`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
@@ -26,7 +27,7 @@ DROP TABLE IF EXISTS `ausleihen`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ausleihen` (
   `Leser_ID` int(11) NOT NULL,
-  `Buch_ISBN` int(11) NOT NULL,
+  `Buch_ISBN` varchar(14) NOT NULL,
   `Datum` datetime NOT NULL,
   PRIMARY KEY (`Datum`,`Buch_ISBN`,`Leser_ID`),
   KEY `fk_Leser_has_Buch_Buch2_idx` (`Buch_ISBN`),
@@ -53,7 +54,7 @@ DROP TABLE IF EXISTS `buch`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `buch` (
-  `ISBN` int(11) NOT NULL,
+  `ISBN` varchar(14) NOT NULL,
   `Titel` varchar(45) DEFAULT NULL,
   `buecher_autor_ID` int(11) NOT NULL,
   `buecher_genre_ID` int(11) NOT NULL,
@@ -232,7 +233,7 @@ DROP TABLE IF EXISTS `reservierungen`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `reservierungen` (
   `Leser_ID` int(11) NOT NULL,
-  `Buch_ISBN` int(11) NOT NULL,
+  `Buch_ISBN` varchar(14) NOT NULL,
   `Datum` datetime NOT NULL,
   PRIMARY KEY (`Leser_ID`,`Buch_ISBN`,`Datum`),
   KEY `fk_Leser_has_Buch_Buch1_idx` (`Buch_ISBN`),
