@@ -15,8 +15,8 @@ namespace Projekt_Buecherei_Lauffen
 {
     public partial class FrmHauptfenster : Form
     {
-
-        private static MySQLDatabaseManager _dbManager = MySQLDatabaseManager.GetInstance();
+        MySqlConnection con = new MySqlConnection(@"Data Source=localhost;port=3306;Initial Catalog=buecherei;User Id=root;password=''");
+        int i = 0;
 
         public FrmHauptfenster()
         {
@@ -37,41 +37,33 @@ namespace Projekt_Buecherei_Lauffen
 
         private void btnAnmelden_Click(object sender, EventArgs e)
         {
-            
-            string cmd = "select COUNT (*) from mitarbeiter where Vorname ='" + txbBenutzer.Text + "' and Passwort ='" + txbPasswort.Text + "'";
-            MySqlDataReader reader = _dbManager.Select(cmd);
-            
-            int count = 0;
 
-            while (reader.Read())
-            {
-                count += 1;
-            }
+            con.Open();
+            MySqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from mitarbeiter where Vorname ='" + txbBenutzer.Text + "' and Passwort ='" + txbPasswort.Text + "'";
+            cmd.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            da.Fill(dt);
+            i = Convert.ToInt32(dt.Rows.Count.ToString());
 
-            if (count == 1)
+            if (i==0)
             {
-                MessageBox.Show("Anmeldung erfolgreich");
-                this.Hide();
-                FrmHauptfenster_Erweitert window = new FrmHauptfenster_Erweitert(this);
-                window.Show();
-            }
-
-            else if (count > 0)
-            {
-                MessageBox.Show("Doppelter Nutzername und Passwort");
+                MessageBox.Show("Wrong username or password");
+                i = 0;
             }
 
             else
             {
-                MessageBox.Show("Username oder Passwort falsch");
+                this.Hide();
+                FrmHauptfenster_Erweitert window = new FrmHauptfenster_Erweitert(this);
+                window.Show();
+                i = 0;
             }
-
             txbPasswort.Clear();
             txbBenutzer.Clear();
-
-            //this.Hide();
-            //FrmHauptfenster_Erweitert window = new FrmHauptfenster_Erweitert(this);
-            //window.Show();
+            con.Close();
         }
 
         private void btnSuchen_Click(object sender, EventArgs e)
