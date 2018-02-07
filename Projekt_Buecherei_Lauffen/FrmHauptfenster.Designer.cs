@@ -160,6 +160,7 @@
             this.txbPasswort.Size = new System.Drawing.Size(128, 20);
             this.txbPasswort.TabIndex = 11;
             this.txbPasswort.UseSystemPasswordChar = true;
+            this.txbPasswort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbPasswort_KeyDown);
             // 
             // txb_Suche
             // 

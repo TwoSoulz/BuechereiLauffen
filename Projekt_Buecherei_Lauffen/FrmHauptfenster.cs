@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using HelperLibrary.Database;
 using MySql.Data.MySqlClient;
 using MySql.Data;
 
@@ -15,9 +14,9 @@ namespace Projekt_Buecherei_Lauffen
 {
     public partial class FrmHauptfenster : Form
     {
+        //MySqlVerbindung
         MySqlConnection con = new MySqlConnection(@"Data Source=localhost;port=3306;Initial Catalog=buecherei;User Id=root;password=''");
-        int i = 0;
-
+        
         public FrmHauptfenster()
         {
             InitializeComponent();
@@ -37,18 +36,33 @@ namespace Projekt_Buecherei_Lauffen
 
         private void btnAnmelden_Click(object sender, EventArgs e)
         {
+            userAnmeldung();
+        }
 
+        private void btnSuchen_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void userAnmeldung()
+        {
+            //Zähler setzen
+            int i = 0;
+            //MySqlVerbindung aufbauen
             con.Open();
+            //MySql Befehl erstellen
             MySqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "select * from mitarbeiter where Vorname ='" + txbBenutzer.Text + "' and Passwort ='" + txbPasswort.Text + "'";
+            //Ausführen des Befehls
             cmd.ExecuteNonQuery();
+            //Erstellen von DataTable und DataAdapter
             DataTable dt = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             da.Fill(dt);
             i = Convert.ToInt32(dt.Rows.Count.ToString());
 
-            if (i==0)
+            //Wenn i==0 dann ist entweder username oder passwort falsch, ansonsten Anmeldung erfolgreich
+            if (i == 0)
             {
                 MessageBox.Show("Wrong username or password");
                 i = 0;
@@ -56,19 +70,22 @@ namespace Projekt_Buecherei_Lauffen
 
             else
             {
+                //Hauptfenster Erweitert wird angelegt
                 this.Hide();
                 FrmHauptfenster_Erweitert window = new FrmHauptfenster_Erweitert(this);
                 window.Show();
                 i = 0;
             }
+            //Database Connection Close und clearen der Textboxen 
             txbPasswort.Clear();
             txbBenutzer.Clear();
             con.Close();
         }
 
-        private void btnSuchen_Click(object sender, EventArgs e)
+        private void txbPasswort_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Enter)
+                userAnmeldung();
         }
-
     }
 }
