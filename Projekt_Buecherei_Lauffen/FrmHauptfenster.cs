@@ -25,7 +25,8 @@ namespace Projekt_Buecherei_Lauffen
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            string [] suchoptionen = new string[]{"Genre", "Verlag", "Autor"};
+            cbAuswahlSuchen.Items.AddRange(suchoptionen);
         }
 
         private void btnReservieren_Click(object sender, EventArgs e)
@@ -86,6 +87,11 @@ namespace Projekt_Buecherei_Lauffen
         {
             if (e.KeyCode == Keys.Enter)
                 userAnmeldung();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

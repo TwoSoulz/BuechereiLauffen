@@ -54,6 +54,7 @@
             this.lblReserviert = new System.Windows.Forms.Label();
             this.lblReserviert_Ausgabe = new System.Windows.Forms.Label();
             this.btnReservieren = new System.Windows.Forms.Button();
+            this.cbAuswahlSuchen = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblBenutzer
@@ -181,9 +182,9 @@
             // 
             // btnSuchen
             // 
-            this.btnSuchen.Location = new System.Drawing.Point(477, 50);
+            this.btnSuchen.Location = new System.Drawing.Point(570, 50);
             this.btnSuchen.Name = "btnSuchen";
-            this.btnSuchen.Size = new System.Drawing.Size(75, 23);
+            this.btnSuchen.Size = new System.Drawing.Size(75, 21);
             this.btnSuchen.TabIndex = 14;
             this.btnSuchen.Text = "Suchen";
             this.btnSuchen.UseVisualStyleBackColor = true;
@@ -288,11 +289,21 @@
             this.btnReservieren.UseVisualStyleBackColor = true;
             this.btnReservieren.Click += new System.EventHandler(this.btnReservieren_Click);
             // 
+            // cbAuswahlSuchen
+            // 
+            this.cbAuswahlSuchen.FormattingEnabled = true;
+            this.cbAuswahlSuchen.Location = new System.Drawing.Point(477, 50);
+            this.cbAuswahlSuchen.Name = "cbAuswahlSuchen";
+            this.cbAuswahlSuchen.Size = new System.Drawing.Size(75, 21);
+            this.cbAuswahlSuchen.TabIndex = 26;
+            this.cbAuswahlSuchen.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // FrmHauptfenster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 576);
+            this.Controls.Add(this.cbAuswahlSuchen);
             this.Controls.Add(this.btnReservieren);
             this.Controls.Add(this.lblReserviert_Ausgabe);
             this.Controls.Add(this.lblReserviert);
@@ -357,6 +368,7 @@
         private System.Windows.Forms.Label lblReserviert;
         private System.Windows.Forms.Label lblReserviert_Ausgabe;
         private System.Windows.Forms.Button btnReservieren;
+        private System.Windows.Forms.ComboBox cbAuswahlSuchen;
     }
 }
 
