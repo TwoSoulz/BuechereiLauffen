@@ -71,6 +71,7 @@
     <Compile Include="FrmReservieren.Designer.cs">
       <DependentUpon>FrmReservieren.cs</DependentUpon>
     </Compile>
+    <Compile Include="Suche.cs" />
     <EmbeddedResource Include="FrmHauptfenster.resx">
       <DependentUpon>FrmHauptfenster.cs</DependentUpon>
     </EmbeddedResource>

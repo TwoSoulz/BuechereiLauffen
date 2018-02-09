@@ -291,6 +291,7 @@
             // 
             // cbAuswahlSuchen
             // 
+            this.cbAuswahlSuchen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAuswahlSuchen.FormattingEnabled = true;
             this.cbAuswahlSuchen.Location = new System.Drawing.Point(477, 50);
             this.cbAuswahlSuchen.Name = "cbAuswahlSuchen";

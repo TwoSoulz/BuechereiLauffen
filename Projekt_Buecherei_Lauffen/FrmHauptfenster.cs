@@ -16,6 +16,9 @@ namespace Projekt_Buecherei_Lauffen
     {
         //MySqlVerbindung
         MySqlConnection con = new MySqlConnection(@"Data Source=localhost;port=3306;Initial Catalog=buecherei;User Id=root;password=''");
+
+        //Listbox Aufteilung
+        string stdDetails = "{0, -45}{1, -45}{2, -45}{3, -45}{4, -45}";
         
         public FrmHauptfenster()
         {
@@ -25,8 +28,11 @@ namespace Projekt_Buecherei_Lauffen
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            string [] suchoptionen = new string[]{"Genre", "Verlag", "Autor"};
+            string[] suchoptionen = new string[] { "Alle", "Titel", "Autor", "Genre", "Verlag", "ISBN" };
             cbAuswahlSuchen.Items.AddRange(suchoptionen);
+            cbAuswahlSuchen.SelectedIndex = 0;
+
+            lbErgebnis.Items.Add(String.Format(stdDetails, "ISBN", "Titel", "Autor", "Genre", "Verlag"));
         }
 
         private void btnReservieren_Click(object sender, EventArgs e)
@@ -42,6 +48,9 @@ namespace Projekt_Buecherei_Lauffen
 
         private void btnSuchen_Click(object sender, EventArgs e)
         {
+            string ISBN, Titel, Autor, Genre, Verlag;
+            lbErgebnis.Items.AddRange(Suche.getalleSuche().ToArray());
+            normaleSuche();
         }
 
         private void userAnmeldung()
@@ -89,6 +98,23 @@ namespace Projekt_Buecherei_Lauffen
                 userAnmeldung();
         }
 
+        private void normaleSuche ()
+        {
+            con.Open();
+            MySqlCommand search = con.CreateCommand();
+            search.CommandType = CommandType.Text;
+            search.CommandText = "select * from buch;";
+            if (cbAuswahlSuchen.SelectedText == "Alle")
+            {
+                search.ExecuteNonQuery();
+            }
+
+            
+            DataTable dt = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter(search);
+            da.Fill(dt);
+        }
+     
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
