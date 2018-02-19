@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using MySql.Data;
+using System.Collections;
  
  namespace Projekt_Buecherei_Lauffen
  {
@@ -42,8 +43,10 @@ using MySql.Data;
         }
 
          public static List<Suche> getalleSuche()
-         {            
+         {
+            
             List<Suche> daten = new List<Suche>();
+            //List<Tuple<string[], List<object>>> l = new List<Tuple<string[],List<object>>>();
             con.Open();
             MySqlCommand search = con.CreateCommand();
             search.CommandType = CommandType.Text;
@@ -61,6 +64,7 @@ using MySql.Data;
              con.Close();
              return daten;
          }
+
          public override string ToString()
          {
              return Titel;

@@ -18,7 +18,7 @@ namespace Projekt_Buecherei_Lauffen
         MySqlConnection con = new MySqlConnection(@"Data Source=localhost;port=3306;Initial Catalog=buecherei;User Id=root;password=''");
 
         //Listbox Aufteilung
-        string stdDetails = "{0, -45}{1, -45}{2, -45}{3, -45}{4, -45}";
+       
         
         public FrmHauptfenster()
         {
@@ -32,7 +32,7 @@ namespace Projekt_Buecherei_Lauffen
             cbAuswahlSuchen.Items.AddRange(suchoptionen);
             cbAuswahlSuchen.SelectedIndex = 0;
 
-            lbErgebnis.Items.Add(String.Format(stdDetails, "ISBN", "Titel", "Autor", "Genre", "Verlag"));
+            
         }
 
         private void btnReservieren_Click(object sender, EventArgs e)
@@ -48,8 +48,10 @@ namespace Projekt_Buecherei_Lauffen
 
         private void btnSuchen_Click(object sender, EventArgs e)
         {
-            string ISBN, Titel, Autor, Genre, Verlag;
-            lbErgebnis.Items.AddRange(Suche.getalleSuche().ToArray());
+            
+            //lvErgebnis.Items.AddRange(Suche.getalleSuche().ToArray());
+            lvErgebnis.Items.Add(Suche.getalleSuche());
+            
             normaleSuche();
         }
 
@@ -116,6 +118,16 @@ namespace Projekt_Buecherei_Lauffen
         }
      
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lvErgebnis_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txb_Suche_TextChanged(object sender, EventArgs e)
         {
 
         }

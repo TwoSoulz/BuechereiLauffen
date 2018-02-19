@@ -60,6 +60,11 @@ namespace Projekt_Buecherei_Lauffen
         {
             FrmReservieren window = new FrmReservieren(hauptfenster);
             window.ShowDialog();
+        }
+
+        private void FrmHauptfenster_Erweitert_Load(object sender, EventArgs e)
+        {
+
         }        
     }
 }

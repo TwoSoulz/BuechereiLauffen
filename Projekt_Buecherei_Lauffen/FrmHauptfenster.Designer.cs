@@ -43,7 +43,6 @@
             this.txb_Suche = new System.Windows.Forms.TextBox();
             this.btnAnmelden = new System.Windows.Forms.Button();
             this.btnSuchen = new System.Windows.Forms.Button();
-            this.lbErgebnis = new System.Windows.Forms.ListBox();
             this.lblJahr_Ausgabe = new System.Windows.Forms.Label();
             this.lblGenre = new System.Windows.Forms.Label();
             this.lblGenre_Ausgabe = new System.Windows.Forms.Label();
@@ -55,6 +54,12 @@
             this.lblReserviert_Ausgabe = new System.Windows.Forms.Label();
             this.btnReservieren = new System.Windows.Forms.Button();
             this.cbAuswahlSuchen = new System.Windows.Forms.ComboBox();
+            this.lvErgebnis = new System.Windows.Forms.ListView();
+            this.columnHeader_ISBN = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_Titel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_Autor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_Genre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_Verlag = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // lblBenutzer
@@ -169,6 +174,7 @@
             this.txb_Suche.Name = "txb_Suche";
             this.txb_Suche.Size = new System.Drawing.Size(333, 20);
             this.txb_Suche.TabIndex = 12;
+            this.txb_Suche.TextChanged += new System.EventHandler(this.txb_Suche_TextChanged);
             // 
             // btnAnmelden
             // 
@@ -189,14 +195,6 @@
             this.btnSuchen.Text = "Suchen";
             this.btnSuchen.UseVisualStyleBackColor = true;
             this.btnSuchen.Click += new System.EventHandler(this.btnSuchen_Click);
-            // 
-            // lbErgebnis
-            // 
-            this.lbErgebnis.FormattingEnabled = true;
-            this.lbErgebnis.Location = new System.Drawing.Point(29, 85);
-            this.lbErgebnis.Name = "lbErgebnis";
-            this.lbErgebnis.Size = new System.Drawing.Size(804, 355);
-            this.lbErgebnis.TabIndex = 15;
             // 
             // lblJahr_Ausgabe
             // 
@@ -299,11 +297,48 @@
             this.cbAuswahlSuchen.TabIndex = 26;
             this.cbAuswahlSuchen.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // lvErgebnis
+            // 
+            this.lvErgebnis.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader_ISBN,
+            this.columnHeader_Titel,
+            this.columnHeader_Autor,
+            this.columnHeader_Genre,
+            this.columnHeader_Verlag});
+            this.lvErgebnis.Location = new System.Drawing.Point(29, 89);
+            this.lvErgebnis.Name = "lvErgebnis";
+            this.lvErgebnis.Size = new System.Drawing.Size(804, 358);
+            this.lvErgebnis.TabIndex = 27;
+            this.lvErgebnis.UseCompatibleStateImageBehavior = false;
+            this.lvErgebnis.View = System.Windows.Forms.View.Details;
+            this.lvErgebnis.SelectedIndexChanged += new System.EventHandler(this.lvErgebnis_SelectedIndexChanged);
+            // 
+            // columnHeader_ISBN
+            // 
+            this.columnHeader_ISBN.Text = "ISBN";
+            // 
+            // columnHeader_Titel
+            // 
+            this.columnHeader_Titel.Text = "Titel";
+            // 
+            // columnHeader_Autor
+            // 
+            this.columnHeader_Autor.Text = "Autor";
+            // 
+            // columnHeader_Genre
+            // 
+            this.columnHeader_Genre.Text = "Genre";
+            // 
+            // columnHeader_Verlag
+            // 
+            this.columnHeader_Verlag.Text = "Verlag";
+            // 
             // FrmHauptfenster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 576);
+            this.Controls.Add(this.lvErgebnis);
             this.Controls.Add(this.cbAuswahlSuchen);
             this.Controls.Add(this.btnReservieren);
             this.Controls.Add(this.lblReserviert_Ausgabe);
@@ -315,7 +350,6 @@
             this.Controls.Add(this.lblGenre_Ausgabe);
             this.Controls.Add(this.lblGenre);
             this.Controls.Add(this.lblJahr_Ausgabe);
-            this.Controls.Add(this.lbErgebnis);
             this.Controls.Add(this.btnSuchen);
             this.Controls.Add(this.btnAnmelden);
             this.Controls.Add(this.txb_Suche);
@@ -358,7 +392,6 @@
         private System.Windows.Forms.TextBox txb_Suche;
         private System.Windows.Forms.Button btnAnmelden;
         private System.Windows.Forms.Button btnSuchen;
-        private System.Windows.Forms.ListBox lbErgebnis;
         private System.Windows.Forms.Label lblJahr_Ausgabe;
         private System.Windows.Forms.Label lblGenre;
         private System.Windows.Forms.Label lblGenre_Ausgabe;
@@ -370,6 +403,12 @@
         private System.Windows.Forms.Label lblReserviert_Ausgabe;
         private System.Windows.Forms.Button btnReservieren;
         private System.Windows.Forms.ComboBox cbAuswahlSuchen;
+        private System.Windows.Forms.ListView lvErgebnis;
+        private System.Windows.Forms.ColumnHeader columnHeader_ISBN;
+        private System.Windows.Forms.ColumnHeader columnHeader_Titel;
+        private System.Windows.Forms.ColumnHeader columnHeader_Autor;
+        private System.Windows.Forms.ColumnHeader columnHeader_Genre;
+        private System.Windows.Forms.ColumnHeader columnHeader_Verlag;
     }
 }
 

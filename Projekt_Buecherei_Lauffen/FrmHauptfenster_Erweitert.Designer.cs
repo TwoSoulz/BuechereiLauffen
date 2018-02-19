@@ -33,7 +33,6 @@
             this.lblAusgeliehen_erw = new System.Windows.Forms.Label();
             this.lblisbn_erw = new System.Windows.Forms.Label();
             this.lblGenre_erw = new System.Windows.Forms.Label();
-            this.lbErgebnis_erw = new System.Windows.Forms.ListBox();
             this.btnSuchen_erw = new System.Windows.Forms.Button();
             this.btnAusloggen_erw = new System.Windows.Forms.Button();
             this.txbSuche_erw = new System.Windows.Forms.TextBox();
@@ -59,6 +58,7 @@
             this.btnAusleihen_erw = new System.Windows.Forms.Button();
             this.btnZurueck_erw = new System.Windows.Forms.Button();
             this.btnSpeichern_erw = new System.Windows.Forms.Button();
+            this.lvErgebnis_erw = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // btnReservieren_erw
@@ -106,14 +106,6 @@
             this.lblGenre_erw.Size = new System.Drawing.Size(39, 13);
             this.lblGenre_erw.TabIndex = 43;
             this.lblGenre_erw.Text = "Genre:";
-            // 
-            // lbErgebnis_erw
-            // 
-            this.lbErgebnis_erw.FormattingEnabled = true;
-            this.lbErgebnis_erw.Location = new System.Drawing.Point(26, 95);
-            this.lbErgebnis_erw.Name = "lbErgebnis_erw";
-            this.lbErgebnis_erw.Size = new System.Drawing.Size(822, 355);
-            this.lbErgebnis_erw.TabIndex = 41;
             // 
             // btnSuchen_erw
             // 
@@ -328,11 +320,20 @@
             this.btnSpeichern_erw.Text = "Speichern";
             this.btnSpeichern_erw.UseVisualStyleBackColor = true;
             // 
+            // lvErgebnis_erw
+            // 
+            this.lvErgebnis_erw.Location = new System.Drawing.Point(26, 107);
+            this.lvErgebnis_erw.Name = "lvErgebnis_erw";
+            this.lvErgebnis_erw.Size = new System.Drawing.Size(827, 339);
+            this.lvErgebnis_erw.TabIndex = 68;
+            this.lvErgebnis_erw.UseCompatibleStateImageBehavior = false;
+            // 
             // FrmHauptfenster_Erweitert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 620);
+            this.Controls.Add(this.lvErgebnis_erw);
             this.Controls.Add(this.btnSpeichern_erw);
             this.Controls.Add(this.btnZurueck_erw);
             this.Controls.Add(this.btnAusleihen_erw);
@@ -354,7 +355,6 @@
             this.Controls.Add(this.lblAusgeliehen_erw);
             this.Controls.Add(this.lblisbn_erw);
             this.Controls.Add(this.lblGenre_erw);
-            this.Controls.Add(this.lbErgebnis_erw);
             this.Controls.Add(this.btnSuchen_erw);
             this.Controls.Add(this.btnAusloggen_erw);
             this.Controls.Add(this.txbSuche_erw);
@@ -369,6 +369,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hauptfenster_Erweitert";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmHauptfenster_Erweitert_FormClosing);
+            this.Load += new System.EventHandler(this.FrmHauptfenster_Erweitert_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -381,7 +382,6 @@
         private System.Windows.Forms.Label lblAusgeliehen_erw;
         private System.Windows.Forms.Label lblisbn_erw;
         private System.Windows.Forms.Label lblGenre_erw;
-        private System.Windows.Forms.ListBox lbErgebnis_erw;
         private System.Windows.Forms.Button btnSuchen_erw;
         private System.Windows.Forms.Button btnAusloggen_erw;
         private System.Windows.Forms.TextBox txbSuche_erw;
@@ -407,5 +407,6 @@
         private System.Windows.Forms.Button btnAusleihen_erw;
         private System.Windows.Forms.Button btnZurueck_erw;
         private System.Windows.Forms.Button btnSpeichern_erw;
+        private System.Windows.Forms.ListView lvErgebnis_erw;
     }
 }
