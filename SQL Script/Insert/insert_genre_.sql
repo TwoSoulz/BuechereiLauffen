@@ -1,3 +1,9 @@
+/*
+-- Query: SELECT * FROM buecher_genre
+LIMIT 0, 1000
+
+-- Date: 2017-12-15 08:23
+*/
 INSERT INTO `buecherei`.`buecher_genre` (`Genre`) VALUES ('Krimi');
 INSERT INTO `buecherei`.`buecher_genre` (`Genre`) VALUES ('Thriller');
 INSERT INTO `buecherei`.`buecher_genre` (`Genre`) VALUES ('Horror');

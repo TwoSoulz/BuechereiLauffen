@@ -58,7 +58,13 @@
             this.btnAusleihen_erw = new System.Windows.Forms.Button();
             this.btnZurueck_erw = new System.Windows.Forms.Button();
             this.btnSpeichern_erw = new System.Windows.Forms.Button();
+            this.cbAuswahlSuchen_erw = new System.Windows.Forms.ComboBox();
             this.lvErgebnis_erw = new System.Windows.Forms.ListView();
+            this.columnHeader_ISBN = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_Titel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_Autor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_Genre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_Verlag = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnReservieren_erw
@@ -109,9 +115,9 @@
             // 
             // btnSuchen_erw
             // 
-            this.btnSuchen_erw.Location = new System.Drawing.Point(432, 56);
+            this.btnSuchen_erw.Location = new System.Drawing.Point(513, 57);
             this.btnSuchen_erw.Name = "btnSuchen_erw";
-            this.btnSuchen_erw.Size = new System.Drawing.Size(75, 23);
+            this.btnSuchen_erw.Size = new System.Drawing.Size(83, 23);
             this.btnSuchen_erw.TabIndex = 40;
             this.btnSuchen_erw.Text = "Suchen";
             this.btnSuchen_erw.UseVisualStyleBackColor = true;
@@ -320,20 +326,62 @@
             this.btnSpeichern_erw.Text = "Speichern";
             this.btnSpeichern_erw.UseVisualStyleBackColor = true;
             // 
+            // cbAuswahlSuchen_erw
+            // 
+            this.cbAuswahlSuchen_erw.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAuswahlSuchen_erw.FormattingEnabled = true;
+            this.cbAuswahlSuchen_erw.Location = new System.Drawing.Point(422, 58);
+            this.cbAuswahlSuchen_erw.Name = "cbAuswahlSuchen_erw";
+            this.cbAuswahlSuchen_erw.Size = new System.Drawing.Size(75, 21);
+            this.cbAuswahlSuchen_erw.TabIndex = 69;
+            // 
             // lvErgebnis_erw
             // 
-            this.lvErgebnis_erw.Location = new System.Drawing.Point(26, 107);
+            this.lvErgebnis_erw.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader_ISBN,
+            this.columnHeader_Titel,
+            this.columnHeader_Autor,
+            this.columnHeader_Genre,
+            this.columnHeader_Verlag});
+            this.lvErgebnis_erw.Location = new System.Drawing.Point(11, 86);
             this.lvErgebnis_erw.Name = "lvErgebnis_erw";
-            this.lvErgebnis_erw.Size = new System.Drawing.Size(827, 339);
-            this.lvErgebnis_erw.TabIndex = 68;
+            this.lvErgebnis_erw.Size = new System.Drawing.Size(861, 358);
+            this.lvErgebnis_erw.TabIndex = 70;
             this.lvErgebnis_erw.UseCompatibleStateImageBehavior = false;
+            this.lvErgebnis_erw.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader_ISBN
+            // 
+            this.columnHeader_ISBN.Text = "ISBN";
+            this.columnHeader_ISBN.Width = 70;
+            // 
+            // columnHeader_Titel
+            // 
+            this.columnHeader_Titel.Text = "Titel";
+            this.columnHeader_Titel.Width = 70;
+            // 
+            // columnHeader_Autor
+            // 
+            this.columnHeader_Autor.Text = "Autor";
+            this.columnHeader_Autor.Width = 70;
+            // 
+            // columnHeader_Genre
+            // 
+            this.columnHeader_Genre.Text = "Genre";
+            this.columnHeader_Genre.Width = 70;
+            // 
+            // columnHeader_Verlag
+            // 
+            this.columnHeader_Verlag.Text = "Verlag";
+            this.columnHeader_Verlag.Width = 70;
             // 
             // FrmHauptfenster_Erweitert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 620);
+            this.ClientSize = new System.Drawing.Size(907, 620);
             this.Controls.Add(this.lvErgebnis_erw);
+            this.Controls.Add(this.cbAuswahlSuchen_erw);
             this.Controls.Add(this.btnSpeichern_erw);
             this.Controls.Add(this.btnZurueck_erw);
             this.Controls.Add(this.btnAusleihen_erw);
@@ -407,6 +455,12 @@
         private System.Windows.Forms.Button btnAusleihen_erw;
         private System.Windows.Forms.Button btnZurueck_erw;
         private System.Windows.Forms.Button btnSpeichern_erw;
+        private System.Windows.Forms.ComboBox cbAuswahlSuchen_erw;
         private System.Windows.Forms.ListView lvErgebnis_erw;
+        private System.Windows.Forms.ColumnHeader columnHeader_ISBN;
+        private System.Windows.Forms.ColumnHeader columnHeader_Titel;
+        private System.Windows.Forms.ColumnHeader columnHeader_Autor;
+        private System.Windows.Forms.ColumnHeader columnHeader_Genre;
+        private System.Windows.Forms.ColumnHeader columnHeader_Verlag;
     }
 }

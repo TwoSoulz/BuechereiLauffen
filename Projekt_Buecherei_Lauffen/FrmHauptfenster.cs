@@ -23,16 +23,19 @@ namespace Projekt_Buecherei_Lauffen
         public FrmHauptfenster()
         {
             InitializeComponent();
-            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Suchoption der Kombobox
             string[] suchoptionen = new string[] { "Alle", "Titel", "Autor", "Genre", "Verlag", "ISBN" };
             cbAuswahlSuchen.Items.AddRange(suchoptionen);
             cbAuswahlSuchen.SelectedIndex = 0;
-
-            
+            //Spalten werden automatisch an Textlänge angepasst
+            lvErgebnis.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            allesanzeigen();
+            lvErgebnis.FullRowSelect = true;
         }
 
         private void btnReservieren_Click(object sender, EventArgs e)
@@ -47,11 +50,7 @@ namespace Projekt_Buecherei_Lauffen
         }
 
         private void btnSuchen_Click(object sender, EventArgs e)
-        {
-            
-            //lvErgebnis.Items.AddRange(Suche.getalleSuche().ToArray());
-            lvErgebnis.Items.Add(Suche.getalleSuche());
-            
+        {   
             normaleSuche();
         }
 
@@ -102,34 +101,57 @@ namespace Projekt_Buecherei_Lauffen
 
         private void normaleSuche ()
         {
+            List<ListViewItem> daten = new List<ListViewItem>();
+
             con.Open();
             MySqlCommand search = con.CreateCommand();
             search.CommandType = CommandType.Text;
-            search.CommandText = "select * from buch;";
-            if (cbAuswahlSuchen.SelectedText == "Alle")
+            search.CommandText = "SELECT buch.ISBN, buch.Titel, buecher_autor.Autor, buecher_genre.Genre, buecher_verlage.Verlag FROM buecherei.buch JOIN buecher_autor ON buch.buecher_autor_ID = buecher_autor.ID JOIN buecher_genre ON buch.buecher_genre_ID = buecher_genre.ID JOIN buecher_verlage ON buch.verlage_ID = buecher_verlage.ID Where buch.Titel LIKE """"%"+ txb_Suche.Text +"%"" or buecher_autor.Autor LIKE ""%"+ txb_Suche.Text +"%"" or buecher_genre.Genre LIKE ""%"+ txb_Suche.Text +"%"" or buecher_verlage.Verlag LIKE ""%"+ txb_Suche.Text +"%"" or buch.ISBN like ""%"+ txb_Suche.Text +"%"";";
+            search.ExecuteNonQuery();
+
+            MySqlDataReader result = search.ExecuteReader();
+
+            int n = 0;
+            while (result.Read())
             {
-                search.ExecuteNonQuery();
+
+                daten.Add(new ListViewItem(new string[] { result.GetString(0), result.GetString(1), result.GetString(2), result.GetString(3), result.GetString(4) }));
+                n++;
             }
-
-            
-            DataTable dt = new DataTable();
-            MySqlDataAdapter da = new MySqlDataAdapter(search);
-            da.Fill(dt);
+            con.Close();
+            return daten;
         }
-     
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void allesanzeigen()
         {
-
+            lvErgebnis.Items.AddRange(Suche.getalleSuche().ToArray());
+            lvErgebnis.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            lvErgebnis.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
+
+        //public ListView.SelectedListViewItemCollection SelectedItems { get; }
 
         private void lvErgebnis_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (lvErgebnis.SelectedIndices.Count > 0)
+            {
+                ListViewItem item = lvErgebnis.SelectedItems[0];
 
-        }
+                {
+                    for (int i = 0; i < lvErgebnis.Items.Count; i++)
+                    {
+                        if (lvErgebnis.Items[i].Selected)
+                        {
+                            lblAusgabe_ISBN.Text = lvErgebnis.Items[i].SubItems[0].Text;
+                            lblTitel_Ausgabe.Text = lvErgebnis.Items[i].SubItems[1].Text;
+                            lblAutor_Ausgabe.Text = lvErgebnis.Items[i].SubItems[2].Text;
+                            lblGenre_Ausgabe.Text = lvErgebnis.Items[i].SubItems[3].Text;
+                            lblVerlag_Ausgabe.Text = lvErgebnis.Items[i].SubItems[4].Text;
+                        }
+                    }
 
-        private void txb_Suche_TextChanged(object sender, EventArgs e)
-        {
-
+                }
+            }
         }
     }
 }

@@ -1,0 +1,8 @@
+SELECT buch.ISBN, buch.Titel, buecher_autor.Autor, buecher_genre.Genre, buecher_verlage.Verlag
+FROM buecherei.buch
+JOIN buecher_autor
+ON buch.buecher_autor_ID = buecher_autor.ID
+JOIN buecher_genre
+ON buch.buecher_genre_ID = buecher_genre.ID
+JOIN buecher_verlage
+ON buch.verlage_ID = buecher_verlage.ID;

@@ -21,5 +21,5 @@ INSERT INTO `buecher_verlage` (`ID`,`Verlag`) VALUES (14,'Kiepenheuer & Witsch')
 INSERT INTO `buecher_verlage` (`ID`,`Verlag`) VALUES (15,'Piper Verlag ');
 INSERT INTO `buecher_verlage` (`ID`,`Verlag`) VALUES (16,'Rowohlt');
 INSERT INTO `buecher_verlage` (`ID`,`Verlag`) VALUES (17,'Suhrkamp / Insel ');
-INSERT INTO `buecher_verlage` (`ID`,`Verlag`) VALUES (18,'Ullstein Verlage (Allegria, Claasen, Econ, Li');
+INSERT INTO `buecher_verlage` (`ID`,`Verlag`) VALUES (18,'Ullstein Verlage (Allegria, Claasen, Econ, Li)');
 INSERT INTO `buecher_verlage` (`ID`,`Verlag`) VALUES (19,'Goldmann Verlag');

@@ -174,7 +174,6 @@
             this.txb_Suche.Name = "txb_Suche";
             this.txb_Suche.Size = new System.Drawing.Size(333, 20);
             this.txb_Suche.TabIndex = 12;
-            this.txb_Suche.TextChanged += new System.EventHandler(this.txb_Suche_TextChanged);
             // 
             // btnAnmelden
             // 
@@ -295,7 +294,6 @@
             this.cbAuswahlSuchen.Name = "cbAuswahlSuchen";
             this.cbAuswahlSuchen.Size = new System.Drawing.Size(75, 21);
             this.cbAuswahlSuchen.TabIndex = 26;
-            this.cbAuswahlSuchen.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // lvErgebnis
             // 
@@ -305,9 +303,9 @@
             this.columnHeader_Autor,
             this.columnHeader_Genre,
             this.columnHeader_Verlag});
-            this.lvErgebnis.Location = new System.Drawing.Point(29, 89);
+            this.lvErgebnis.Location = new System.Drawing.Point(29, 87);
             this.lvErgebnis.Name = "lvErgebnis";
-            this.lvErgebnis.Size = new System.Drawing.Size(804, 358);
+            this.lvErgebnis.Size = new System.Drawing.Size(861, 358);
             this.lvErgebnis.TabIndex = 27;
             this.lvErgebnis.UseCompatibleStateImageBehavior = false;
             this.lvErgebnis.View = System.Windows.Forms.View.Details;
@@ -316,28 +314,33 @@
             // columnHeader_ISBN
             // 
             this.columnHeader_ISBN.Text = "ISBN";
+            this.columnHeader_ISBN.Width = 70;
             // 
             // columnHeader_Titel
             // 
             this.columnHeader_Titel.Text = "Titel";
+            this.columnHeader_Titel.Width = 70;
             // 
             // columnHeader_Autor
             // 
             this.columnHeader_Autor.Text = "Autor";
+            this.columnHeader_Autor.Width = 70;
             // 
             // columnHeader_Genre
             // 
             this.columnHeader_Genre.Text = "Genre";
+            this.columnHeader_Genre.Width = 70;
             // 
             // columnHeader_Verlag
             // 
             this.columnHeader_Verlag.Text = "Verlag";
+            this.columnHeader_Verlag.Width = 70;
             // 
             // FrmHauptfenster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(853, 576);
+            this.ClientSize = new System.Drawing.Size(923, 576);
             this.Controls.Add(this.lvErgebnis);
             this.Controls.Add(this.cbAuswahlSuchen);
             this.Controls.Add(this.btnReservieren);

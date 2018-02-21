@@ -20,6 +20,14 @@ namespace Projekt_Buecherei_Lauffen
             InitializeComponent();
             this.hauptfenster = hauptfenster;
 
+            //Suchoption der Kombobox
+            string[] suchoptionen = new string[] { "Alle", "Titel", "Autor", "Genre", "Verlag", "ISBN" };
+            cbAuswahlSuchen_erw.Items.AddRange(suchoptionen);
+            cbAuswahlSuchen_erw.SelectedIndex = 0;
+            //Spalten werden automatisch an Textlänge angepasst
+            lvErgebnis_erw.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            allesanzeigen();
+
             Textbox_toggle(false);
         }
 
@@ -35,7 +43,6 @@ namespace Projekt_Buecherei_Lauffen
             txbGenre_erw.Enabled = b;
             txbISBN_erw.Enabled = b;
             txbJahr_erw.Enabled = b;
-            txbSuche_erw.Enabled = b;
             txbTitel_erw.Enabled = b;
             txbVerlag_erw.Enabled = b;
         }
@@ -65,6 +72,13 @@ namespace Projekt_Buecherei_Lauffen
         private void FrmHauptfenster_Erweitert_Load(object sender, EventArgs e)
         {
 
-        }        
+        }
+
+        private void allesanzeigen()
+        {
+            lvErgebnis_erw.Items.AddRange(Suche.getalleSuche().ToArray());
+            lvErgebnis_erw.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            lvErgebnis_erw.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
     }
 }
