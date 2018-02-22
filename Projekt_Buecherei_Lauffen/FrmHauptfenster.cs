@@ -27,6 +27,7 @@ namespace Projekt_Buecherei_Lauffen
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            labelsLoeschen();
             //Suchoption der Kombobox
             string[] suchoptionen = new string[] { "Alles", "Titel", "Autor", "Genre", "Verlag", "ISBN" };
             cbAuswahlSuchen.Items.AddRange(suchoptionen);
@@ -53,11 +54,13 @@ namespace Projekt_Buecherei_Lauffen
 
         private void btnAnmelden_Click(object sender, EventArgs e)
         {
+            labelsLoeschen();
             userAnmeldung();
         }
 
         private void btnSuchen_Click(object sender, EventArgs e)
         {
+            labelsLoeschen();
             eingabeSuche = txb_Suche.Text;
             SucheAnzeigen();
         }
@@ -65,13 +68,19 @@ namespace Projekt_Buecherei_Lauffen
         {
             eingabeSuche = txb_Suche.Text;
             if (e.KeyCode == Keys.Enter)
+            {
                 SucheAnzeigen();
+            }
+            labelsLoeschen();
         }
 
         private void txbPasswort_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
+            {
                 userAnmeldung();
+            }
+            labelsLoeschen();
         }
 
         private void userAnmeldung()
@@ -170,25 +179,46 @@ namespace Projekt_Buecherei_Lauffen
         
         private void SucheAnzeigen ()
         {
+            lvErgebnis.Items.Clear();
             //hier wird per If die Combobox Auswahl angeschaut und dann die richtige Suche gewählt
             if (cbAuswahlSuchen.SelectedIndex == cbAuswahlSuchen.FindStringExact("Alles"))
             {
-                lvErgebnis.Items.Clear();
                 lvErgebnis.Items.AddRange(InventarSuche.AllesSuchen().ToArray());
-                lvErgebnis.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-                lvErgebnis.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
-
             if (cbAuswahlSuchen.SelectedIndex == cbAuswahlSuchen.FindStringExact("Titel"))
             {
-                lvErgebnis.Items.Clear();
                 lvErgebnis.Items.AddRange(InventarSuche.TitelSuchen().ToArray());
-                lvErgebnis.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-                lvErgebnis.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
+            if (cbAuswahlSuchen.SelectedIndex == cbAuswahlSuchen.FindStringExact("Autor"))
+            {
+                lvErgebnis.Items.AddRange(InventarSuche.AutorSuchen().ToArray());
+            }
+            if (cbAuswahlSuchen.SelectedIndex == cbAuswahlSuchen.FindStringExact("Genre"))
+            {
+                lvErgebnis.Items.AddRange(InventarSuche.GenreSuchen().ToArray());
+            }
+            if (cbAuswahlSuchen.SelectedIndex == cbAuswahlSuchen.FindStringExact("Verlag"))
+            {
+                lvErgebnis.Items.AddRange(InventarSuche.VerlagSuchen().ToArray());
+            }
+            if (cbAuswahlSuchen.SelectedIndex == cbAuswahlSuchen.FindStringExact("ISBN"))
+            {
+                lvErgebnis.Items.AddRange(InventarSuche.ISBNSuchen().ToArray());
+            }
+            lvErgebnis.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            lvErgebnis.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
-
+        private void labelsLoeschen()
+        {
+            lblAusgabe_ISBN.Text = "";
+            lblAusgeliehen_Ausgabe.Text = "";
+            lblAutor_Ausgabe.Text = "";
+            lblGenre_Ausgabe.Text = "";
+            lblReserviert_Ausgabe.Text = "";
+            lblTitel_Ausgabe.Text = "";
+            lblVerlag_Ausgabe.Text = "";
+        }
         
        
     }

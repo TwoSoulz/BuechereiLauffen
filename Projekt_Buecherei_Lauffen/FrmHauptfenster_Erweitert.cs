@@ -42,8 +42,7 @@ namespace Projekt_Buecherei_Lauffen
             txbAutor_erw.Enabled = b;
             txbGenre_erw.Enabled = b;
             txbISBN_erw.Enabled = b;
-            txbJahr_erw.Enabled = b;
-            txbTitel_erw.Enabled = b;
+            txbJahr_erw.Enabled = b;     txbTitel_erw.Enabled = b;
             txbVerlag_erw.Enabled = b;
         }
 

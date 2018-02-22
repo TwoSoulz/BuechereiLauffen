@@ -65,5 +65,90 @@ namespace Projekt_Buecherei_Lauffen
                 con.Close();
                 return daten;
             }
+
+            public static List<ListViewItem> AutorSuchen()
+            {
+                List<ListViewItem> daten = new List<ListViewItem>();
+
+                con.Open();
+                MySqlCommand search = con.CreateCommand();
+                search.CommandType = CommandType.Text;
+                search.CommandText = "SELECT buch.ISBN, buch.Titel, buecher_autor.Autor, buecher_genre.Genre, buecher_verlage.Verlag FROM buecherei.buch JOIN buecher_autor ON buch.buecher_autor_ID = buecher_autor.ID " +
+                "JOIN buecher_genre ON buch.buecher_genre_ID = buecher_genre.ID JOIN buecher_verlage ON buch.verlage_ID = buecher_verlage.ID Where buecher_autor.Autor like " + "'%" + FrmHauptfenster.EingabeSuche + "%';";
+                search.ExecuteNonQuery();
+                MySqlDataReader result = search.ExecuteReader();
+                int n = 0;
+                while (result.Read())
+                {
+
+                    daten.Add(new ListViewItem(new string[] { result.GetString(0), result.GetString(1), result.GetString(2), result.GetString(3), result.GetString(4) }));
+                    n++;
+                }
+                con.Close();
+                return daten;
+            }
+
+            public static List<ListViewItem> GenreSuchen()
+            {
+                List<ListViewItem> daten = new List<ListViewItem>();
+
+                con.Open();
+                MySqlCommand search = con.CreateCommand();
+                search.CommandType = CommandType.Text;
+                search.CommandText = "SELECT buch.ISBN, buch.Titel, buecher_autor.Autor, buecher_genre.Genre, buecher_verlage.Verlag FROM buecherei.buch JOIN buecher_autor ON buch.buecher_autor_ID = buecher_autor.ID " +
+                "JOIN buecher_genre ON buch.buecher_genre_ID = buecher_genre.ID JOIN buecher_verlage ON buch.verlage_ID = buecher_verlage.ID Where buecher_genre.Genre like " + "'%" + FrmHauptfenster.EingabeSuche + "%';";
+                search.ExecuteNonQuery();
+                MySqlDataReader result = search.ExecuteReader();
+                int n = 0;
+                while (result.Read())
+                {
+
+                    daten.Add(new ListViewItem(new string[] { result.GetString(0), result.GetString(1), result.GetString(2), result.GetString(3), result.GetString(4) }));
+                    n++;
+                }
+                con.Close();
+                return daten;
+            }
+            public static List<ListViewItem> VerlagSuchen()
+            {
+                List<ListViewItem> daten = new List<ListViewItem>();
+
+                con.Open();
+                MySqlCommand search = con.CreateCommand();
+                search.CommandType = CommandType.Text;
+                search.CommandText = "SELECT buch.ISBN, buch.Titel, buecher_autor.Autor, buecher_genre.Genre, buecher_verlage.Verlag FROM buecherei.buch JOIN buecher_autor ON buch.buecher_autor_ID = buecher_autor.ID " +
+                "JOIN buecher_genre ON buch.buecher_genre_ID = buecher_genre.ID JOIN buecher_verlage ON buch.verlage_ID = buecher_verlage.ID Where buecher_verlage.Verlag like " + "'%" + FrmHauptfenster.EingabeSuche + "%';";
+                search.ExecuteNonQuery();
+                MySqlDataReader result = search.ExecuteReader();
+                int n = 0;
+                while (result.Read())
+                {
+
+                    daten.Add(new ListViewItem(new string[] { result.GetString(0), result.GetString(1), result.GetString(2), result.GetString(3), result.GetString(4) }));
+                    n++;
+                }
+                con.Close();
+                return daten;
+            }
+            public static List<ListViewItem> ISBNSuchen()
+            {
+                List<ListViewItem> daten = new List<ListViewItem>();
+
+                con.Open();
+                MySqlCommand search = con.CreateCommand();
+                search.CommandType = CommandType.Text;
+                search.CommandText = "SELECT buch.ISBN, buch.Titel, buecher_autor.Autor, buecher_genre.Genre, buecher_verlage.Verlag FROM buecherei.buch JOIN buecher_autor ON buch.buecher_autor_ID = buecher_autor.ID " +
+                "JOIN buecher_genre ON buch.buecher_genre_ID = buecher_genre.ID JOIN buecher_verlage ON buch.verlage_ID = buecher_verlage.ID Where buch.ISBN like " + "'%" + FrmHauptfenster.EingabeSuche + "%';";
+                search.ExecuteNonQuery();
+                MySqlDataReader result = search.ExecuteReader();
+                int n = 0;
+                while (result.Read())
+                {
+                    daten.Add(new ListViewItem(new string[] { result.GetString(0), result.GetString(1), result.GetString(2), result.GetString(3), result.GetString(4) }));
+                    n++;
+                }
+                con.Close();
+                return daten;
+            }
     }
 }

@@ -1,63 +1,57 @@
-﻿/*
--- Query: Select * FROM mitarbeiter
-LIMIT 0, 1000
-
--- Date: 2017-12-18 09:45
-*/
 INSERT INTO `mitarbeiter` (`ID`,`Vorname`,`Passwort`) VALUES (NULL,'Can','Start123');
 INSERT INTO `mitarbeiter` (`ID`,`Vorname`,`Passwort`) VALUES (NULL,'Kevin','Start123');
 INSERT INTO `mitarbeiter` (`ID`,`Vorname`,`Passwort`) VALUES (NULL,'Florian','Start123');
 INSERT INTO `mitarbeiter` (`ID`,`Vorname`,`Passwort`) VALUES (NULL,'Sebastian','Start123');
 
-/*
+
 -- Query: select * From buecher_autor
-LIMIT 0 1000
+-- LIMIT 0 1000
 
 -- Date: 2017-12-20 10:40
-*/
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Adrian Leemann');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Andreas Brandhorst');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Arabella Carter-Johnson');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Ben Bova');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Brandon Sanderson');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Brenda Novak');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Charles Dickens');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Charlotte link');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Christian Haller');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'ConCrafter');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Dan Brown');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Dick Bruna');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Felix Francis');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Heinrich Böll');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'J.D. Barker');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Jeffrey Archer');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Jessica Gilmore');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Jörg Maurer');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Julie von Kessel');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Karin Alvtegen');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Kerrelyn Sparks');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Lina Wolff');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Maria Blumencron');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Mary Basson');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Norbert Frei');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Norbert Lammert');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Paul Hawkins');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Raywen White');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Rotraut Susanne Berner');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Rudolph Herzog');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Sabine Kray');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Salman Rushdie');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Seressia Glass');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Stephen King');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Trudi Canvan');
-INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (NULL,'Ulf Schiewe');
 
-/*
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (2,'Andreas Brandhorst');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (3,'Arabella Carter-Johnson');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (1,'Adrian Leemann');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (4,'Ben Bova');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (5,'Brandon Sanderson');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (6,'Brenda Novak');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (7,'Charles Dickens');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (8,'Charlotte link');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (9,'Christian Haller');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (10,'ConCrafter');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (11,'Dan Brown');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (12,'Dick Bruna');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (13,'Felix Francis');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (14,'Heinrich Böll');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (15,'J.D. Barker');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (16,'Jeffrey Archer');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (17,'Jessica Gilmore');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (18,'Jörg Maurer');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (19,'Julie von Kessel');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (20,'Karin Alvtegen');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (21,'Kerrelyn Sparks');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (22,'Lina Wolff');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (23,'Maria Blumencron');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (24,'Mary Basson');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (25,'Norbert Frei');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (26,'Norbert Lammert');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (27,'Paul Hawkins');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (28,'Raywen White');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (29,'Rotraut Susanne Berner');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (30,'Rudolph Herzog');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (31,'Sabine Kray');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (32,'Salman Rushdie');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (33,'Seressia Glass');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (34,'Stephen King');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (35,'Trudi Canvan');
+INSERT INTO `buecher_autor` (`ID`,`Autor`) VALUES (36,'Ulf Schiewe');
+
+
 -- Query: SELECT * FROM buecher_verlage
-LIMIT 0, 1000
+-- LIMIT 0, 1000
 
 -- Date: 2017-12-15 08:23
-*/
+
 INSERT INTO `buecher_verlage` (`ID`,`Verlag`) VALUES (1,'Aufbau-Verlag ');
 INSERT INTO `buecher_verlage` (`ID`,`Verlag`) VALUES (2,'Bastei Lübbe ');
 INSERT INTO `buecher_verlage` (`ID`,`Verlag`) VALUES (3,'C. Bertelsmann Verlag (Random House) ');
@@ -78,35 +72,35 @@ INSERT INTO `buecher_verlage` (`ID`,`Verlag`) VALUES (17,'Suhrkamp / Insel ');
 INSERT INTO `buecher_verlage` (`ID`,`Verlag`) VALUES (18,'Ullstein Verlage (Allegria, Claasen, Econ, Li)');
 INSERT INTO `buecher_verlage` (`ID`,`Verlag`) VALUES (19,'Goldmann Verlag');
 
-/*
+
 -- Query: SELECT * FROM buecher_genre
-LIMIT 0, 1000
+-- LIMIT 0, 1000
 
 -- Date: 2017-12-15 08:23
-*/
-INSERT INTO `buecherei`.`buecher_genre` (`Genre`) VALUES ('Krimi');
-INSERT INTO `buecherei`.`buecher_genre` (`Genre`) VALUES ('Thriller');
-INSERT INTO `buecherei`.`buecher_genre` (`Genre`) VALUES ('Horror');
-INSERT INTO `buecherei`.`buecher_genre` (`Genre`) VALUES ('Sachbuch');
-INSERT INTO `buecherei`.`buecher_genre` (`Genre`) VALUES ('Fachliteratur');
-INSERT INTO `buecherei`.`buecher_genre` (`Genre`) VALUES ('Roman');
-INSERT INTO `buecherei`.`buecher_genre` (`Genre`) VALUES ('Kinderbücher');
-INSERT INTO `buecherei`.`buecher_genre` (`Genre`) VALUES ('Hörbuch');
-INSERT INTO `buecherei`.`buecher_genre` (`Genre`) VALUES ('Drama');
-INSERT INTO `buecherei`.`buecher_genre` (`Genre`) VALUES ('Action');
-INSERT INTO `buecherei`.`buecher_genre` (`Genre`) VALUES ('Abenteuer');
-INSERT INTO `buecherei`.`buecher_genre` (`Genre`) VALUES ('Liebesroman');
-INSERT INTO `buecherei`.`buecher_genre` (`Genre`) VALUES ('Fantasy & Science-Fiction');
-INSERT INTO `buecherei`.`buecher_genre` (`Genre`) VALUES ('Ratgeber');
-INSERT INTO `buecherei`.`buecher_genre` (`Genre`) VALUES ('Jugend');
-INSERT INTO `buecherei`.`buecher_genre` (`Genre`) VALUES ('Historik');
 
-/*
+INSERT INTO `buecherei`.`buecher_genre` (`ID`,`Genre`) VALUES (1,'Krimi');
+INSERT INTO `buecherei`.`buecher_genre` (`ID`,`Genre`) VALUES (2,'Thriller');
+INSERT INTO `buecherei`.`buecher_genre` (`ID`,`Genre`) VALUES (3,'Horror');
+INSERT INTO `buecherei`.`buecher_genre` (`ID`,`Genre`) VALUES (4,'Sachbuch');
+INSERT INTO `buecherei`.`buecher_genre` (`ID`,`Genre`) VALUES (5,'Fachliteratur');
+INSERT INTO `buecherei`.`buecher_genre` (`ID`,`Genre`) VALUES (6,'Roman');
+INSERT INTO `buecherei`.`buecher_genre` (`ID`,`Genre`) VALUES (7,'Kinderbücher');
+INSERT INTO `buecherei`.`buecher_genre` (`ID`,`Genre`) VALUES (8,'Hörbuch');
+INSERT INTO `buecherei`.`buecher_genre` (`ID`,`Genre`) VALUES (9,'Drama');
+INSERT INTO `buecherei`.`buecher_genre` (`ID`,`Genre`) VALUES (10,'Action');
+INSERT INTO `buecherei`.`buecher_genre` (`ID`,`Genre`) VALUES (11,'Abenteuer');
+INSERT INTO `buecherei`.`buecher_genre` (`ID`,`Genre`) VALUES (12,'Liebesroman');
+INSERT INTO `buecherei`.`buecher_genre` (`ID`,`Genre`) VALUES (13,'Fantasy & Science-Fiction');
+INSERT INTO `buecherei`.`buecher_genre` (`ID`,`Genre`) VALUES (14,'Ratgeber');
+INSERT INTO `buecherei`.`buecher_genre` (`ID`,`Genre`) VALUES (15,'Jugend');
+INSERT INTO `buecherei`.`buecher_genre` (`ID`,`Genre`) VALUES (16,'Historik');
+
+
 -- Query: SELECT * FROM buecherei.buch
-LIMIT 0, 1000
+-- LIMIT 0, 1000
 
 -- Date: 2018-02-07 09:40
-*/
+
 INSERT INTO `buch` (`ISBN`,`Titel`,`buecher_autor_ID`,`buecher_genre_ID`,`verlage_ID`) VALUES ('9783257012170','miffy',12,7,6);
 INSERT INTO `buch` (`ISBN`,`Titel`,`buecher_autor_ID`,`buecher_genre_ID`,`verlage_ID`) VALUES ('9783257300512','Scharade',13,6,6);
 INSERT INTO `buch` (`ISBN`,`Titel`,`buecher_autor_ID`,`buecher_genre_ID`,`verlage_ID`) VALUES ('9783404609628','Iris und Thula',3,4,2);
