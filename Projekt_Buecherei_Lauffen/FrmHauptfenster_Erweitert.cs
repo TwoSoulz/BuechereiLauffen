@@ -76,7 +76,7 @@ namespace Projekt_Buecherei_Lauffen
 
         private void allesanzeigen()
         {
-            lvErgebnis_erw.Items.AddRange(Suche.getalleSuche().ToArray());
+            lvErgebnis_erw.Items.AddRange(Grunddaten.getalleDaten().ToArray());
             lvErgebnis_erw.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             lvErgebnis_erw.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }

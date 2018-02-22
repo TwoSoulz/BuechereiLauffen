@@ -13,13 +13,13 @@ using System.Collections;
  
  namespace Projekt_Buecherei_Lauffen
  {
-     public class Suche
+     public class Grunddaten
      {
          //MySqlVerbindung
          private static MySqlConnection con = new MySqlConnection(@"Data Source=localhost;port=3306;Initial Catalog=buecherei;User Id=root;password=''");
 
 
-         public static List<ListViewItem> getalleSuche()
+         public static List<ListViewItem> getalleDaten()
          {
             List<ListViewItem> daten = new List<ListViewItem>();
             

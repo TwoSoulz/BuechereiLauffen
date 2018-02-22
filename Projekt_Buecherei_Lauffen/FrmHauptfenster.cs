@@ -14,28 +14,35 @@ namespace Projekt_Buecherei_Lauffen
 {
     public partial class FrmHauptfenster : Form
     {
+
         //MySqlVerbindung
         MySqlConnection con = new MySqlConnection(@"Data Source=localhost;port=3306;Initial Catalog=buecherei;User Id=root;password=''");
 
-        //Listbox Aufteilung
-       
-        
+
+
         public FrmHauptfenster()
         {
             InitializeComponent();
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             //Suchoption der Kombobox
-            string[] suchoptionen = new string[] { "Alle", "Titel", "Autor", "Genre", "Verlag", "ISBN" };
+            string[] suchoptionen = new string[] { "Alles", "Titel", "Autor", "Genre", "Verlag", "ISBN" };
             cbAuswahlSuchen.Items.AddRange(suchoptionen);
             cbAuswahlSuchen.SelectedIndex = 0;
             //Spalten werden automatisch an Textlänge angepasst
             lvErgebnis.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             allesanzeigen();
             lvErgebnis.FullRowSelect = true;
+        }
+
+        private static string eingabeSuche = "";
+
+        public static string EingabeSuche
+        {
+            get { return eingabeSuche; }
+            set { eingabeSuche = value; }
         }
 
         private void btnReservieren_Click(object sender, EventArgs e)
@@ -50,8 +57,21 @@ namespace Projekt_Buecherei_Lauffen
         }
 
         private void btnSuchen_Click(object sender, EventArgs e)
-        {   
-            normaleSuche();
+        {
+            eingabeSuche = txb_Suche.Text;
+            SucheAnzeigen();
+        }
+        private void txb_Suche_KeyDown(object sender, KeyEventArgs e)
+        {
+            eingabeSuche = txb_Suche.Text;
+            if (e.KeyCode == Keys.Enter)
+                SucheAnzeigen();
+        }
+
+        private void txbPasswort_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                userAnmeldung();
         }
 
         private void userAnmeldung()
@@ -93,24 +113,20 @@ namespace Projekt_Buecherei_Lauffen
             con.Close();
         }
 
-        private void txbPasswort_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                userAnmeldung();
-        }
-
-        private void normaleSuche ()
+        private List<ListViewItem> AllesSuchen()
         {
             List<ListViewItem> daten = new List<ListViewItem>();
 
             con.Open();
             MySqlCommand search = con.CreateCommand();
             search.CommandType = CommandType.Text;
-            search.CommandText = "SELECT buch.ISBN, buch.Titel, buecher_autor.Autor, buecher_genre.Genre, buecher_verlage.Verlag FROM buecherei.buch JOIN buecher_autor ON buch.buecher_autor_ID = buecher_autor.ID JOIN buecher_genre ON buch.buecher_genre_ID = buecher_genre.ID JOIN buecher_verlage ON buch.verlage_ID = buecher_verlage.ID Where buch.Titel LIKE """"%"+ txb_Suche.Text +"%"" or buecher_autor.Autor LIKE ""%"+ txb_Suche.Text +"%"" or buecher_genre.Genre LIKE ""%"+ txb_Suche.Text +"%"" or buecher_verlage.Verlag LIKE ""%"+ txb_Suche.Text +"%"" or buch.ISBN like ""%"+ txb_Suche.Text +"%"";";
+            search.CommandText = "SELECT buch.ISBN, buch.Titel, buecher_autor.Autor, buecher_genre.Genre, buecher_verlage.Verlag FROM buecherei.buch " +
+                "JOIN buecher_autor ON buch.buecher_autor_ID = buecher_autor.ID JOIN buecher_genre ON buch.buecher_genre_ID = buecher_genre.ID JOIN buecher_verlage ON buch.verlage_ID = buecher_verlage.ID " +
+                "Where buch.Titel LIKE " + "'%" + txb_Suche.Text + "%'" + " or buecher_autor.Autor LIKE " + "'%" + txb_Suche.Text + "%'" + " or buecher_genre.Genre LIKE " + "'%" + txb_Suche.Text + "%'" +
+                " or buecher_verlage.Verlag LIKE " + "'%" + txb_Suche.Text + "%'" + " or buch.ISBN like " + "'%" + txb_Suche.Text + "%';"; 
+
             search.ExecuteNonQuery();
-
             MySqlDataReader result = search.ExecuteReader();
-
             int n = 0;
             while (result.Read())
             {
@@ -124,12 +140,10 @@ namespace Projekt_Buecherei_Lauffen
 
         private void allesanzeigen()
         {
-            lvErgebnis.Items.AddRange(Suche.getalleSuche().ToArray());
+            lvErgebnis.Items.AddRange(Grunddaten.getalleDaten().ToArray());
             lvErgebnis.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             lvErgebnis.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
-
-        //public ListView.SelectedListViewItemCollection SelectedItems { get; }
 
         private void lvErgebnis_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -153,5 +167,29 @@ namespace Projekt_Buecherei_Lauffen
                 }
             }
         }
+        
+        private void SucheAnzeigen ()
+        {
+            //hier wird per If die Combobox Auswahl angeschaut und dann die richtige Suche gewählt
+            if (cbAuswahlSuchen.SelectedIndex == cbAuswahlSuchen.FindStringExact("Alles"))
+            {
+                lvErgebnis.Items.Clear();
+                lvErgebnis.Items.AddRange(InventarSuche.AllesSuchen().ToArray());
+                lvErgebnis.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                lvErgebnis.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+
+            if (cbAuswahlSuchen.SelectedIndex == cbAuswahlSuchen.FindStringExact("Titel"))
+            {
+                lvErgebnis.Items.Clear();
+                lvErgebnis.Items.AddRange(InventarSuche.TitelSuchen().ToArray());
+                lvErgebnis.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                lvErgebnis.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+        }
+
+
+        
+       
     }
 }

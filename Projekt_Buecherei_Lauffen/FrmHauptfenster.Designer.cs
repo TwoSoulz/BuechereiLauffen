@@ -174,6 +174,7 @@
             this.txb_Suche.Name = "txb_Suche";
             this.txb_Suche.Size = new System.Drawing.Size(333, 20);
             this.txb_Suche.TabIndex = 12;
+            this.txb_Suche.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_Suche_KeyDown);
             // 
             // btnAnmelden
             // 
