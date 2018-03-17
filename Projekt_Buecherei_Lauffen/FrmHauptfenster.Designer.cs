@@ -63,113 +63,126 @@
             // lblBenutzer
             // 
             this.lblBenutzer.AutoSize = true;
-            this.lblBenutzer.Location = new System.Drawing.Point(26, 23);
+            this.lblBenutzer.Location = new System.Drawing.Point(35, 28);
+            this.lblBenutzer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBenutzer.Name = "lblBenutzer";
-            this.lblBenutzer.Size = new System.Drawing.Size(78, 13);
+            this.lblBenutzer.Size = new System.Drawing.Size(104, 17);
             this.lblBenutzer.TabIndex = 0;
             this.lblBenutzer.Text = "Benutzername:";
             // 
             // lblPasswort
             // 
             this.lblPasswort.AutoSize = true;
-            this.lblPasswort.Location = new System.Drawing.Point(256, 23);
+            this.lblPasswort.Location = new System.Drawing.Point(341, 28);
+            this.lblPasswort.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPasswort.Name = "lblPasswort";
-            this.lblPasswort.Size = new System.Drawing.Size(53, 13);
+            this.lblPasswort.Size = new System.Drawing.Size(69, 17);
             this.lblPasswort.TabIndex = 1;
             this.lblPasswort.Text = "Passwort:";
             // 
             // lblSuche
             // 
             this.lblSuche.AutoSize = true;
-            this.lblSuche.Location = new System.Drawing.Point(26, 53);
+            this.lblSuche.Location = new System.Drawing.Point(35, 65);
+            this.lblSuche.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSuche.Name = "lblSuche";
-            this.lblSuche.Size = new System.Drawing.Size(41, 13);
+            this.lblSuche.Size = new System.Drawing.Size(52, 17);
             this.lblSuche.TabIndex = 2;
             this.lblSuche.Text = "Suche:";
             // 
             // lblAutor
             // 
             this.lblAutor.AutoSize = true;
-            this.lblAutor.Location = new System.Drawing.Point(499, 465);
+            this.lblAutor.Location = new System.Drawing.Point(665, 572);
+            this.lblAutor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAutor.Name = "lblAutor";
-            this.lblAutor.Size = new System.Drawing.Size(35, 13);
+            this.lblAutor.Size = new System.Drawing.Size(46, 17);
             this.lblAutor.TabIndex = 3;
             this.lblAutor.Text = "Autor:";
             // 
             // lblAutor_Ausgabe
             // 
             this.lblAutor_Ausgabe.AutoSize = true;
-            this.lblAutor_Ausgabe.Location = new System.Drawing.Point(540, 465);
+            this.lblAutor_Ausgabe.Location = new System.Drawing.Point(720, 572);
+            this.lblAutor_Ausgabe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAutor_Ausgabe.Name = "lblAutor_Ausgabe";
-            this.lblAutor_Ausgabe.Size = new System.Drawing.Size(74, 13);
+            this.lblAutor_Ausgabe.Size = new System.Drawing.Size(98, 17);
             this.lblAutor_Ausgabe.TabIndex = 4;
             this.lblAutor_Ausgabe.Text = "AutorAusgabe";
             // 
             // lblTitel
             // 
             this.lblTitel.AutoSize = true;
-            this.lblTitel.Location = new System.Drawing.Point(219, 465);
+            this.lblTitel.Location = new System.Drawing.Point(292, 572);
+            this.lblTitel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitel.Name = "lblTitel";
-            this.lblTitel.Size = new System.Drawing.Size(30, 13);
+            this.lblTitel.Size = new System.Drawing.Size(39, 17);
             this.lblTitel.TabIndex = 5;
             this.lblTitel.Text = "Titel:";
             // 
             // lblTitel_Ausgabe
             // 
             this.lblTitel_Ausgabe.AutoSize = true;
-            this.lblTitel_Ausgabe.Location = new System.Drawing.Point(265, 465);
+            this.lblTitel_Ausgabe.Location = new System.Drawing.Point(353, 572);
+            this.lblTitel_Ausgabe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitel_Ausgabe.Name = "lblTitel_Ausgabe";
-            this.lblTitel_Ausgabe.Size = new System.Drawing.Size(69, 13);
+            this.lblTitel_Ausgabe.Size = new System.Drawing.Size(91, 17);
             this.lblTitel_Ausgabe.TabIndex = 6;
             this.lblTitel_Ausgabe.Text = "TitelAusgabe";
             // 
             // lblVerlag
             // 
             this.lblVerlag.AutoSize = true;
-            this.lblVerlag.Location = new System.Drawing.Point(219, 508);
+            this.lblVerlag.Location = new System.Drawing.Point(292, 625);
+            this.lblVerlag.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVerlag.Name = "lblVerlag";
-            this.lblVerlag.Size = new System.Drawing.Size(40, 13);
+            this.lblVerlag.Size = new System.Drawing.Size(53, 17);
             this.lblVerlag.TabIndex = 7;
             this.lblVerlag.Text = "Verlag:";
             // 
             // lblVerlag_Ausgabe
             // 
             this.lblVerlag_Ausgabe.AutoSize = true;
-            this.lblVerlag_Ausgabe.Location = new System.Drawing.Point(265, 508);
+            this.lblVerlag_Ausgabe.Location = new System.Drawing.Point(353, 625);
+            this.lblVerlag_Ausgabe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVerlag_Ausgabe.Name = "lblVerlag_Ausgabe";
-            this.lblVerlag_Ausgabe.Size = new System.Drawing.Size(79, 13);
+            this.lblVerlag_Ausgabe.Size = new System.Drawing.Size(105, 17);
             this.lblVerlag_Ausgabe.TabIndex = 8;
             this.lblVerlag_Ausgabe.Text = "VerlagAusgabe";
             // 
             // txbBenutzer
             // 
-            this.txbBenutzer.Location = new System.Drawing.Point(107, 20);
+            this.txbBenutzer.Location = new System.Drawing.Point(143, 25);
+            this.txbBenutzer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbBenutzer.Name = "txbBenutzer";
-            this.txbBenutzer.Size = new System.Drawing.Size(120, 20);
+            this.txbBenutzer.Size = new System.Drawing.Size(159, 22);
             this.txbBenutzer.TabIndex = 10;
             // 
             // txbPasswort
             // 
-            this.txbPasswort.Location = new System.Drawing.Point(312, 20);
+            this.txbPasswort.Location = new System.Drawing.Point(416, 25);
+            this.txbPasswort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbPasswort.Name = "txbPasswort";
-            this.txbPasswort.Size = new System.Drawing.Size(128, 20);
+            this.txbPasswort.Size = new System.Drawing.Size(169, 22);
             this.txbPasswort.TabIndex = 11;
             this.txbPasswort.UseSystemPasswordChar = true;
             this.txbPasswort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbPasswort_KeyDown);
             // 
             // txb_Suche
             // 
-            this.txb_Suche.Location = new System.Drawing.Point(107, 50);
+            this.txb_Suche.Location = new System.Drawing.Point(143, 62);
+            this.txb_Suche.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txb_Suche.Name = "txb_Suche";
-            this.txb_Suche.Size = new System.Drawing.Size(333, 20);
+            this.txb_Suche.Size = new System.Drawing.Size(443, 22);
             this.txb_Suche.TabIndex = 12;
             this.txb_Suche.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_Suche_KeyDown);
             // 
             // btnAnmelden
             // 
-            this.btnAnmelden.Location = new System.Drawing.Point(477, 18);
+            this.btnAnmelden.Location = new System.Drawing.Point(636, 22);
+            this.btnAnmelden.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAnmelden.Name = "btnAnmelden";
-            this.btnAnmelden.Size = new System.Drawing.Size(75, 23);
+            this.btnAnmelden.Size = new System.Drawing.Size(100, 28);
             this.btnAnmelden.TabIndex = 13;
             this.btnAnmelden.Text = "Anmelden";
             this.btnAnmelden.UseVisualStyleBackColor = true;
@@ -177,9 +190,10 @@
             // 
             // btnSuchen
             // 
-            this.btnSuchen.Location = new System.Drawing.Point(570, 50);
+            this.btnSuchen.Location = new System.Drawing.Point(760, 62);
+            this.btnSuchen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSuchen.Name = "btnSuchen";
-            this.btnSuchen.Size = new System.Drawing.Size(75, 21);
+            this.btnSuchen.Size = new System.Drawing.Size(100, 26);
             this.btnSuchen.TabIndex = 14;
             this.btnSuchen.Text = "Suchen";
             this.btnSuchen.UseVisualStyleBackColor = true;
@@ -188,80 +202,89 @@
             // lblGenre
             // 
             this.lblGenre.AutoSize = true;
-            this.lblGenre.Location = new System.Drawing.Point(26, 508);
+            this.lblGenre.Location = new System.Drawing.Point(35, 625);
+            this.lblGenre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGenre.Name = "lblGenre";
-            this.lblGenre.Size = new System.Drawing.Size(39, 13);
+            this.lblGenre.Size = new System.Drawing.Size(52, 17);
             this.lblGenre.TabIndex = 17;
             this.lblGenre.Text = "Genre:";
             // 
             // lblGenre_Ausgabe
             // 
             this.lblGenre_Ausgabe.AutoSize = true;
-            this.lblGenre_Ausgabe.Location = new System.Drawing.Point(71, 508);
+            this.lblGenre_Ausgabe.Location = new System.Drawing.Point(95, 625);
+            this.lblGenre_Ausgabe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGenre_Ausgabe.Name = "lblGenre_Ausgabe";
-            this.lblGenre_Ausgabe.Size = new System.Drawing.Size(78, 13);
+            this.lblGenre_Ausgabe.Size = new System.Drawing.Size(104, 17);
             this.lblGenre_Ausgabe.TabIndex = 18;
             this.lblGenre_Ausgabe.Text = "GenreAusgabe";
             // 
             // lblisbn
             // 
             this.lblisbn.AutoSize = true;
-            this.lblisbn.Location = new System.Drawing.Point(26, 465);
+            this.lblisbn.Location = new System.Drawing.Point(35, 572);
+            this.lblisbn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblisbn.Name = "lblisbn";
-            this.lblisbn.Size = new System.Drawing.Size(35, 13);
+            this.lblisbn.Size = new System.Drawing.Size(43, 17);
             this.lblisbn.TabIndex = 19;
             this.lblisbn.Text = "ISBN:";
             // 
             // lblAusgabe_ISBN
             // 
             this.lblAusgabe_ISBN.AutoSize = true;
-            this.lblAusgabe_ISBN.Location = new System.Drawing.Point(71, 465);
+            this.lblAusgabe_ISBN.Location = new System.Drawing.Point(95, 572);
+            this.lblAusgabe_ISBN.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAusgabe_ISBN.Name = "lblAusgabe_ISBN";
-            this.lblAusgabe_ISBN.Size = new System.Drawing.Size(74, 13);
+            this.lblAusgabe_ISBN.Size = new System.Drawing.Size(95, 17);
             this.lblAusgabe_ISBN.TabIndex = 20;
             this.lblAusgabe_ISBN.Text = "AusgabeISBN";
             // 
             // lblAusgeliehen
             // 
             this.lblAusgeliehen.AutoSize = true;
-            this.lblAusgeliehen.Location = new System.Drawing.Point(706, 508);
+            this.lblAusgeliehen.Location = new System.Drawing.Point(941, 625);
+            this.lblAusgeliehen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAusgeliehen.Name = "lblAusgeliehen";
-            this.lblAusgeliehen.Size = new System.Drawing.Size(68, 13);
+            this.lblAusgeliehen.Size = new System.Drawing.Size(90, 17);
             this.lblAusgeliehen.TabIndex = 21;
             this.lblAusgeliehen.Text = "Ausgeliehen:";
             // 
             // lblAusgeliehen_Ausgabe
             // 
             this.lblAusgeliehen_Ausgabe.AutoSize = true;
-            this.lblAusgeliehen_Ausgabe.Location = new System.Drawing.Point(782, 508);
+            this.lblAusgeliehen_Ausgabe.Location = new System.Drawing.Point(1043, 625);
+            this.lblAusgeliehen_Ausgabe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAusgeliehen_Ausgabe.Name = "lblAusgeliehen_Ausgabe";
-            this.lblAusgeliehen_Ausgabe.Size = new System.Drawing.Size(107, 13);
+            this.lblAusgeliehen_Ausgabe.Size = new System.Drawing.Size(142, 17);
             this.lblAusgeliehen_Ausgabe.TabIndex = 22;
             this.lblAusgeliehen_Ausgabe.Text = "AusgeliehenAusgabe";
             // 
             // lblReserviert
             // 
             this.lblReserviert.AutoSize = true;
-            this.lblReserviert.Location = new System.Drawing.Point(706, 465);
+            this.lblReserviert.Location = new System.Drawing.Point(941, 572);
+            this.lblReserviert.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblReserviert.Name = "lblReserviert";
-            this.lblReserviert.Size = new System.Drawing.Size(58, 13);
+            this.lblReserviert.Size = new System.Drawing.Size(77, 17);
             this.lblReserviert.TabIndex = 23;
             this.lblReserviert.Text = "Reserviert:";
             // 
             // lblReserviert_Ausgabe
             // 
             this.lblReserviert_Ausgabe.AutoSize = true;
-            this.lblReserviert_Ausgabe.Location = new System.Drawing.Point(782, 465);
+            this.lblReserviert_Ausgabe.Location = new System.Drawing.Point(1043, 572);
+            this.lblReserviert_Ausgabe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblReserviert_Ausgabe.Name = "lblReserviert_Ausgabe";
-            this.lblReserviert_Ausgabe.Size = new System.Drawing.Size(97, 13);
+            this.lblReserviert_Ausgabe.Size = new System.Drawing.Size(129, 17);
             this.lblReserviert_Ausgabe.TabIndex = 24;
             this.lblReserviert_Ausgabe.Text = "ReserviertAusgabe";
             // 
             // btnReservieren
             // 
-            this.btnReservieren.Location = new System.Drawing.Point(917, 460);
+            this.btnReservieren.Location = new System.Drawing.Point(1223, 566);
+            this.btnReservieren.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnReservieren.Name = "btnReservieren";
-            this.btnReservieren.Size = new System.Drawing.Size(75, 23);
+            this.btnReservieren.Size = new System.Drawing.Size(100, 28);
             this.btnReservieren.TabIndex = 25;
             this.btnReservieren.Text = "Reservieren";
             this.btnReservieren.UseVisualStyleBackColor = true;
@@ -271,9 +294,10 @@
             // 
             this.cbAuswahlSuchen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAuswahlSuchen.FormattingEnabled = true;
-            this.cbAuswahlSuchen.Location = new System.Drawing.Point(477, 50);
+            this.cbAuswahlSuchen.Location = new System.Drawing.Point(636, 62);
+            this.cbAuswahlSuchen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbAuswahlSuchen.Name = "cbAuswahlSuchen";
-            this.cbAuswahlSuchen.Size = new System.Drawing.Size(75, 21);
+            this.cbAuswahlSuchen.Size = new System.Drawing.Size(99, 24);
             this.cbAuswahlSuchen.TabIndex = 26;
             // 
             // lvErgebnis
@@ -284,10 +308,11 @@
             this.columnHeader_Autor,
             this.columnHeader_Genre,
             this.columnHeader_Verlag});
-            this.lvErgebnis.Location = new System.Drawing.Point(29, 87);
+            this.lvErgebnis.Location = new System.Drawing.Point(38, 118);
+            this.lvErgebnis.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lvErgebnis.Name = "lvErgebnis";
-            this.lvErgebnis.Size = new System.Drawing.Size(951, 358);
-            this.lvErgebnis.TabIndex = 27;
+            this.lvErgebnis.Size = new System.Drawing.Size(1267, 440);
+            this.lvErgebnis.TabIndex = 70;
             this.lvErgebnis.UseCompatibleStateImageBehavior = false;
             this.lvErgebnis.View = System.Windows.Forms.View.Details;
             this.lvErgebnis.SelectedIndexChanged += new System.EventHandler(this.lvErgebnis_SelectedIndexChanged);
@@ -319,9 +344,9 @@
             // 
             // FrmHauptfenster
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1031, 576);
+            this.ClientSize = new System.Drawing.Size(1375, 709);
             this.Controls.Add(this.lvErgebnis);
             this.Controls.Add(this.cbAuswahlSuchen);
             this.Controls.Add(this.btnReservieren);
@@ -348,6 +373,7 @@
             this.Controls.Add(this.lblPasswort);
             this.Controls.Add(this.lblBenutzer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmHauptfenster";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bücherei Lauffen Inventarsuche";

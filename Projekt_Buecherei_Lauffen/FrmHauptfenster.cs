@@ -18,8 +18,6 @@ namespace Projekt_Buecherei_Lauffen
         //MySqlVerbindung
         MySqlConnection con = new MySqlConnection(@"Data Source=localhost;port=3306;Initial Catalog=buecherei;User Id=root;password=''");
 
-
-
         public FrmHauptfenster()
         {
             InitializeComponent();
@@ -60,12 +58,14 @@ namespace Projekt_Buecherei_Lauffen
 
         private void btnSuchen_Click(object sender, EventArgs e)
         {
+            aktiv = true;
             labelsLoeschen();
             eingabeSuche = txb_Suche.Text;
             SucheAnzeigen();
         }
         private void txb_Suche_KeyDown(object sender, KeyEventArgs e)
         {
+            aktiv = true;
             eingabeSuche = txb_Suche.Text;
             if (e.KeyCode == Keys.Enter)
             {
@@ -76,6 +76,7 @@ namespace Projekt_Buecherei_Lauffen
 
         private void txbPasswort_KeyDown(object sender, KeyEventArgs e)
         {
+            aktiv = false;
             if (e.KeyCode == Keys.Enter)
             {
                 userAnmeldung();
@@ -122,30 +123,6 @@ namespace Projekt_Buecherei_Lauffen
             con.Close();
         }
 
-        private List<ListViewItem> AllesSuchen()
-        {
-            List<ListViewItem> daten = new List<ListViewItem>();
-
-            con.Open();
-            MySqlCommand search = con.CreateCommand();
-            search.CommandType = CommandType.Text;
-            search.CommandText = "SELECT buch.ISBN, buch.Titel, buecher_autor.Autor, buecher_genre.Genre, buecher_verlage.Verlag FROM buecherei.buch " +
-                "JOIN buecher_autor ON buch.buecher_autor_ID = buecher_autor.ID JOIN buecher_genre ON buch.buecher_genre_ID = buecher_genre.ID JOIN buecher_verlage ON buch.verlage_ID = buecher_verlage.ID " +
-                "Where buch.Titel LIKE " + "'%" + txb_Suche.Text + "%'" + " or buecher_autor.Autor LIKE " + "'%" + txb_Suche.Text + "%'" + " or buecher_genre.Genre LIKE " + "'%" + txb_Suche.Text + "%'" +
-                " or buecher_verlage.Verlag LIKE " + "'%" + txb_Suche.Text + "%'" + " or buch.ISBN like " + "'%" + txb_Suche.Text + "%';"; 
-
-            search.ExecuteNonQuery();
-            MySqlDataReader result = search.ExecuteReader();
-            int n = 0;
-            while (result.Read())
-            {
-
-                daten.Add(new ListViewItem(new string[] { result.GetString(0), result.GetString(1), result.GetString(2), result.GetString(3), result.GetString(4) }));
-                n++;
-            }
-            con.Close();
-            return daten;
-        }
 
         private void allesanzeigen()
         {
@@ -219,7 +196,14 @@ namespace Projekt_Buecherei_Lauffen
             lblTitel_Ausgabe.Text = "";
             lblVerlag_Ausgabe.Text = "";
         }
-        
-       
+
+        public static bool aktiv = true;
+
+        public static bool Aktiv
+        {
+            get { return aktiv; }
+            set { aktiv = value; }
+        }
+
     }
 }

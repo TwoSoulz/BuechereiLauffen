@@ -7,11 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using MySql.Data;
 
 namespace Projekt_Buecherei_Lauffen
 {
+
     public partial class FrmHauptfenster_Erweitert : Form
     {
+        //MySqlVerbindung
+        MySqlConnection con = new MySqlConnection(@"Data Source=localhost;port=3306;Initial Catalog=buecherei;User Id=root;password=''");
+        
         private FrmHauptfenster hauptfenster = null;
         private bool _isLogout;
 
@@ -26,9 +32,17 @@ namespace Projekt_Buecherei_Lauffen
             cbAuswahlSuchen_erw.SelectedIndex = 0;
             //Spalten werden automatisch an Textlänge angepasst
             lvErgebnis_erw.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-            allesanzeigen();
+            allesanzeigen_erw();
 
             Textbox_toggle(false);
+        }
+
+        private static string eingabeSuche = "";
+
+        public static string EingabeSuche
+        {
+            get { return eingabeSuche; }
+            set { eingabeSuche = value; }
         }
 
         private void btnAendern_erw_Click(object sender, EventArgs e)
@@ -42,12 +56,14 @@ namespace Projekt_Buecherei_Lauffen
             txbAutor_erw.Enabled = b;
             txbGenre_erw.Enabled = b;
             txbISBN_erw.Enabled = b;
-            txbJahr_erw.Enabled = b;     txbTitel_erw.Enabled = b;
+            txbJahr_erw.Enabled = b;
+            txbTitel_erw.Enabled = b;
             txbVerlag_erw.Enabled = b;
         }
 
         private void btnAusloggen_erw_Click(object sender, EventArgs e)
         {
+            
             _isLogout = true;
             this.Close();
             hauptfenster.Show();
@@ -68,16 +84,95 @@ namespace Projekt_Buecherei_Lauffen
             window.ShowDialog();
         }
 
-        private void FrmHauptfenster_Erweitert_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void allesanzeigen()
+        private void allesanzeigen_erw()
         {
             lvErgebnis_erw.Items.AddRange(Grunddaten.getalleDaten().ToArray());
             lvErgebnis_erw.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             lvErgebnis_erw.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
+
+        private void SucheAnzeigen()
+        {
+            lvErgebnis_erw.Items.Clear();
+            //hier wird per If die Combobox Auswahl angeschaut und dann die richtige Suche gewählt
+            if (cbAuswahlSuchen_erw.SelectedIndex == cbAuswahlSuchen_erw.FindStringExact("Alle"))
+            {
+                lvErgebnis_erw.Items.AddRange(InventarSuche.AllesSuchen().ToArray());
+            }
+            if (cbAuswahlSuchen_erw.SelectedIndex == cbAuswahlSuchen_erw.FindStringExact("Titel"))
+            {
+                lvErgebnis_erw.Items.AddRange(InventarSuche.TitelSuchen().ToArray());
+            }
+            if (cbAuswahlSuchen_erw.SelectedIndex == cbAuswahlSuchen_erw.FindStringExact("Autor"))
+            {
+                lvErgebnis_erw.Items.AddRange(InventarSuche.AutorSuchen().ToArray());
+            }
+            if (cbAuswahlSuchen_erw.SelectedIndex == cbAuswahlSuchen_erw.FindStringExact("Genre"))
+            {
+                lvErgebnis_erw.Items.AddRange(InventarSuche.GenreSuchen().ToArray());
+            }
+            if (cbAuswahlSuchen_erw.SelectedIndex == cbAuswahlSuchen_erw.FindStringExact("Verlag"))
+            {
+                lvErgebnis_erw.Items.AddRange(InventarSuche.VerlagSuchen().ToArray());
+            }
+            if (cbAuswahlSuchen_erw.SelectedIndex == cbAuswahlSuchen_erw.FindStringExact("ISBN"))
+            {
+                lvErgebnis_erw.Items.AddRange(InventarSuche.ISBNSuchen().ToArray());
+            }
+            lvErgebnis_erw.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            lvErgebnis_erw.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+        private void labelsLoeschen()
+        {
+            txbISBN_erw.Text = "";
+            lblAusgeliehen_Ausgabe_erw.Text = "";
+            txbAutor_erw.Text = "";
+            txbGenre_erw.Text = "";
+            lblReserviert_Ausgabe_erw.Text = "";
+            txbTitel_erw.Text = "";
+            txbVerlag_erw.Text = "";
+        }
+
+        private void lvErgebnis_erw_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvErgebnis_erw.SelectedIndices.Count > 0)
+            {
+                ListViewItem item = lvErgebnis_erw.SelectedItems[0];
+
+                {
+                    for (int i = 0; i < lvErgebnis_erw.Items.Count; i++)
+                    {
+                        if (lvErgebnis_erw.Items[i].Selected)
+                        {
+                            txbISBN_erw.Text = lvErgebnis_erw.Items[i].SubItems[0].Text;
+                            txbTitel_erw.Text = lvErgebnis_erw.Items[i].SubItems[1].Text;
+                            txbAutor_erw.Text = lvErgebnis_erw.Items[i].SubItems[2].Text;
+                            txbGenre_erw.Text = lvErgebnis_erw.Items[i].SubItems[3].Text;
+                            txbVerlag_erw.Text = lvErgebnis_erw.Items[i].SubItems[4].Text;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        private void btnSuchen_erw_Click(object sender, EventArgs e)
+        {
+            labelsLoeschen();
+            eingabeSuche = txbSuche_erw.Text;
+            SucheAnzeigen();
+        }
+
+        private void txbSuche_erw_KeyDown(object sender, KeyEventArgs e)
+        {
+            eingabeSuche = txbSuche_erw.Text;
+            if (e.KeyCode == Keys.Enter)
+            {
+                SucheAnzeigen();
+            }
+            labelsLoeschen();
+        }
+
     }
 }
