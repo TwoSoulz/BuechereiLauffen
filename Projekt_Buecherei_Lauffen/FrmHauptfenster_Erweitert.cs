@@ -45,6 +45,17 @@ namespace Projekt_Buecherei_Lauffen
             set { eingabeSuche = value; }
         }
 
+        private static string tmpAutor = "";
+        public static string TmpAutor
+        {
+            get { return tmpAutor; }
+            set { tmpAutor = value; }
+        }
+        string tmpISBN;
+        string tmpVerlag;
+        string tmpTitel;
+        string tmpGenre;
+
         private void btnAendern_erw_Click(object sender, EventArgs e)
         {
             Textbox_toggle(true);
@@ -176,15 +187,6 @@ namespace Projekt_Buecherei_Lauffen
 
         private void btnSpeichern_erw_Click(object sender, EventArgs e)
         {
-            string tmpAutor;
-            string tmpISBN;
-            string tmpVerlag;
-            string tmpTitel;
-            string tmpGenre;
-
-            int ID_Genre;
-            int ID_Verlag;
-            int ID_Autor;
 
             tmpAutor = txbAutor_erw.Text;
             tmpGenre = txbGenre_erw.Text;
@@ -203,12 +205,12 @@ namespace Projekt_Buecherei_Lauffen
             result.Read();
             autorsql = result.GetInt32(0);
             con.Close();
-            ID_Autor = autorsql;
+
 
             con.Open();
             MySqlCommand updatebuch = con.CreateCommand();
             updatebuch.CommandType = CommandType.Text;
-            updatebuch.CommandText = "UPDATE buch Set buecher_Autor_ID=" + ID_Autor + " Where buch.ISBN = " + tmpISBN + ";";
+            //updatebuch.CommandText = "UPDATE buch Set buecher_Autor_ID=" + ID_Autor + " Where buch.ISBN = " + tmpISBN + ";";
 
             updatebuch.ExecuteNonQuery();
             con.Close();

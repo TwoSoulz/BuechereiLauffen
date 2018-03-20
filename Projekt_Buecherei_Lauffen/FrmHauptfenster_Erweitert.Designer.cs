@@ -345,6 +345,7 @@
             this.columnHeader_Autor,
             this.columnHeader_Genre,
             this.columnHeader_Verlag});
+            this.lvErgebnis_erw.FullRowSelect = true;
             this.lvErgebnis_erw.Location = new System.Drawing.Point(11, 86);
             this.lvErgebnis_erw.Name = "lvErgebnis_erw";
             this.lvErgebnis_erw.Size = new System.Drawing.Size(861, 358);

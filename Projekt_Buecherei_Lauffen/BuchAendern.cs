@@ -20,21 +20,23 @@ namespace Projekt_Buecherei_Lauffen
 
         int ID_Genre;
         int ID_Verlag;
-        int ID_Autor;
 
-        //public static string AutorAendern()
-        //{
-        //    con.Open();
-        //    MySqlCommand search = con.CreateCommand();
-        //    search.CommandType = CommandType.Text;
-        //    search.CommandText = "SELECT buecher_autor.ID FROM buecherei.buecher_autor Where buecher_autor.Autor like " + "'%" + tmpAutor + "%';";
-        //    search.ExecuteNonQuery();
-        //    MySqlDataReader result = search.ExecuteReader();
-        //    result.Read();
-        //    autorsql = result.GetInt32(0);
-        //    con.Close();
-        //    ID_Autor = autorsql;
-        //}
+        public static int AutorAendern()
+        {
+            int ID_Autor;
+
+            con.Open();
+            MySqlCommand search = con.CreateCommand();
+            search.CommandType = CommandType.Text;
+            search.CommandText = "SELECT buecher_autor.ID FROM buecherei.buecher_autor Where buecher_autor.Autor like " + "'%" + FrmHauptfenster_Erweitert.TmpAutor + "%';";
+            search.ExecuteNonQuery();
+            MySqlDataReader result = search.ExecuteReader();
+            result.Read();
+            ID_Autor = result.GetInt32(0);
+            con.Close();
+
+            return ID_Autor;
+        }
 
     }
 }
