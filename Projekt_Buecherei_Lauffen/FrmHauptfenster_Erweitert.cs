@@ -174,5 +174,45 @@ namespace Projekt_Buecherei_Lauffen
             labelsLoeschen();
         }
 
+        private void btnSpeichern_erw_Click(object sender, EventArgs e)
+        {
+            string tmpAutor;
+            string tmpISBN;
+            string tmpVerlag;
+            string tmpTitel;
+            string tmpGenre;
+
+            int ID_Genre;
+            int ID_Verlag;
+            int ID_Autor;
+
+            tmpAutor = txbAutor_erw.Text;
+            tmpGenre = txbGenre_erw.Text;
+            tmpISBN = txbISBN_erw.Text;
+            tmpTitel = txbTitel_erw.Text;
+            tmpVerlag = txbVerlag_erw.Text;
+
+            int autorsql;
+
+            con.Open();
+            MySqlCommand search = con.CreateCommand();
+            search.CommandType = CommandType.Text;
+            search.CommandText = "SELECT buecher_autor.ID FROM buecherei.buecher_autor Where buecher_autor.Autor like " + "'%" + tmpAutor + "%';";
+            search.ExecuteNonQuery();
+            MySqlDataReader result = search.ExecuteReader();
+            result.Read();
+            autorsql = result.GetInt32(0);
+            con.Close();
+            ID_Autor = autorsql;
+
+            con.Open();
+            MySqlCommand updatebuch = con.CreateCommand();
+            updatebuch.CommandType = CommandType.Text;
+            updatebuch.CommandText = "UPDATE buch Set buecher_Autor_ID=" + ID_Autor + " Where buch.ISBN = " + tmpISBN + ";";
+
+            updatebuch.ExecuteNonQuery();
+            con.Close();
+
+        }
     }
 }

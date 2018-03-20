@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuchAendern.cs" />
     <Compile Include="FrmHauptfenster.cs">
       <SubType>Form</SubType>
     </Compile>
