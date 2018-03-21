@@ -35,6 +35,7 @@ namespace Projekt_Buecherei_Lauffen
             allesanzeigen_erw();
 
             Textbox_toggle(false);
+            txbISBN_erw.Enabled = false;
         }
 
         //Get und Set Methoden 
@@ -199,6 +200,7 @@ namespace Projekt_Buecherei_Lauffen
         {
             Textbox_clear();
             Textbox_toggle(true);
+            txbISBN_erw.Enabled = true;
             lvErgebnis_erw.Enabled = false;
             btnAbbrechen.Enabled = true;
             btnHinzufgn.Enabled = true;
@@ -223,6 +225,7 @@ namespace Projekt_Buecherei_Lauffen
 
             SucheAnzeigen();
             AlleButtonsaufStart();
+            txbISBN_erw.Enabled = false;
         }
 
         //Mit diesem Button werden sowohl die Eingaben beim Neuerstellen eines Buchs als auch beim Ändern gelöscht und die Textboxen wieder gesperrt
@@ -230,6 +233,7 @@ namespace Projekt_Buecherei_Lauffen
         {
             labelsLoeschen();
             AlleButtonsaufStart();
+            txbISBN_erw.Enabled = false;
         }
 
         //Hier werden Bücher reserviert //Es ist nur eine Reservierung pro Buch möglich
@@ -284,8 +288,6 @@ namespace Projekt_Buecherei_Lauffen
             txbTitel_erw.Clear();
             txbVerlag_erw.Clear();
             txbISBN_erw.Clear();
-
-            txbISBN_erw.ReadOnly = false;
         }
 
         //Wird ausgeführt, wenn der User sich ausgeloggt hat //Schließt das Fenster
