@@ -225,17 +225,20 @@ namespace Projekt_Buecherei_Lauffen
             AlleButtonsaufStart();
         }
 
+        //Mit diesem Button werden sowohl die Eingaben beim Neuerstellen eines Buchs als auch beim Ändern gelöscht und die Textboxen wieder gesperrt
         private void btnAbbrechen_Click(object sender, EventArgs e)
         {
             labelsLoeschen();
             AlleButtonsaufStart();
         }
 
+        //Hier werden Bücher reserviert //Es ist nur eine Reservierung pro Buch möglich
         private void btnReservieren_erw_Click(object sender, EventArgs e)
         {
             FrmReservieren window = new FrmReservieren(hauptfenster);
             window.ShowDialog();
         }
+
 
         //Hier werden alle Buttons auf den Startwert gesetzt //Das heißt ob sie Enabled oder Disabled sind
         private void AlleButtonsaufStart()
@@ -252,6 +255,8 @@ namespace Projekt_Buecherei_Lauffen
             btnAbbrechen.Enabled = false;
         }
 
+        //Alle Key-Down Events
+        //Siehe BUtton suchen
         private void txbSuche_erw_KeyDown_1(object sender, KeyEventArgs e)
         {
             eingabeSuche = txbSuche_erw.Text;
@@ -262,16 +267,7 @@ namespace Projekt_Buecherei_Lauffen
             labelsLoeschen();
         }
 
-        private void txbSuche_erw_KeyDown(object sender, KeyEventArgs e)
-        {
-            eingabeSuche = txbSuche_erw.Text;
-            if (e.KeyCode == Keys.Enter)
-            {
-                SucheAnzeigen();
-            }
-            labelsLoeschen();
-        }
-
+        //Alle Textboxen enablen oder Disablen
         private void Textbox_toggle(bool b)
         {
             txbAutor_erw.Enabled = b;
@@ -280,6 +276,7 @@ namespace Projekt_Buecherei_Lauffen
             txbVerlag_erw.Enabled = b;
         }
 
+        //Denn Ihalt aller Textboxen löschen
         private void Textbox_clear()
         {
             txbAutor_erw.Clear();
@@ -290,6 +287,8 @@ namespace Projekt_Buecherei_Lauffen
 
             txbISBN_erw.ReadOnly = false;
         }
+
+        //Wird ausgeführt, wenn der User sich ausgeloggt hat //Schließt das Fenster
         private void FrmHauptfenster_Erweitert_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!_isLogout)
@@ -297,6 +296,8 @@ namespace Projekt_Buecherei_Lauffen
                 Environment.Exit(0);
             }
         }
+
+        //Beim Start des Programms werden hiermit alle Einträge der Datenbank angezeigt
         private void allesanzeigen_erw()
         {
             lvErgebnis_erw.Items.AddRange(Grunddaten.getalleDaten().ToArray());
@@ -304,6 +305,7 @@ namespace Projekt_Buecherei_Lauffen
             lvErgebnis_erw.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
+        //Sobald in der Suche etwas eingegeben wurde und die Suche gestartet wurde, werden hiermit alle Ergebnisse angezeigt
         private void SucheAnzeigen()
         {
             lvErgebnis_erw.Items.Clear();
@@ -336,6 +338,7 @@ namespace Projekt_Buecherei_Lauffen
             lvErgebnis_erw.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
+        //Hier wird der Inhalt aller Labels und alle Textboxen gelöscht
         private void labelsLoeschen()
         {
             txbISBN_erw.Text = "";
@@ -347,6 +350,7 @@ namespace Projekt_Buecherei_Lauffen
             txbVerlag_erw.Text = "";
         }
 
+        //Sobald ein Item in der Listview selektiert wird, wird dieses mithilfe diser Methode ausgewählt und in den Textboxen angezeigt
         private void lvErgebnis_erw_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lvErgebnis_erw.SelectedIndices.Count > 0)
