@@ -264,12 +264,11 @@ namespace Projekt_Buecherei_Lauffen
             tmpISBN = txbISBN_erw.Text;
             tmpTitel = txbTitel_erw.Text;
             tmpVerlag = txbVerlag_erw.Text;
-
             TitelEingabe = txbTitel_erw.Text;
 
             autorAendernID = BuchAendern.AutorAendern();
             genreAendernID = BuchAendern.GenreAendern();
-            //verlagAendernID = BuchAendern.VerlagAendern();
+            verlagAendernID = BuchAendern.VerlagAendern();
 
             if (autorAendernID == 0)
             {
@@ -326,7 +325,8 @@ namespace Projekt_Buecherei_Lauffen
             tmpTitel = txbTitel_erw.Text;
             tmpVerlag = txbVerlag_erw.Text;
 
-
+            BuchAendern.BuchHinzufuegen();
+            SucheAnzeigen();
         }
     }
 }
