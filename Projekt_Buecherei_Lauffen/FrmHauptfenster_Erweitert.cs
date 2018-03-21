@@ -142,12 +142,7 @@ namespace Projekt_Buecherei_Lauffen
         //Hiermit werden die Daten gespeichert, die Eingetragen wurden nachdem der Button Ändern gedruckt wurde
         private void btnSpeichern_erw_Click(object sender, EventArgs e)
         {
-            tmpAutor = txbAutor_erw.Text;
-            tmpGenre = txbGenre_erw.Text;
-            tmpISBN = txbISBN_erw.Text;
-            tmpTitel = txbTitel_erw.Text;
-            tmpVerlag = txbVerlag_erw.Text;
-            TitelEingabe = txbTitel_erw.Text;
+            TmpVarsSetzen();
 
             autorAendernID = BuchAendern.AutorAendern();
             genreAendernID = BuchAendern.GenreAendern();
@@ -193,11 +188,14 @@ namespace Projekt_Buecherei_Lauffen
                 MessageBox.Show("Gute Entscheidung mein junger Padawan!");
                 SucheAnzeigen();
             }
+            Textbox_clear();
         }
 
         //Dieser Button aktiviert die Textboxen und den Button für das Hinzufügen eines neuen Objektes
         private void btnNeu_erw_Click(object sender, EventArgs e)
         {
+            TmpVarsSetzen();
+
             Textbox_clear();
             Textbox_toggle(true);
             txbISBN_erw.Enabled = true;
@@ -215,11 +213,7 @@ namespace Projekt_Buecherei_Lauffen
         {
             lvErgebnis_erw.Enabled = false;
 
-            tmpAutor = txbAutor_erw.Text;
-            tmpGenre = txbGenre_erw.Text;
-            tmpISBN = txbISBN_erw.Text;
-            tmpTitel = txbTitel_erw.Text;
-            tmpVerlag = txbVerlag_erw.Text;
+            TmpVarsSetzen();
 
             BuchAendern.BuchHinzufuegen();
 
@@ -288,6 +282,16 @@ namespace Projekt_Buecherei_Lauffen
             txbTitel_erw.Clear();
             txbVerlag_erw.Clear();
             txbISBN_erw.Clear();
+        }
+
+        private void TmpVarsSetzen ()
+        {
+            tmpAutor = txbAutor_erw.Text;
+            tmpGenre = txbGenre_erw.Text;
+            tmpISBN = txbISBN_erw.Text;
+            tmpTitel = txbTitel_erw.Text;
+            tmpVerlag = txbVerlag_erw.Text;
+            TitelEingabe = txbTitel_erw.Text;
         }
 
         //Wird ausgeführt, wenn der User sich ausgeloggt hat //Schließt das Fenster
