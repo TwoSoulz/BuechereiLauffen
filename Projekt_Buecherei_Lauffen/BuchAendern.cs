@@ -21,6 +21,8 @@ namespace Projekt_Buecherei_Lauffen
         //int ID_Genre;
         //int ID_Verlag;
 
+        
+
         public static int AutorAendern()
         {                           
             con.Open();
@@ -146,19 +148,133 @@ namespace Projekt_Buecherei_Lauffen
             con.Close();
         }
 
+        public static int ISBNPruefen()
+        {
+            con.Open();
+            MySqlCommand search = con.CreateCommand();
+            search.CommandType = CommandType.Text;
+            search.CommandText = "SELECT buch.ISBN FROM buecherei.buch Where buch.ISBN like " + "'%" + FrmHauptfenster_Erweitert.TmpISBN + "%';";
+            search.ExecuteNonQuery();
+            MySqlDataReader reader = search.ExecuteReader();
+
+            reader.Read();
+
+            if (reader.HasRows)
+            {
+                reader.Close();
+                con.Close();
+                return 1;
+            }
+
+            reader.Close();
+            con.Close();
+            return 0;
+        }
+
         public static void BuchHinzufuegen()
         {
             {
-                con.Open();
-                MySqlCommand verlagerstellen = con.CreateCommand();
-                verlagerstellen.CommandType = CommandType.Text;
-                verlagerstellen.CommandText = " INSERT INTO `buch` (`ISBN`,`Titel`,`buecher_autor_ID`,`buecher_genre_ID`,`verlage_ID`)" +
-                " VALUES(" + "'" + FrmHauptfenster_Erweitert.TmpISBN + "', " + "'" + FrmHauptfenster_Erweitert.TmpTitel + "', " + "'" + FrmHauptfenster_Erweitert.TmpAutor + "', " +
-                "'" + FrmHauptfenster_Erweitert.TmpGenre + "', " + "'" + FrmHauptfenster_Erweitert.TmpVerlag + "');";
-                verlagerstellen.ExecuteNonQuery();
-                con.Close();
-            }
+                //lokale Variablen
+                int localautor = 0;
+                int localverlag = 0;
+                int localgenre = 0;
 
+
+                if (ISBNPruefen() == 1)
+                {
+                    DialogResult dialogResult = MessageBox.Show("ISBN ist schon vergeben.", "Fehler beim erstellen", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    if (AutorAendern() == 0)
+                    {
+                        if (VerlagAendern() == 0)
+                        {
+                            if (GenreAendern() == 0)
+                            {
+                                AutorErstellen();
+                                VerlagErstellen();
+                                GenreErstellen();
+                                localautor = AutorAendern();
+                                localverlag = VerlagAendern();
+                                localgenre = GenreAendern();
+                            }
+                            else
+                            {
+                                AutorErstellen();
+                                VerlagErstellen();
+                                localautor = AutorAendern();
+                                localverlag = VerlagAendern();
+                                localgenre = GenreAendern();
+                            }
+                        }
+                        else
+                        {
+                            if (GenreAendern() == 0)
+                            {
+                                AutorErstellen();
+                                GenreErstellen();
+                                localautor = AutorAendern();
+                                localverlag = VerlagAendern();
+                                localgenre = GenreAendern();
+                            }
+                            else
+                            {
+                                AutorErstellen();
+                                VerlagErstellen();
+                                localautor = AutorAendern();
+                                localverlag = VerlagAendern();
+                                localgenre = GenreAendern();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (VerlagAendern() == 0)
+                        {
+                            if (GenreAendern() == 0)
+                            {
+                                VerlagErstellen();
+                                GenreErstellen();
+                                localautor = AutorAendern();
+                                localverlag = VerlagAendern();
+                                localgenre = GenreAendern();
+                            }
+                            else
+                            {
+                                VerlagErstellen();
+                                localautor = AutorAendern();
+                                localverlag = VerlagAendern();
+                                localgenre = GenreAendern();
+                            }
+                        }
+                        else
+                        {
+                            if (GenreAendern() == 0)
+                            {
+                                GenreErstellen();
+                                localautor = AutorAendern();
+                                localverlag = VerlagAendern();
+                                localgenre = GenreAendern();
+                            }
+                            else
+                            {
+                                localautor = AutorAendern();
+                                localverlag = VerlagAendern();
+                                localgenre = GenreAendern();
+                            }
+                        }
+                    }
+                    con.Open();
+                    MySqlCommand verlagerstellen = con.CreateCommand();
+                    verlagerstellen.CommandType = CommandType.Text;
+                    verlagerstellen.CommandText = " INSERT INTO `buch` (`ISBN`,`Titel`,`buecher_autor_ID`,`buecher_genre_ID`,`verlage_ID`)" +
+                    " VALUES(" + "'" + FrmHauptfenster_Erweitert.TmpISBN + "', " + "'" + FrmHauptfenster_Erweitert.TmpTitel + "', " + "'" + localautor + "', " +
+                    "'" + localgenre + "', " + "'" + localverlag + "');";
+                    verlagerstellen.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
         }
     }
 }

@@ -38,7 +38,6 @@ namespace Projekt_Buecherei_Lauffen
         }
 
         //Get und Set Methoden 
-
         private static string eingabeSuche = "";
         public static string EingabeSuche
         {
@@ -109,11 +108,169 @@ namespace Projekt_Buecherei_Lauffen
             set { titelEingabe = value; }
         }
 
+        //Alle Button Aktionen
+        //Hier wird die Suche durch den Klick auf den Button aufgerufen
+        private void btnSuchen_erw_Click(object sender, EventArgs e)
+        {
+            labelsLoeschen();
+            eingabeSuche = txbSuche_erw.Text;
+            SucheAnzeigen();
+        }
+
+        //Hiermit wird das Erweiterte Fenster geschlossen //Der angemeldete User hat sich ausgeloggt
+        private void btnAusloggen_erw_Click(object sender, EventArgs e)
+        {
+
+            _isLogout = true;
+            this.Close();
+            hauptfenster.Show();
+
+        }
+
+        //Hiermit können vorhandene Bücher geändert werden
         private void btnAendern_erw_Click(object sender, EventArgs e)
         {
             Textbox_toggle(true);
+            lvErgebnis_erw.Enabled = false;
+            btnAbbrechen.Enabled = true;
+            btnSpeichern_erw.Enabled = true;
+            btnLoeschen_erw.Enabled = false;
+            btnNeu_erw.Enabled = false;
         }
 
+        //Hiermit werden die Daten gespeichert, die Eingetragen wurden nachdem der Button Ändern gedruckt wurde
+        private void btnSpeichern_erw_Click(object sender, EventArgs e)
+        {
+            tmpAutor = txbAutor_erw.Text;
+            tmpGenre = txbGenre_erw.Text;
+            tmpISBN = txbISBN_erw.Text;
+            tmpTitel = txbTitel_erw.Text;
+            tmpVerlag = txbVerlag_erw.Text;
+            TitelEingabe = txbTitel_erw.Text;
+
+            autorAendernID = BuchAendern.AutorAendern();
+            genreAendernID = BuchAendern.GenreAendern();
+            verlagAendernID = BuchAendern.VerlagAendern();
+
+            if (autorAendernID == 0)
+            {
+                BuchAendern.AutorErstellen();
+                autorAendernID = BuchAendern.AutorAendern();
+            }
+
+            if (genreAendernID == 0)
+            {
+                BuchAendern.GenreErstellen();
+                genreAendernID = BuchAendern.GenreAendern();
+            }
+
+            if (verlagAendernID == 0)
+            {
+                BuchAendern.VerlagErstellen();
+                verlagAendernID = BuchAendern.VerlagAendern();
+            }
+
+            BuchAendern.UpdateBuecher();
+            SucheAnzeigen();
+
+            AlleButtonsaufStart();
+        }
+
+        //Hier wird ein vorhandener Eintrag komplett aus der Datenbank gelöscht
+        private void btnLoeschen_erw_Click(object sender, EventArgs e)
+        {
+            tmpISBN = txbISBN_erw.Text;
+
+            DialogResult dialogResult = MessageBox.Show("Sind Sie sich sicher, dass sie das Buch löschen möchten? Dieser Vorgang kann nicht rückgängig gemacht werden!", "Buch löschen", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                BuchAendern.BuchLoeschen();
+                SucheAnzeigen();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                MessageBox.Show("Gute Entscheidung mein junger Padawan!");
+                SucheAnzeigen();
+            }
+        }
+
+        //Dieser Button aktiviert die Textboxen und den Button für das Hinzufügen eines neuen Objektes
+        private void btnNeu_erw_Click(object sender, EventArgs e)
+        {
+            Textbox_clear();
+            Textbox_toggle(true);
+            lvErgebnis_erw.Enabled = false;
+            btnAbbrechen.Enabled = true;
+            btnHinzufgn.Enabled = true;
+            btnAendern_erw.Enabled = false;
+            btnLoeschen_erw.Enabled = false;
+            btnSpeichern_erw.Enabled = false;
+            btnNeu_erw.Enabled = false;
+        }
+
+        //Hier werden die Werte, die in den Textboxen stehen in die Datenbank als neuer Eintrag geschrieben
+        private void btnHinzufgn_Click(object sender, EventArgs e)
+        {
+            lvErgebnis_erw.Enabled = false;
+
+            tmpAutor = txbAutor_erw.Text;
+            tmpGenre = txbGenre_erw.Text;
+            tmpISBN = txbISBN_erw.Text;
+            tmpTitel = txbTitel_erw.Text;
+            tmpVerlag = txbVerlag_erw.Text;
+
+            BuchAendern.BuchHinzufuegen();
+
+            SucheAnzeigen();
+            AlleButtonsaufStart();
+        }
+
+        private void btnAbbrechen_Click(object sender, EventArgs e)
+        {
+            labelsLoeschen();
+            AlleButtonsaufStart();
+        }
+
+        private void btnReservieren_erw_Click(object sender, EventArgs e)
+        {
+            FrmReservieren window = new FrmReservieren(hauptfenster);
+            window.ShowDialog();
+        }
+
+        //Hier werden alle Buttons auf den Startwert gesetzt //Das heißt ob sie Enabled oder Disabled sind
+        private void AlleButtonsaufStart()
+        {
+            lvErgebnis_erw.Enabled = true;
+            Textbox_clear();
+            Textbox_toggle(false);
+            btnAendern_erw.Enabled = true;
+            btnLoeschen_erw.Enabled = true;
+            btnNeu_erw.Enabled = true;
+
+            btnSpeichern_erw.Enabled = false;
+            btnHinzufgn.Enabled = false;
+            btnAbbrechen.Enabled = false;
+        }
+
+        private void txbSuche_erw_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            eingabeSuche = txbSuche_erw.Text;
+            if (e.KeyCode == Keys.Enter)
+            {
+                SucheAnzeigen();
+            }
+            labelsLoeschen();
+        }
+
+        private void txbSuche_erw_KeyDown(object sender, KeyEventArgs e)
+        {
+            eingabeSuche = txbSuche_erw.Text;
+            if (e.KeyCode == Keys.Enter)
+            {
+                SucheAnzeigen();
+            }
+            labelsLoeschen();
+        }
 
         private void Textbox_toggle(bool b)
         {
@@ -133,30 +290,13 @@ namespace Projekt_Buecherei_Lauffen
 
             txbISBN_erw.ReadOnly = false;
         }
-
-        private void btnAusloggen_erw_Click(object sender, EventArgs e)
-        {
-            
-            _isLogout = true;
-            this.Close();
-            hauptfenster.Show();
-           
-        }
-
         private void FrmHauptfenster_Erweitert_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(!_isLogout)
+            if (!_isLogout)
             {
                 Environment.Exit(0);
             }
         }
-
-        private void btnReservieren_erw_Click(object sender, EventArgs e)
-        {
-            FrmReservieren window = new FrmReservieren(hauptfenster);
-            window.ShowDialog();
-        }
-
         private void allesanzeigen_erw()
         {
             lvErgebnis_erw.Items.AddRange(Grunddaten.getalleDaten().ToArray());
@@ -228,105 +368,6 @@ namespace Projekt_Buecherei_Lauffen
 
                 }
             }
-        }
-
-        private void btnSuchen_erw_Click(object sender, EventArgs e)
-        {
-            labelsLoeschen();
-            eingabeSuche = txbSuche_erw.Text;
-            SucheAnzeigen();
-        }
-
-        private void txbSuche_erw_KeyDown_1(object sender, KeyEventArgs e)
-        {
-            eingabeSuche = txbSuche_erw.Text;
-            if (e.KeyCode == Keys.Enter)
-            {
-                SucheAnzeigen();
-            }
-            labelsLoeschen();
-        }
-
-        private void txbSuche_erw_KeyDown(object sender, KeyEventArgs e)
-        {
-            eingabeSuche = txbSuche_erw.Text;
-            if (e.KeyCode == Keys.Enter)
-            {
-                SucheAnzeigen();
-            }
-            labelsLoeschen();
-        }
-
-        private void btnSpeichern_erw_Click(object sender, EventArgs e)
-        {
-            tmpAutor = txbAutor_erw.Text;
-            tmpGenre = txbGenre_erw.Text;
-            tmpISBN = txbISBN_erw.Text;
-            tmpTitel = txbTitel_erw.Text;
-            tmpVerlag = txbVerlag_erw.Text;
-            TitelEingabe = txbTitel_erw.Text;
-
-            autorAendernID = BuchAendern.AutorAendern();
-            genreAendernID = BuchAendern.GenreAendern();
-            verlagAendernID = BuchAendern.VerlagAendern();
-
-            if (autorAendernID == 0)
-            {
-                BuchAendern.AutorErstellen();
-                autorAendernID = BuchAendern.AutorAendern();
-            }
-
-            if (genreAendernID == 0)
-            {
-                BuchAendern.GenreErstellen();
-                genreAendernID = BuchAendern.GenreAendern();
-            }
-
-            if (verlagAendernID == 0)
-            {
-                BuchAendern.VerlagErstellen();
-                verlagAendernID = BuchAendern.VerlagAendern();
-            }
-
-            BuchAendern.UpdateBuecher();
-            SucheAnzeigen();
-            Textbox_toggle(false);
-
-        }
-
-        private void btnLoeschen_erw_Click(object sender, EventArgs e)
-        {
-            tmpISBN = txbISBN_erw.Text;
-
-            DialogResult dialogResult = MessageBox.Show("Sind Sie sich sicher, dass sie das Buch löschen möchten? Dieser Vorgang kann nicht rückgängig gemacht werden!", "Buch löschen", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                BuchAendern.BuchLoeschen();
-                SucheAnzeigen();
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                MessageBox.Show("Gute Entscheidung mein junger Padawan!");
-                SucheAnzeigen();
-            }
-        }
-
-        private void btnNeu_erw_Click(object sender, EventArgs e)
-        {
-            Textbox_clear();
-            Textbox_toggle(true);
-        }
-
-        private void btnHinzufgn_Click(object sender, EventArgs e)
-        {
-            tmpAutor = txbAutor_erw.Text;
-            tmpGenre = txbGenre_erw.Text;
-            tmpISBN = txbISBN_erw.Text;
-            tmpTitel = txbTitel_erw.Text;
-            tmpVerlag = txbVerlag_erw.Text;
-
-            BuchAendern.BuchHinzufuegen();
-            SucheAnzeigen();
         }
     }
 }
