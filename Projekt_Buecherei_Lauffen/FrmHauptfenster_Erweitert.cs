@@ -37,8 +37,9 @@ namespace Projekt_Buecherei_Lauffen
             Textbox_toggle(false);
         }
 
-        private static string eingabeSuche = "";
+        //Get und Set Methoden 
 
+        private static string eingabeSuche = "";
         public static string EingabeSuche
         {
             get { return eingabeSuche; }
@@ -51,10 +52,62 @@ namespace Projekt_Buecherei_Lauffen
             get { return tmpAutor; }
             set { tmpAutor = value; }
         }
-        string tmpISBN;
-        string tmpVerlag;
-        string tmpTitel;
-        string tmpGenre;
+
+        private static string tmpISBN = "";
+        public static string TmpISBN
+        {
+            get { return tmpISBN; }
+            set { tmpISBN = value; }
+        }
+
+        private static string tmpVerlag = "";
+        public static string TmpVerlag
+        {
+            get { return tmpVerlag; }
+            set { tmpVerlag = value; }
+        }
+
+        private static string tmpTitel = "";
+        public static string TmpTitel
+        {
+            get { return tmpTitel; }
+            set { tmpTitel = value; }
+        }
+
+        private static string tmpGenre = "";
+        public static string TmpGenre
+        {
+            get { return tmpGenre; }
+            set { tmpGenre = value; }
+        }
+
+        private static int autorAendernID;
+        public static int AutorAendernID
+        {
+            get { return autorAendernID; }
+            set { autorAendernID = value; }
+        }
+
+        private static int genreAendernID;
+        public static int GenreAendernID
+        {
+            get { return genreAendernID; }
+            set { genreAendernID = value; }
+        }
+
+        private static int verlagAendernID;
+        public static int VerlagAendernID
+        {
+            get { return verlagAendernID; }
+            set { verlagAendernID = value; }
+        }
+
+        private static string titelEingabe;
+        public static string TitelEingabe
+        {
+            get { return titelEingabe; }
+            set { titelEingabe = value; }
+        }
 
         private void btnAendern_erw_Click(object sender, EventArgs e)
         {
@@ -66,10 +119,19 @@ namespace Projekt_Buecherei_Lauffen
         {
             txbAutor_erw.Enabled = b;
             txbGenre_erw.Enabled = b;
-            txbISBN_erw.Enabled = b;
-            txbJahr_erw.Enabled = b;
             txbTitel_erw.Enabled = b;
             txbVerlag_erw.Enabled = b;
+        }
+
+        private void Textbox_clear()
+        {
+            txbAutor_erw.Clear();
+            txbGenre_erw.Clear();
+            txbTitel_erw.Clear();
+            txbVerlag_erw.Clear();
+            txbISBN_erw.Clear();
+
+            txbISBN_erw.ReadOnly = false;
         }
 
         private void btnAusloggen_erw_Click(object sender, EventArgs e)
@@ -175,6 +237,16 @@ namespace Projekt_Buecherei_Lauffen
             SucheAnzeigen();
         }
 
+        private void txbSuche_erw_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            eingabeSuche = txbSuche_erw.Text;
+            if (e.KeyCode == Keys.Enter)
+            {
+                SucheAnzeigen();
+            }
+            labelsLoeschen();
+        }
+
         private void txbSuche_erw_KeyDown(object sender, KeyEventArgs e)
         {
             eingabeSuche = txbSuche_erw.Text;
@@ -187,33 +259,73 @@ namespace Projekt_Buecherei_Lauffen
 
         private void btnSpeichern_erw_Click(object sender, EventArgs e)
         {
-
             tmpAutor = txbAutor_erw.Text;
             tmpGenre = txbGenre_erw.Text;
             tmpISBN = txbISBN_erw.Text;
             tmpTitel = txbTitel_erw.Text;
             tmpVerlag = txbVerlag_erw.Text;
 
-            int autorsql;
+            TitelEingabe = txbTitel_erw.Text;
 
-            con.Open();
-            MySqlCommand search = con.CreateCommand();
-            search.CommandType = CommandType.Text;
-            search.CommandText = "SELECT buecher_autor.ID FROM buecherei.buecher_autor Where buecher_autor.Autor like " + "'%" + tmpAutor + "%';";
-            search.ExecuteNonQuery();
-            MySqlDataReader result = search.ExecuteReader();
-            result.Read();
-            autorsql = result.GetInt32(0);
-            con.Close();
+            autorAendernID = BuchAendern.AutorAendern();
+            genreAendernID = BuchAendern.GenreAendern();
+            //verlagAendernID = BuchAendern.VerlagAendern();
 
+            if (autorAendernID == 0)
+            {
+                BuchAendern.AutorErstellen();
+                autorAendernID = BuchAendern.AutorAendern();
+            }
 
-            con.Open();
-            MySqlCommand updatebuch = con.CreateCommand();
-            updatebuch.CommandType = CommandType.Text;
-            //updatebuch.CommandText = "UPDATE buch Set buecher_Autor_ID=" + ID_Autor + " Where buch.ISBN = " + tmpISBN + ";";
+            if (genreAendernID == 0)
+            {
+                BuchAendern.GenreErstellen();
+                genreAendernID = BuchAendern.GenreAendern();
+            }
 
-            updatebuch.ExecuteNonQuery();
-            con.Close();
+            if (verlagAendernID == 0)
+            {
+                BuchAendern.VerlagErstellen();
+                verlagAendernID = BuchAendern.VerlagAendern();
+            }
+
+            BuchAendern.UpdateBuecher();
+            SucheAnzeigen();
+            Textbox_toggle(false);
+
+        }
+
+        private void btnLoeschen_erw_Click(object sender, EventArgs e)
+        {
+            tmpISBN = txbISBN_erw.Text;
+
+            DialogResult dialogResult = MessageBox.Show("Sind Sie sich sicher, dass sie das Buch löschen möchten? Dieser Vorgang kann nicht rückgängig gemacht werden!", "Buch löschen", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                BuchAendern.BuchLoeschen();
+                SucheAnzeigen();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                MessageBox.Show("Gute Entscheidung mein junger Padawan!");
+                SucheAnzeigen();
+            }
+        }
+
+        private void btnNeu_erw_Click(object sender, EventArgs e)
+        {
+            Textbox_clear();
+            Textbox_toggle(true);
+        }
+
+        private void btnHinzufgn_Click(object sender, EventArgs e)
+        {
+            tmpAutor = txbAutor_erw.Text;
+            tmpGenre = txbGenre_erw.Text;
+            tmpISBN = txbISBN_erw.Text;
+            tmpTitel = txbTitel_erw.Text;
+            tmpVerlag = txbVerlag_erw.Text;
+
 
         }
     }

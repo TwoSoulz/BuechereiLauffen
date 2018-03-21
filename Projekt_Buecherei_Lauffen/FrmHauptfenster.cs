@@ -109,7 +109,7 @@ namespace Projekt_Buecherei_Lauffen
                 i = 0;
             }
 
-            else
+            else 
             {
                 //Hauptfenster Erweitert wird angelegt
                 this.Hide();
