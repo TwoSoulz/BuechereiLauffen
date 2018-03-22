@@ -164,6 +164,14 @@ namespace Projekt_Buecherei_Lauffen
                 }
             }
             btnReservieren.Enabled = true;
+            //HIER SEEEEEEEEEEEEEEB!!!!
+            FrmReservieren.Hauptfenster_ISBN = lblAusgabe_ISBN.Text;
+            int rescheck = BuchReservieren.ReservierungChecken();
+            if (rescheck != 0)
+            {
+                lblReserviert_Ausgabe.Text = "Ja";
+            }
+            lblReserviert_Ausgabe.Text = "Nein";
         }
         
         private void SucheAnzeigen ()
@@ -216,6 +224,5 @@ namespace Projekt_Buecherei_Lauffen
             get { return aktiv; }
             set { aktiv = value; }
         }
-
     }
 }

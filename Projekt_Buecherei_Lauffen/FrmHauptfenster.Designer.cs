@@ -49,7 +49,6 @@
             this.lblAusgeliehen = new System.Windows.Forms.Label();
             this.lblAusgeliehen_Ausgabe = new System.Windows.Forms.Label();
             this.lblReserviert = new System.Windows.Forms.Label();
-            this.lblReserviert_Ausgabe = new System.Windows.Forms.Label();
             this.btnReservieren = new System.Windows.Forms.Button();
             this.cbAuswahlSuchen = new System.Windows.Forms.ComboBox();
             this.lvErgebnis = new System.Windows.Forms.ListView();
@@ -58,6 +57,7 @@
             this.columnHeader_Autor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader_Genre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader_Verlag = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblReserviert_Ausgabe = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblBenutzer
@@ -248,15 +248,6 @@
             this.lblReserviert.TabIndex = 23;
             this.lblReserviert.Text = "Reserviert:";
             // 
-            // lblReserviert_Ausgabe
-            // 
-            this.lblReserviert_Ausgabe.AutoSize = true;
-            this.lblReserviert_Ausgabe.Location = new System.Drawing.Point(782, 465);
-            this.lblReserviert_Ausgabe.Name = "lblReserviert_Ausgabe";
-            this.lblReserviert_Ausgabe.Size = new System.Drawing.Size(97, 13);
-            this.lblReserviert_Ausgabe.TabIndex = 24;
-            this.lblReserviert_Ausgabe.Text = "ReserviertAusgabe";
-            // 
             // btnReservieren
             // 
             this.btnReservieren.Location = new System.Drawing.Point(917, 460);
@@ -316,6 +307,15 @@
             // 
             this.columnHeader_Verlag.Text = "Verlag";
             this.columnHeader_Verlag.Width = 70;
+            // 
+            // lblReserviert_Ausgabe
+            // 
+            this.lblReserviert_Ausgabe.AutoSize = true;
+            this.lblReserviert_Ausgabe.Location = new System.Drawing.Point(782, 465);
+            this.lblReserviert_Ausgabe.Name = "lblReserviert_Ausgabe";
+            this.lblReserviert_Ausgabe.Size = new System.Drawing.Size(97, 13);
+            this.lblReserviert_Ausgabe.TabIndex = 24;
+            this.lblReserviert_Ausgabe.Text = "ReserviertAusgabe";
             // 
             // FrmHauptfenster
             // 
@@ -380,7 +380,6 @@
         private System.Windows.Forms.Label lblAusgeliehen;
         private System.Windows.Forms.Label lblAusgeliehen_Ausgabe;
         private System.Windows.Forms.Label lblReserviert;
-        private System.Windows.Forms.Label lblReserviert_Ausgabe;
         private System.Windows.Forms.Button btnReservieren;
         private System.Windows.Forms.ComboBox cbAuswahlSuchen;
         private System.Windows.Forms.ListView lvErgebnis;
@@ -389,6 +388,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader_Autor;
         private System.Windows.Forms.ColumnHeader columnHeader_Genre;
         private System.Windows.Forms.ColumnHeader columnHeader_Verlag;
+        private System.Windows.Forms.Label lblReserviert_Ausgabe;
     }
 }
 
