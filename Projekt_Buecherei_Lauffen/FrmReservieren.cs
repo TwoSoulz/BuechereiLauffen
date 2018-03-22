@@ -128,11 +128,11 @@ namespace Projekt_Buecherei_Lauffen
             set { manuelleid = value; }
         }
 
-        private static string hauptfenster_isbn;
-        public static string Hauptfenster_ISBN
+        private static string aktuelle_isbn;
+        public static string AktuelleISBN
         {
-            get { return hauptfenster_isbn; }
-            set { hauptfenster_isbn = value; }
+            get { return aktuelle_isbn; }
+            set { aktuelle_isbn = value; }
         }
 
         public static string aktivesBuch;

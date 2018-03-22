@@ -243,7 +243,7 @@ namespace Projekt_Buecherei_Lauffen
         {
             ausgabeBuch = txbTitel_erw.Text;
             FrmReservieren.AktivesBuch = ausgabeBuch;
-            FrmReservieren.Hauptfenster_ISBN = txbISBN_erw.Text;
+            FrmReservieren.AktuelleISBN = txbISBN_erw.Text;
             FrmReservieren window = new FrmReservieren(hauptfenster);
             window.ShowDialog();
         }
@@ -391,7 +391,7 @@ namespace Projekt_Buecherei_Lauffen
             }
             btnReservieren_erw.Enabled = true;
             btnReservierung_loeschen_erw.Enabled = true;
-            FrmReservieren.Hauptfenster_ISBN = lblReserviert_Ausgabe_erw.Text;
+            FrmReservieren.AktuelleISBN = lblReserviert_Ausgabe_erw.Text;
             int rescheck = BuchReservieren.ReservierungChecken();
             if (rescheck != 0)
             {
