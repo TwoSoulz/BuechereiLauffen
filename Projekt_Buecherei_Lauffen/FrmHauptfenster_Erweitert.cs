@@ -36,6 +36,8 @@ namespace Projekt_Buecherei_Lauffen
 
             Textbox_toggle(false);
             txbISBN_erw.Enabled = false;
+            btnReservieren_erw.Enabled = false;
+            btnReservierung_loeschen_erw.Enabled = false;
         }
 
         //Get und Set Methoden 
@@ -107,6 +109,12 @@ namespace Projekt_Buecherei_Lauffen
         {
             get { return titelEingabe; }
             set { titelEingabe = value; }
+        }
+        public static string ausgabeBuch = "";
+        public static string AusgabeBuch
+        {
+            get { return ausgabeBuch; }
+            set { ausgabeBuch = value; }
         }
 
         //Alle Button Aktionen
@@ -233,6 +241,9 @@ namespace Projekt_Buecherei_Lauffen
         //Hier werden Bücher reserviert //Es ist nur eine Reservierung pro Buch möglich
         private void btnReservieren_erw_Click(object sender, EventArgs e)
         {
+            ausgabeBuch = txbTitel_erw.Text;
+            FrmReservieren.AktivesBuch = ausgabeBuch;
+            FrmReservieren.Hauptfenster_ISBN = txbISBN_erw.Text;
             FrmReservieren window = new FrmReservieren(hauptfenster);
             window.ShowDialog();
         }
@@ -284,7 +295,7 @@ namespace Projekt_Buecherei_Lauffen
             txbISBN_erw.Clear();
         }
 
-        private void TmpVarsSetzen ()
+        private void TmpVarsSetzen()
         {
             tmpAutor = txbAutor_erw.Text;
             tmpGenre = txbGenre_erw.Text;
@@ -378,6 +389,8 @@ namespace Projekt_Buecherei_Lauffen
 
                 }
             }
+            btnReservieren_erw.Enabled = true;
+            btnReservierung_loeschen_erw.Enabled = true;
         }
     }
 }

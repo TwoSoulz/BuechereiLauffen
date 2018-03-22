@@ -34,6 +34,7 @@ namespace Projekt_Buecherei_Lauffen
             lvErgebnis.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             allesanzeigen();
             lvErgebnis.FullRowSelect = true;
+            btnReservieren.Enabled = false;
         }
 
         private static string eingabeSuche = "";
@@ -44,10 +45,20 @@ namespace Projekt_Buecherei_Lauffen
             set { eingabeSuche = value; }
         }
 
+        public static string ausgabeBuch = "";
+        public static string AusgabeBuch
+        {
+            get { return ausgabeBuch; }
+            set { ausgabeBuch = value; }
+        }
+
         private void btnReservieren_Click(object sender, EventArgs e)
         {
+            ausgabeBuch = lblTitel_Ausgabe.Text;
+            FrmReservieren.AktivesBuch = ausgabeBuch;
+            FrmReservieren.Hauptfenster_ISBN = lblAusgabe_ISBN.Text;
             FrmReservieren window = new FrmReservieren(this);
-            window.ShowDialog();
+            window.ShowDialog();           
         }
 
         private void btnAnmelden_Click(object sender, EventArgs e)
@@ -152,6 +163,7 @@ namespace Projekt_Buecherei_Lauffen
 
                 }
             }
+            btnReservieren.Enabled = true;
         }
         
         private void SucheAnzeigen ()

@@ -18,11 +18,6 @@ namespace Projekt_Buecherei_Lauffen
         //MySqlVerbindung
         private static MySqlConnection con = new MySqlConnection(@"Data Source=localhost;port=3306;Initial Catalog=buecherei;User Id=root;password=''");
 
-        //int ID_Genre;
-        //int ID_Verlag;
-
-        
-
         public static int AutorAendern()
         {                           
             con.Open();
