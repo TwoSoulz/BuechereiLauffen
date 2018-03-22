@@ -391,6 +391,18 @@ namespace Projekt_Buecherei_Lauffen
             }
             btnReservieren_erw.Enabled = true;
             btnReservierung_loeschen_erw.Enabled = true;
+            FrmReservieren.Hauptfenster_ISBN = lblReserviert_Ausgabe_erw.Text;
+            int rescheck = BuchReservieren.ReservierungChecken();
+            if (rescheck != 0)
+            {
+                lblReserviert_Ausgabe_erw.Text = "Ja";
+                btnReservieren_erw.Enabled = false;
+            }
+            else
+            {
+                lblReserviert_Ausgabe_erw.Text = "Nein";
+                btnReservierung_loeschen_erw.Enabled = false;
+            }
         }
     }
 }

@@ -164,14 +164,17 @@ namespace Projekt_Buecherei_Lauffen
                 }
             }
             btnReservieren.Enabled = true;
-            //HIER SEEEEEEEEEEEEEEB!!!!
             FrmReservieren.Hauptfenster_ISBN = lblAusgabe_ISBN.Text;
             int rescheck = BuchReservieren.ReservierungChecken();
             if (rescheck != 0)
             {
                 lblReserviert_Ausgabe.Text = "Ja";
+                btnReservieren.Enabled = false;
             }
-            lblReserviert_Ausgabe.Text = "Nein";
+            else
+            {
+                lblReserviert_Ausgabe.Text = "Nein";
+            }
         }
         
         private void SucheAnzeigen ()
