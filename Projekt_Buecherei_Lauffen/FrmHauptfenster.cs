@@ -52,12 +52,21 @@ namespace Projekt_Buecherei_Lauffen
             set { ausgabeBuch = value; }
         }
 
-        private void btnReservieren_Click(object sender, EventArgs e)
+        public static Label reserviertAusgabe;
+        public static Label ReserviertAusgabe
         {
+            get { return reserviertAusgabe; }
+            set { reserviertAusgabe = value; }
+        }
+
+        public void btnReservieren_Click(object sender, EventArgs e)
+        {
+            reserviertAusgabe = lblReserviert_Ausgabe;
             ausgabeBuch = lblTitel_Ausgabe.Text;
             FrmReservieren.AktivesBuch = ausgabeBuch;
-            FrmReservieren.Hauptfenster_ISBN = lblAusgabe_ISBN.Text;
+            FrmReservieren.AktuelleISBN = lblAusgabe_ISBN.Text;
             FrmReservieren window = new FrmReservieren(this);
+            btnReservieren.Enabled = false;
             window.ShowDialog();           
         }
 
@@ -164,7 +173,7 @@ namespace Projekt_Buecherei_Lauffen
                 }
             }
             btnReservieren.Enabled = true;
-            FrmReservieren.Hauptfenster_ISBN = lblAusgabe_ISBN.Text;
+            FrmReservieren.AktuelleISBN = lblAusgabe_ISBN.Text;
             int rescheck = BuchReservieren.ReservierungChecken();
             if (rescheck != 0)
             {

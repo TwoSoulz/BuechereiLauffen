@@ -117,6 +117,13 @@ namespace Projekt_Buecherei_Lauffen
             set { ausgabeBuch = value; }
         }
 
+        public static Label erw_reserviertAusgabe;
+        public static Label ErwReserviertAusgabe
+        {
+            get { return erw_reserviertAusgabe; }
+            set { erw_reserviertAusgabe = value; }
+        }
+
         //Alle Button Aktionen
         //Hier wird die Suche durch den Klick auf den Button aufgerufen
         private void btnSuchen_erw_Click(object sender, EventArgs e)
@@ -241,10 +248,12 @@ namespace Projekt_Buecherei_Lauffen
         //Hier werden Bücher reserviert //Es ist nur eine Reservierung pro Buch möglich
         private void btnReservieren_erw_Click(object sender, EventArgs e)
         {
+            erw_reserviertAusgabe = lblReserviert_Ausgabe_erw;
             ausgabeBuch = txbTitel_erw.Text;
             FrmReservieren.AktivesBuch = ausgabeBuch;
             FrmReservieren.AktuelleISBN = txbISBN_erw.Text;
             FrmReservieren window = new FrmReservieren(hauptfenster);
+            btnReservieren_erw.Enabled = false;
             window.ShowDialog();
         }
 
@@ -391,7 +400,23 @@ namespace Projekt_Buecherei_Lauffen
             }
             btnReservieren_erw.Enabled = true;
             btnReservierung_loeschen_erw.Enabled = true;
-            FrmReservieren.AktuelleISBN = lblReserviert_Ausgabe_erw.Text;
+            FrmReservieren.AktuelleISBN = txbISBN_erw.Text;
+            int rescheck = BuchReservieren.ReservierungChecken();
+            if (rescheck != 0)
+            {
+                lblReserviert_Ausgabe_erw.Text = "Ja";
+                btnReservieren_erw.Enabled = false;
+            }
+            else
+            {
+                lblReserviert_Ausgabe_erw.Text = "Nein";
+                btnReservierung_loeschen_erw.Enabled = false;
+            }
+        }
+
+        private void btnReservierung_loeschen_erw_Click(object sender, EventArgs e)
+        {
+            BuchReservieren.ReservierungLoeschen();
             int rescheck = BuchReservieren.ReservierungChecken();
             if (rescheck != 0)
             {

@@ -229,6 +229,7 @@
             this.btnReservierung_loeschen_erw.TabIndex = 58;
             this.btnReservierung_loeschen_erw.Text = "Reservierung löschen";
             this.btnReservierung_loeschen_erw.UseVisualStyleBackColor = true;
+            this.btnReservierung_loeschen_erw.Click += new System.EventHandler(this.btnReservierung_loeschen_erw_Click);
             // 
             // lblBenutzer_eingeloggt_erw
             // 
@@ -382,7 +383,7 @@
             // 
             this.btnAbbrechen.Enabled = false;
             this.btnAbbrechen.Location = new System.Drawing.Point(458, 569);
-            this.btnAbbrechen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAbbrechen.Margin = new System.Windows.Forms.Padding(2);
             this.btnAbbrechen.Name = "btnAbbrechen";
             this.btnAbbrechen.Size = new System.Drawing.Size(68, 23);
             this.btnAbbrechen.TabIndex = 72;

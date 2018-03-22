@@ -41,7 +41,8 @@ namespace Projekt_Buecherei_Lauffen
                 if (rescheck != 0)
                 {
                     MessageBox.Show("Dieses Buch ist bereits reserviert. Bitte wählen Sie ein anderes Buch aus.");
-                    //hier muss ein totaler clear rein
+                    FrmHauptfenster_Erweitert.erw_reserviertAusgabe.Text = "Nein";
+                    FrmHauptfenster.reserviertAusgabe.Text = "Nein";
                     this.Close();
                 }
 
@@ -49,8 +50,18 @@ namespace Projekt_Buecherei_Lauffen
                 {
                     manuelleid = BuchReservieren.ManuelleID();
                     BuchReservieren.ReservierungErstellen();
-                    MessageBox.Show("Ihr Buch "+ "'" + FrmHauptfenster.ausgabeBuch + "'"+ " wurde erfolgreich auf Ihren Namen reserviert.");
-                    this.Close();
+                    if (FrmHauptfenster.ausgabeBuch == "")
+                    {
+                        MessageBox.Show("Ihr Buch " + "'" + FrmHauptfenster_Erweitert.ausgabeBuch + "'" + " wurde erfolgreich auf Ihren Namen reserviert.");
+                        this.Close();
+                        FrmHauptfenster_Erweitert.erw_reserviertAusgabe.Text = "Ja";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ihr Buch " + "'" + FrmHauptfenster.ausgabeBuch + "'" + " wurde erfolgreich auf Ihren Namen reserviert.");
+                        this.Close();
+                        FrmHauptfenster.reserviertAusgabe.Text = "Ja";
+                    }
                 }
             }
 
@@ -58,13 +69,22 @@ namespace Projekt_Buecherei_Lauffen
             {
                 MessageBox.Show("Bitte die Postleitzahl überprüfen.");
             }
+
+            int rescheck2 = BuchReservieren.ReservierungChecken();
+            if (rescheck2 != 0)
+            {
+                FrmHauptfenster_Erweitert.ausgabeBuch = "Ja";
+            }
+            else
+            {
+                FrmHauptfenster_Erweitert.ausgabeBuch = "Nein";
+            }
         }
 
         private void btnAbbrechen_res_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private static string eingabeVorname = "";
         public static string EingabeVorname
         {

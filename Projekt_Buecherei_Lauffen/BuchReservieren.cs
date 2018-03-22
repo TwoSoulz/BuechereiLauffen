@@ -60,7 +60,7 @@ namespace Projekt_Buecherei_Lauffen
             con.Open();
             MySqlCommand check = con.CreateCommand();
             check.CommandType = CommandType.Text;
-            check.CommandText = "Select reservierungen.reservierungs_id From reservierungen Where Buch_ISBN like " + "'" + FrmReservieren.Hauptfenster_ISBN + "';";
+            check.CommandText = "Select reservierungen.reservierungs_id From reservierungen Where Buch_ISBN like " + "'" + FrmReservieren.AktuelleISBN + "';";
             check.ExecuteNonQuery();
             MySqlDataReader reader = check.ExecuteReader();
 
@@ -99,10 +99,20 @@ namespace Projekt_Buecherei_Lauffen
             MySqlCommand reserstellen = con.CreateCommand();
             reserstellen.CommandType = CommandType.Text;
             reserstellen.CommandText = "Insert Into `reservierungen` (`reservierungs_id`,`Leser_ID`, `Buch_ISBN`) Values (" + "'"+FrmReservieren.ManuelleID+"', " +"'" +FrmReservieren.LeserID +
-            "', "+"'"+ FrmReservieren.Hauptfenster_ISBN + "');";
+            "', "+"'"+ FrmReservieren.AktuelleISBN + "');";
             reserstellen.ExecuteNonQuery();
             con.Close();
         }
 
+        public static void ReservierungLoeschen()
+        {
+            con.Open();
+            MySqlCommand reserstellen = con.CreateCommand();
+            reserstellen.CommandType = CommandType.Text;
+            reserstellen.CommandText = "Delete FROM reservierungen Where buch_ISBN like " + FrmReservieren.AktuelleISBN + ";";
+            reserstellen.ExecuteNonQuery();
+            con.Close();
+        }
     }
 }
+
