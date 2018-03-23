@@ -124,6 +124,26 @@ namespace Projekt_Buecherei_Lauffen
             set { erw_reserviertAusgabe = value; }
         }
 
+        public static Label erw_ausgeliehenAusgabe;
+        public static Label ErwAusgeliehenAusgabe
+        {
+            get { return erw_ausgeliehenAusgabe; }
+            set { erw_ausgeliehenAusgabe = value; }
+        }
+
+        public static int reservierungsID;
+        public static int ErwReservierungsID
+        {
+            get { return reservierungsID; }
+            set { reservierungsID = value; }
+        }
+
+        public static Button btnReservierung_Loeschen_Ausleihe;
+        public static Button BtnReservierung_Loeschen_Ausleihe
+        {
+            get { return btnReservierung_Loeschen_Ausleihe; }
+            set { btnReservierung_Loeschen_Ausleihe = value; }
+        }
         //Alle Button Aktionen
         //Hier wird die Suche durch den Klick auf den Button aufgerufen
         private void btnSuchen_erw_Click(object sender, EventArgs e)
@@ -398,6 +418,8 @@ namespace Projekt_Buecherei_Lauffen
 
                 }
             }
+
+            //Reservieren Ja und Nein sowie Buttons Aktivieren/Deaktivieren
             btnReservieren_erw.Enabled = true;
             btnReservierung_loeschen_erw.Enabled = true;
             FrmReservieren.AktuelleISBN = txbISBN_erw.Text;
@@ -412,10 +434,30 @@ namespace Projekt_Buecherei_Lauffen
                 lblReserviert_Ausgabe_erw.Text = "Nein";
                 btnReservierung_loeschen_erw.Enabled = false;
             }
+
+            //Ausgeliehen Ja und Nein sowie Buttons aktivieren/deaktivieren
+            btnAusleihen_erw.Enabled = true;
+            btnZurueck_erw.Enabled = false;
+            FrmAusleihen.AktuelleISBN_Ausleihe = txbISBN_erw.Text;
+            int ausgeliehen_check = BuchAusleihen.AusgeliehenCheck();
+            if (ausgeliehen_check != 0)
+            {
+                lblAusgeliehen_Ausgabe_erw.Text = "Ja";
+                btnAusleihen_erw.Enabled = false;
+                btnZurueck_erw.Enabled = true;
+                btnReservierung_loeschen_erw.Enabled = false;
+            }
+            else
+            {
+                lblAusgeliehen_Ausgabe_erw.Text = "Nein";
+            }
         }
 
         private void btnReservierung_loeschen_erw_Click(object sender, EventArgs e)
         {
+            //Reservierung löschen beim zurückgeben
+            BuchAusleihen.ReservierungLöschen_Ausleihe();
+
             BuchReservieren.ReservierungLoeschen();
             int rescheck = BuchReservieren.ReservierungChecken();
             if (rescheck != 0)
@@ -428,6 +470,106 @@ namespace Projekt_Buecherei_Lauffen
                 lblReserviert_Ausgabe_erw.Text = "Nein";
                 btnReservierung_loeschen_erw.Enabled = false;
             }
+        }
+
+        private void btnAusleihen_erw_Click(object sender, EventArgs e)
+        {
+            btnReservierung_Loeschen_Ausleihe = btnReservierung_loeschen_erw;
+            FrmAusleihen.aktivesBuch = txbTitel_erw.Text;
+            erw_ausgeliehenAusgabe = lblAusgeliehen_Ausgabe_erw;
+            FrmAusleihen.AktuelleISBN_Ausleihe = txbISBN_erw.Text;
+            reservierungsID = BuchAusleihen.ReservierungIDRausfinden_Ausleihe();
+
+            if (reservierungsID != 0)
+            {
+                FrmAusleihen window = new FrmAusleihen(hauptfenster);
+                window.ShowDialog();
+            }
+
+            else
+            {
+                MessageBox.Show("Sie müssen das Buch zuerst reservieren!");
+            }
+
+        }
+
+        private void btnZurueck_erw_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Sind Sie sicher das Sie das Buch zurückgeben wollen?", "Buch löschen", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                //Reservierung löschen beim zurückgeben
+                BuchAusleihen.ReservierungLöschen_Ausleihe();
+                //Ausleihe löschen
+                BuchAusleihen.AusleiheLoeschen();
+                //Reservieren Ja und Nein sowie Buttons Aktivieren/Deaktivieren
+                btnReservieren_erw.Enabled = true;
+                btnReservierung_loeschen_erw.Enabled = true;
+                FrmReservieren.AktuelleISBN = txbISBN_erw.Text;
+                int rescheck = BuchAusleihen.ReservierungIDRausfinden_Ausleihe();
+                if (rescheck != 0)
+                {
+                    lblReserviert_Ausgabe_erw.Text = "Ja";
+                    btnReservieren_erw.Enabled = false;
+                }
+                else
+                {
+                    lblReserviert_Ausgabe_erw.Text = "Nein";
+                    btnReservierung_loeschen_erw.Enabled = false;
+                }
+
+                //Ausgeliehen Ja und Nein sowie Buttons aktivieren/deaktivieren
+                btnAusleihen_erw.Enabled = true;
+                btnZurueck_erw.Enabled = false;
+                int ausgeliehen_check = BuchAusleihen.AusgeliehenCheck();
+                if (ausgeliehen_check != 0)
+                {
+                    lblAusgeliehen_Ausgabe_erw.Text = "Ja";
+                    btnAusleihen_erw.Enabled = false;
+                    btnZurueck_erw.Enabled = true;
+                    btnReservierung_loeschen_erw.Enabled = false;
+                }
+                else
+                {
+                    lblAusgeliehen_Ausgabe_erw.Text = "Nein";
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                MessageBox.Show("Gute Entscheidung mein junger Padawan!");
+                //Reservieren Ja und Nein sowie Buttons Aktivieren/Deaktivieren
+                btnReservieren_erw.Enabled = true;
+                btnReservierung_loeschen_erw.Enabled = true;
+                FrmReservieren.AktuelleISBN = txbISBN_erw.Text;
+                int rescheck = BuchReservieren.ReservierungChecken();
+                if (rescheck != 0)
+                {
+                    lblReserviert_Ausgabe_erw.Text = "Ja";
+                    btnReservieren_erw.Enabled = false;
+                }
+                else
+                {
+                    lblReserviert_Ausgabe_erw.Text = "Nein";
+                    btnReservierung_loeschen_erw.Enabled = false;
+                }
+
+                //Ausgeliehen Ja und Nein sowie Buttons aktivieren/deaktivieren
+                btnAusleihen_erw.Enabled = true;
+                btnZurueck_erw.Enabled = false;
+                int ausgeliehen_check = BuchAusleihen.AusgeliehenCheck();
+                if (ausgeliehen_check != 0)
+                {
+                    lblAusgeliehen_Ausgabe_erw.Text = "Ja";
+                    btnAusleihen_erw.Enabled = false;
+                    btnZurueck_erw.Enabled = true;
+                }
+                else
+                {
+                    lblAusgeliehen_Ausgabe_erw.Text = "Nein";
+                }
+            }
+
+
         }
     }
 }

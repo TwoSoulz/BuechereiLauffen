@@ -296,6 +296,7 @@
             this.btnAusleihen_erw.TabIndex = 65;
             this.btnAusleihen_erw.Text = "Ausleihen";
             this.btnAusleihen_erw.UseVisualStyleBackColor = true;
+            this.btnAusleihen_erw.Click += new System.EventHandler(this.btnAusleihen_erw_Click);
             // 
             // btnZurueck_erw
             // 
@@ -305,6 +306,7 @@
             this.btnZurueck_erw.TabIndex = 66;
             this.btnZurueck_erw.Text = "Zurückgeben";
             this.btnZurueck_erw.UseVisualStyleBackColor = true;
+            this.btnZurueck_erw.Click += new System.EventHandler(this.btnZurueck_erw_Click);
             // 
             // btnSpeichern_erw
             // 
