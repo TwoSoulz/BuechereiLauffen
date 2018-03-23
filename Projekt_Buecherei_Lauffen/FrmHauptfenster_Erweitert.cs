@@ -497,7 +497,7 @@ namespace Projekt_Buecherei_Lauffen
             {
                 MessageBox.Show("Sie müssen das Buch zuerst reservieren!");
             }
-
+            btnAusleihen_erw.Enabled = false;
         }
 
         private void btnZurueck_erw_Click(object sender, EventArgs e)
@@ -509,6 +509,7 @@ namespace Projekt_Buecherei_Lauffen
                 BuchAusleihen.ReservierungLöschen_Ausleihe();
                 //Ausleihe löschen
                 BuchAusleihen.AusleiheLoeschen();
+                BuchReservieren.ReservierungLoeschen();
                 //Reservieren Ja und Nein sowie Buttons Aktivieren/Deaktivieren
                 btnReservieren_erw.Enabled = true;
                 btnReservierung_loeschen_erw.Enabled = true;

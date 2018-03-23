@@ -13,13 +13,16 @@ using System.Collections;
 
 namespace Projekt_Buecherei_Lauffen
 {
+    //In dieser Klasse befinden sich alle Methoden, die zum Reservieren des Buchs notwendig sind 
     class BuchReservieren
     {
         //MySqlVerbindung
         private static MySqlConnection con = new MySqlConnection(@"Data Source=localhost;port=3306;Initial Catalog=buecherei;User Id=root;password=''");
 
+        //Mit dieser Methode wird die LeserID herrausgefunden 
         public static int LeserFinden()
         {
+            //Mithilfe eines SQL-Befehls wird überprüft ob es eine LeserID gibt
             con.Open();
             MySqlCommand check = con.CreateCommand();
             check.CommandType = CommandType.Text;
@@ -30,6 +33,7 @@ namespace Projekt_Buecherei_Lauffen
 
             reader.Read();
 
+            //falls es diese gibt, wird sie hier zurückgegeben
             if (reader.HasRows)
             {
                 var leserID = reader.GetInt32(0);
@@ -38,13 +42,16 @@ namespace Projekt_Buecherei_Lauffen
                 return leserID;
             }
 
+            //Falls es keine gibt wird eine "0" zurückgegeben
             reader.Close();
             con.Close();
             return 0;
         }
 
+        //Mit dieser Methode wird ein neuer Leser in der Datenbank erstellterstellt
         public static void LeserErstellen()
         {
+            //Mithilfe eines SQL-Befehls wird der Leser erstellt, dazu werden Vorname, Nachname, Straße, Ort und PLZ von der Form Reservieren übergeben
             con.Open();
             MySqlCommand lesererstellen = con.CreateCommand();
             lesererstellen.CommandType = CommandType.Text;
@@ -55,8 +62,10 @@ namespace Projekt_Buecherei_Lauffen
             con.Close();
         }
 
+        //Mit dieser Methode wird überprüft ob eine Reservierung vorhanden ist
         public static int ReservierungChecken()
         {
+            //Mithilfe eines SQL-Befehls wird überprüft ob eine Reservierung mit dieser ISBN verknüpft ist
             con.Open();
             MySqlCommand check = con.CreateCommand();
             check.CommandType = CommandType.Text;
@@ -66,6 +75,7 @@ namespace Projekt_Buecherei_Lauffen
 
             reader.Read();
 
+            //Hier wird die ReservierungsID zurückgegeben, falls vorhanden
             if (reader.HasRows)
             {
                 var resWert = reader.GetInt32(0);
@@ -74,10 +84,14 @@ namespace Projekt_Buecherei_Lauffen
                 return resWert;
             }
 
+            //Falls keine vorhanden ist, wird eine "0" zurückgegeben
             reader.Close();
             con.Close();
             return 0;
         }
+
+        //Mit dieser Methode wird die reservierungsID in der Datenbank in der Tabelle "reservierungen" um eins erhöht
+        //Und danach wird diese neue "ID" zurückgegeben
         public static int ManuelleID()
         {
             con.Open();
@@ -93,8 +107,11 @@ namespace Projekt_Buecherei_Lauffen
             con.Close();
             return resWert;
         }
+
+        //Mit dieser Methode wird eine Reservierung in der Datenbank zu dem ausgewählten Buch erstellt
         public static void ReservierungErstellen()
         {
+            //Hierbei wird anhand der LeserID, der ISBN-Nummer und der manuellen reservierungsID eine Eintrag in der Tabelle reservieren erstellt
             con.Open();
             MySqlCommand reserstellen = con.CreateCommand();
             reserstellen.CommandType = CommandType.Text;
@@ -104,8 +121,10 @@ namespace Projekt_Buecherei_Lauffen
             con.Close();
         }
 
+        //Mit dieser Methode wird die Reservierung des ausgewählten Buchs in der Datenbnak gelöscht
         public static void ReservierungLoeschen()
         {
+           //Mithilfe eines SQL-Befehls wird anhand der ISBN-Nummer der Eintrag in der Tabelle reservierungen aus der Datenbank gelöscht
             con.Open();
             MySqlCommand reserstellen = con.CreateCommand();
             reserstellen.CommandType = CommandType.Text;
@@ -115,4 +134,3 @@ namespace Projekt_Buecherei_Lauffen
         }
     }
 }
-

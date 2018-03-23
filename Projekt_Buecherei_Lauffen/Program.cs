@@ -14,6 +14,7 @@ namespace Projekt_Buecherei_Lauffen
         [STAThread]
         static void Main()
         {
+            //Hier wird das Programm gestartet
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmHauptfenster());
