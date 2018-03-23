@@ -179,26 +179,26 @@ namespace Projekt_Buecherei_Lauffen
         {
             TmpVarsSetzen();
 
-            autorAendernID = BuchAendern.AutorAendern();
-            genreAendernID = BuchAendern.GenreAendern();
-            verlagAendernID = BuchAendern.VerlagAendern();
+            autorAendernID = BuchAendern.AutorPruefen();
+            genreAendernID = BuchAendern.GenrePruefen();
+            verlagAendernID = BuchAendern.VerlagPruefen();
 
             if (autorAendernID == 0)
             {
                 BuchAendern.AutorErstellen();
-                autorAendernID = BuchAendern.AutorAendern();
+                autorAendernID = BuchAendern.AutorPruefen();
             }
 
             if (genreAendernID == 0)
             {
                 BuchAendern.GenreErstellen();
-                genreAendernID = BuchAendern.GenreAendern();
+                genreAendernID = BuchAendern.GenrePruefen();
             }
 
             if (verlagAendernID == 0)
             {
                 BuchAendern.VerlagErstellen();
-                verlagAendernID = BuchAendern.VerlagAendern();
+                verlagAendernID = BuchAendern.VerlagPruefen();
             }
 
             BuchAendern.UpdateBuecher();
@@ -212,16 +212,23 @@ namespace Projekt_Buecherei_Lauffen
         {
             tmpISBN = txbISBN_erw.Text;
 
-            DialogResult dialogResult = MessageBox.Show("Sind Sie sich sicher, dass sie das Buch löschen möchten? Dieser Vorgang kann nicht rückgängig gemacht werden!", "Buch löschen", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            if (lblReserviert_Ausgabe_erw.Text == "Ja" || lblAusgeliehen_Ausgabe_erw.Text == "Ja")
             {
-                BuchAendern.BuchLoeschen();
-                SucheAnzeigen();
+                MessageBox.Show("Buch ist reserviert oder ausgeliehen. Bitte erst das Buch zurückgeben oder die Reservierung löschen.");
             }
-            else if (dialogResult == DialogResult.No)
+            else
             {
-                MessageBox.Show("Gute Entscheidung mein junger Padawan!");
-                SucheAnzeigen();
+                DialogResult dialogResult = MessageBox.Show("Sind Sie sich sicher, dass sie das Buch löschen möchten? Dieser Vorgang kann nicht rückgängig gemacht werden!", "Buch löschen", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    BuchAendern.BuchLoeschen();
+                    SucheAnzeigen();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    MessageBox.Show("Gute Entscheidung mein junger Padawan!");
+                    SucheAnzeigen();
+                }
             }
             Textbox_clear();
         }
