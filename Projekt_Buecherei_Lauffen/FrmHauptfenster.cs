@@ -14,15 +14,17 @@ namespace Projekt_Buecherei_Lauffen
 {
     public partial class FrmHauptfenster : Form
     {
-
+        //Dies ist das Startfenster, dass gestartet wird wenn die Anwendung ausgeführt wird
         //MySqlVerbindung
         MySqlConnection con = new MySqlConnection(@"Data Source=localhost;port=3306;Initial Catalog=buecherei;User Id=root;password=''");
 
+        //Initialisierung
         public FrmHauptfenster()
         {
             InitializeComponent();
         }
 
+        //erstmaliges Laden der Form
         private void Form1_Load(object sender, EventArgs e)
         {
             labelsLoeschen();
@@ -37,8 +39,8 @@ namespace Projekt_Buecherei_Lauffen
             btnReservieren.Enabled = false;
         }
 
+        //get und set Methoden
         private static string eingabeSuche = "";
-
         public static string EingabeSuche
         {
             get { return eingabeSuche; }
@@ -59,6 +61,15 @@ namespace Projekt_Buecherei_Lauffen
             set { reserviertAusgabe = value; }
         }
 
+        public static bool aktiv = true;
+        public static bool Aktiv
+        {
+            get { return aktiv; }
+            set { aktiv = value; }
+        }
+
+        //Alle Buttons
+        //Sobald der Button reservieren gedrückt wird öffnet sich die Form reservieren
         public void btnReservieren_Click(object sender, EventArgs e)
         {
             reserviertAusgabe = lblReserviert_Ausgabe;
@@ -70,12 +81,15 @@ namespace Projekt_Buecherei_Lauffen
             window.ShowDialog();           
         }
 
+        //Mit Klick auf diesen Button wird geprüft ob die Logindaten in den beiden Textboxen korrekt sind, dies geschieht in der extra Methode "userAnmelden"
         private void btnAnmelden_Click(object sender, EventArgs e)
         {
             labelsLoeschen();
             userAnmeldung();
         }
 
+        //Wenn dieser Button gedrückt wird, wird der Wert, der in der Suche steht an die Klasse "InventarSuche" übertragen und dort wird dann das Ergebnis zurückgegeben
+        //Wenn das Ergebnis zurückgegeben wurde, wird die Methode "allesAnzeigen" ausgeführt, die das Ergbenis dann sichtbar macht
         private void btnSuchen_Click(object sender, EventArgs e)
         {
             aktiv = true;
@@ -83,6 +97,9 @@ namespace Projekt_Buecherei_Lauffen
             eingabeSuche = txb_Suche.Text;
             SucheAnzeigen();
         }
+        
+        //Alle Key-Down Events
+        //Sobald Enter betätigt wird im Feld suchen führt er die gleichen Schritte aus wie im Button Suchen
         private void txb_Suche_KeyDown(object sender, KeyEventArgs e)
         {
             aktiv = true;
@@ -94,6 +111,7 @@ namespace Projekt_Buecherei_Lauffen
             labelsLoeschen();
         }
 
+        //Beim betätigen der Entertaste werden genau die gleichen Schritte getätigt wie beim klicken des Buttons Anmelden
         private void txbPasswort_KeyDown(object sender, KeyEventArgs e)
         {
             aktiv = false;
@@ -104,6 +122,46 @@ namespace Projekt_Buecherei_Lauffen
             labelsLoeschen();
         }
 
+        //Auswahl der Listview
+        //Sobald ein Item der Listview selektiert wird wird diese Methode ausgeführt und zeigt die einzelnen Daten in den dafür vorgesehenen Labels an
+        private void lvErgebnis_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvErgebnis.SelectedIndices.Count > 0)
+            {
+                ListViewItem item = lvErgebnis.SelectedItems[0];
+
+                {
+                    for (int i = 0; i < lvErgebnis.Items.Count; i++)
+                    {
+                        if (lvErgebnis.Items[i].Selected)
+                        {
+                            lblAusgabe_ISBN.Text = lvErgebnis.Items[i].SubItems[0].Text;
+                            lblTitel_Ausgabe.Text = lvErgebnis.Items[i].SubItems[1].Text;
+                            lblAutor_Ausgabe.Text = lvErgebnis.Items[i].SubItems[2].Text;
+                            lblGenre_Ausgabe.Text = lvErgebnis.Items[i].SubItems[3].Text;
+                            lblVerlag_Ausgabe.Text = lvErgebnis.Items[i].SubItems[4].Text;
+                        }
+                    }
+
+                }
+            }
+            btnReservieren.Enabled = true;
+            FrmReservieren.AktuelleISBN = lblAusgabe_ISBN.Text;
+            int rescheck = BuchReservieren.ReservierungChecken();
+            if (rescheck != 0)
+            {
+                lblReserviert_Ausgabe.Text = "Ja";
+                btnReservieren.Enabled = false;
+            }
+            else
+            {
+                lblReserviert_Ausgabe.Text = "Nein";
+            }
+        }
+
+        //Alle restlichen Methoden
+        //In dieser Methode wird überprüft ob die Anmeldedaten, die in den beiden Textfeldern stehen korrekt sind
+        //Dies geschieht mithilfe einer Datenbankabfrage
         private void userAnmeldung()
         {
             //Zähler setzen
@@ -143,7 +201,7 @@ namespace Projekt_Buecherei_Lauffen
             con.Close();
         }
 
-
+        //Mit dieser Methode werden alle Datensätze der Datenbank angezeigt
         private void allesanzeigen()
         {
             lvErgebnis.Items.AddRange(Grunddaten.getalleDaten().ToArray());
@@ -151,41 +209,7 @@ namespace Projekt_Buecherei_Lauffen
             lvErgebnis.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
-        private void lvErgebnis_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lvErgebnis.SelectedIndices.Count > 0)
-            {
-                ListViewItem item = lvErgebnis.SelectedItems[0];
-
-                {
-                    for (int i = 0; i < lvErgebnis.Items.Count; i++)
-                    {
-                        if (lvErgebnis.Items[i].Selected)
-                        {
-                            lblAusgabe_ISBN.Text = lvErgebnis.Items[i].SubItems[0].Text;
-                            lblTitel_Ausgabe.Text = lvErgebnis.Items[i].SubItems[1].Text;
-                            lblAutor_Ausgabe.Text = lvErgebnis.Items[i].SubItems[2].Text;
-                            lblGenre_Ausgabe.Text = lvErgebnis.Items[i].SubItems[3].Text;
-                            lblVerlag_Ausgabe.Text = lvErgebnis.Items[i].SubItems[4].Text;
-                        }
-                    }
-
-                }
-            }
-            btnReservieren.Enabled = true;
-            FrmReservieren.AktuelleISBN = lblAusgabe_ISBN.Text;
-            int rescheck = BuchReservieren.ReservierungChecken();
-            if (rescheck != 0)
-            {
-                lblReserviert_Ausgabe.Text = "Ja";
-                btnReservieren.Enabled = false;
-            }
-            else
-            {
-                lblReserviert_Ausgabe.Text = "Nein";
-            }
-        }
-        
+        //
         private void SucheAnzeigen ()
         {
             lvErgebnis.Items.Clear();
@@ -218,6 +242,7 @@ namespace Projekt_Buecherei_Lauffen
             lvErgebnis.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
+        //
         private void labelsLoeschen()
         {
             lblAusgabe_ISBN.Text = "";
@@ -229,12 +254,5 @@ namespace Projekt_Buecherei_Lauffen
             lblVerlag_Ausgabe.Text = "";
         }
 
-        public static bool aktiv = true;
-
-        public static bool Aktiv
-        {
-            get { return aktiv; }
-            set { aktiv = value; }
-        }
     }
 }

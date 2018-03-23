@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace Projekt_Buecherei_Lauffen
 {
+
+    //Diese Form wird nur geöffnet wenn ein angemeldeter Benutzer auf Ausleihen klickt
+    
     public partial class FrmAusleihen : Form
     {
         private FrmHauptfenster hauptfenster_ausleihe = null;
@@ -19,10 +22,13 @@ namespace Projekt_Buecherei_Lauffen
             this.hauptfenster_ausleihe = hauptfenster_ausleihe;
         }
 
+
         private void Ausleihen_Load(object sender, EventArgs e)
         {
             lblAusgabeBuch_ausleihe.Text = aktivesBuch;
         }
+
+        //get und set Methoden
         private static string aktuelle_isbn_ausleihe;
         public static string AktuelleISBN_Ausleihe
         {
@@ -36,6 +42,7 @@ namespace Projekt_Buecherei_Lauffen
             get { return resID_ausleihe; }
             set { resID_ausleihe = value; }
         }
+
         private static int leserID_ausleihe;
         public static int LeserID_Ausleihe
         {
@@ -49,12 +56,11 @@ namespace Projekt_Buecherei_Lauffen
             get { return manuelleID_Ausleihe; }
             set { manuelleID_Ausleihe = value; }
         }
+
+        //Variable
         public static string aktivesBuch;
-        public static string AktivesBuch
-        {
-            get { return aktivesBuch; }
-            set { aktivesBuch = value; }
-        }
+
+        //
         private void btnAusleihen_ausleihe_Click(object sender, EventArgs e)
         {
             //ReservierungsID, LeserID und manuelleID wird gespeichert sodass sie in der Klasse BuchAusleihen verwendet werden kann
@@ -67,7 +73,8 @@ namespace Projekt_Buecherei_Lauffen
             FrmHauptfenster_Erweitert.BtnReservierung_Loeschen_Ausleihe.Enabled = false;
             this.Close();
         }
-
+        
+        //Bricht den AUsleihvorgang ab und schlißet das Fenster
         private void btnAbbruch_ausleihe_Click(object sender, EventArgs e)
         {
             this.Close();
